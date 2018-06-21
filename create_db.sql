@@ -1,9 +1,9 @@
-CREATE TABLE IF NOT EXISTS userr(
+CREATE TABLE IF NOT EXISTS app_user(
 	id_user serial PRIMARY KEY,
 	first_name varchar(30) not null,
 	last_name varchar(30) not null,
 	login varchar(20)not null unique,
-	user_role integer
+	user_role varchar(20)
 );
 
 
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS user_data (
 	login varchar(20),
 	password varchar(20),
 	id_user integer,
-	FOREIGN KEY (id_user) REFERENCES userr (id_user)
+	FOREIGN KEY (id_user) REFERENCES app_user (id_user)
 	ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS user_data (
 CREATE TABLE IF NOT EXISTS administrator (
 	id_admin serial PRIMARY KEY,
 	id_user integer,
-	FOREIGN KEY (id_user) REFERENCES userr (id_user)
+	FOREIGN KEY (id_user) REFERENCES app_user (id_user)
 	ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS administrator (
 CREATE TABLE IF NOT EXISTS mentor (
 	id_mentor serial PRIMARY KEY,
 	id_user integer,
-	FOREIGN KEY (id_user) REFERENCES userr (id_user)
+	FOREIGN KEY (id_user) REFERENCES app_user (id_user)
 	ON DELETE CASCADE ON UPDATE NO ACTION,
 	id_class integer,
 	FOREIGN KEY (id_class) REFERENCES cool_class (id_class)
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS mentor (
 CREATE TABLE IF NOT EXISTS student (
 	id_student serial PRIMARY KEY,
 	id_user integer,
-	FOREIGN KEY (id_user) REFERENCES userr (id_user),
+	FOREIGN KEY (id_user) REFERENCES app_user (id_user),
 	id_class integer,
 	FOREIGN KEY (id_class) REFERENCES cool_class (id_class)
 );
@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS artifact (
 );
 
 
+
 CREATE TABLE IF NOT EXISTS quest (
     id_quest serial PRIMARY KEY,
     quest_name varchar(50),
@@ -80,6 +81,7 @@ CREATE TABLE IF NOT EXISTS buyers_group (
 	id_artifact integer,
 	FOREIGN KEY (id_artifact) REFERENCES artifact(id_artifact)
 	ON DELETE CASCADE ON UPDATE NO ACTION
+        group_size integer NOT NULL
 );
 
 
@@ -116,10 +118,14 @@ CREATE TABLE IF NOT EXISTS group_transaction (
 	ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
-
-	
-
-
+CREATE TABLE IF NOT EXISTS student_artifact(
+	id_student integer,
+	 FOREIGN KEY (id_student) REFERENCES student(id_student)
+		ON DELETE CASCADE ON UPDATE NO ACTION,
+	id_artifact integer,
+	FOREIGN KEY (id_artifact) REFERENCES artifact(id_artifact)
+		ON DELETE CASCADE ON UPDATE NO ACTION,
+	quantity integer);
 	
 
 
