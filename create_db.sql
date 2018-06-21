@@ -46,7 +46,9 @@ CREATE TABLE IF NOT EXISTS student (
 		ON DELETE CASCADE ON UPDATE NO ACTION,
 	id_class integer NOT NULL,
 	FOREIGN KEY (id_class) REFERENCES cool_class (id_class)
-		ON DELETE CASCADE ON UPDATE NO ACTION
+		ON DELETE CASCADE ON UPDATE NO ACTION,
+	money integer,
+	total_money integer
 );
 
 
