@@ -1,13 +1,13 @@
-CREATE TABLE IF NOT EXISTS app_user(
+CREATE TABLE IF NOT EXISTS app_user (
 	id_user serial PRIMARY KEY,
-	name varchar(30) not null,
+	first_name varchar(30) not null,
 	last_name varchar(30) not null,
 	phone varchar(30) not null,
 	email varchar(100) not null,
 	role varchar(20)
 );
 
-CREATE TABLE IF NOT EXISTS authorization (
+CREATE TABLE IF NOT EXISTS authentication (
 	login varchar(20) not null,
 	password varchar(20) not null,
 	id_user integer not null,
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS mentor (
 	id_mentor serial PRIMARY KEY,
 	id_user integer not null,
 	FOREIGN KEY (id_user) REFERENCES app_user (id_user)
-	ON DELETE CASCADE ON UPDATE NO ACTION,
+	ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
 
@@ -82,16 +82,16 @@ CREATE TABLE IF NOT EXISTS buyers_group (
 	id_group serial PRIMARY KEY,
 	id_artifact integer not null,
 	FOREIGN KEY (id_artifact) REFERENCES artifact(id_artifact)
-	ON DELETE CASCADE ON UPDATE NO ACTION
-        group_size integer not null,
+	ON DELETE CASCADE ON UPDATE NO ACTION,
+        group_size integer not null
 );
 
 
 CREATE TABLE IF NOT EXISTS student_2_buyers_group (
 	id_student integer not null,
 	id_group integer not null,
-	money integer,
-	is_lider boolean not null,
+	current_money integer,
+	is_leader boolean not null,
 	PRIMARY KEY(id_student, id_group),
 	FOREIGN KEY (id_student) REFERENCES student(id_student)
 	ON DELETE CASCADE ON UPDATE NO ACTION,
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS student_artifact(
 
 CREATE TABLE IF NOT EXISTS experience_level(
 	id_level serial PRIMARY KEY NOT NULL,
-	name varchar(20),
+	level_name varchar(20),
 	achieve_money integer
 );
 
