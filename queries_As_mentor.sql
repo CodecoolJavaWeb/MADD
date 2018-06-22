@@ -1,9 +1,9 @@
-AS A MENTOR
+--AS A MENTOR
 
 6.
 
 BEGIN;
-INSERT INTO app_user (name, last_name, phone, email, role) 
+INSERT INTO app_user (first_name, last_name, phone, email, role)
 VALUES ('Ania', 'ffidjfid', '123123132', 'mdsims@mids', 'student')
 
 INSERT INTO student(id_user, id_class, money, total_money)
@@ -67,7 +67,7 @@ SELECT money FROM student
 WHERE id_student = ?
 
 SELECT * FROM student_transaction
-WHERE id_stundet ??
+WHERE id_student ??
 
 
 
