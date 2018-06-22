@@ -45,7 +45,9 @@ CREATE TABLE IF NOT EXISTS student (
 		ON DELETE CASCADE ON UPDATE NO ACTION,
 	id_class integer NOT NULL,
 	FOREIGN KEY (id_class) REFERENCES cool_class (id_class)
-		ON DELETE CASCADE ON UPDATE NO ACTION
+		ON DELETE CASCADE ON UPDATE NO ACTION,
+	current_money integer,
+	total_money integer
 );
 
 
@@ -53,10 +55,10 @@ CREATE TABLE IF NOT EXISTS mentor_2_class (
 	id_mentor integer NOT NULL,
 	id_class integer NOT NULL,
 	PRIMARY KEY (id_mentor, id_class),
-	FOREIGN KEY (id_mentor) REFERENCES mentor (id_mentor)
-    	ON DELETE CASCADE ON UPDATE NO ACTION,
+	FOREIGN KEY (id_mentor) REFERENCES mentor (id_mentor),
+    		-- ON DELETE CASCADE ON UPDATE NO ACTION,
 	FOREIGN KEY (id_class) REFERENCES cool_class (id_class)
-		ON DELETE CASCADE ON UPDATE NO ACTION
+		-- ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
 
@@ -81,8 +83,8 @@ CREATE TABLE IF NOT EXISTS quest (
 CREATE TABLE IF NOT EXISTS buyers_group (
 	id_group serial PRIMARY KEY,
 	id_artifact integer NOT NULL,
-	FOREIGN KEY (id_artifact) REFERENCES artifact(id_artifact)
-	    ON DELETE CASCADE ON UPDATE NO ACTION,
+	FOREIGN KEY (id_artifact) REFERENCES artifact(id_artifact),
+		-- ON DELETE CASCADE ON UPDATE NO ACTION,
 	group_size integer NOT NULL
 );
 
@@ -93,21 +95,21 @@ CREATE TABLE IF NOT EXISTS student_2_buyers_group (
 	current_money integer,
 	is_leader boolean not null,
 	PRIMARY KEY(id_student, id_group),
-	FOREIGN KEY (id_student) REFERENCES student(id_student)
-		ON DELETE CASCADE ON UPDATE NO ACTION,
+	FOREIGN KEY (id_student) REFERENCES student(id_student),
+		-- ON DELETE CASCADE ON UPDATE NO ACTION,
 	FOREIGN KEY (id_group) REFERENCES buyers_group(id_group)
-		ON DELETE CASCADE ON UPDATE NO ACTION
+		-- ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
 
 CREATE TABLE IF NOT EXISTS student_transaction (
-    id_transaction serial NOT NULL,
-    id_student integer NOT NULL,
-    id_artifact integer NOT NULL,
-    FOREIGN KEY (id_student) REFERENCES student(id_student)
-		ON DELETE CASCADE ON UPDATE NO ACTION,
+    	id_transaction serial NOT NULL,
+    	id_student integer NOT NULL,
+    	id_artifact integer NOT NULL,
+    	FOREIGN KEY (id_student) REFERENCES student(id_student),
+		-- ON DELETE CASCADE ON UPDATE NO ACTION,
 	FOREIGN KEY (id_artifact) REFERENCES artifact(id_artifact)
-		ON DELETE CASCADE ON UPDATE NO ACTION
+		-- ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
 
@@ -115,20 +117,20 @@ CREATE TABLE IF NOT EXISTS group_transaction (
 	id_transaction serial NOT NULL,
 	id_group integer NOT NULL,
 	id_artifact integer NOT NULL,
-	FOREIGN KEY (id_group) REFERENCES buyers_group(id_group)
-		ON DELETE CASCADE ON UPDATE NO ACTION,
+	FOREIGN KEY (id_group) REFERENCES buyers_group(id_group),
+		-- ON DELETE CASCADE ON UPDATE NO ACTION,
 	FOREIGN KEY (id_artifact) REFERENCES artifact(id_artifact)
-		ON DELETE CASCADE ON UPDATE NO ACTION
+		-- ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
 
 CREATE TABLE IF NOT EXISTS student_artifact(
 	id_student integer NOT NULL,
-	 FOREIGN KEY (id_student) REFERENCES student(id_student)
-		ON DELETE CASCADE ON UPDATE NO ACTION,
+	 FOREIGN KEY (id_student) REFERENCES student(id_student),
+		-- ON DELETE CASCADE ON UPDATE NO ACTION,
 	id_artifact integer NOT NULL,
-	FOREIGN KEY (id_artifact) REFERENCES artifact(id_artifact)
-		ON DELETE CASCADE ON UPDATE NO ACTION,
+	FOREIGN KEY (id_artifact) REFERENCES artifact(id_artifact),
+		-- ON DELETE CASCADE ON UPDATE NO ACTION,
 	quantity integer
 );
 
