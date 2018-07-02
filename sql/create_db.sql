@@ -138,7 +138,8 @@ CREATE TABLE IF NOT EXISTS student_artifact(
 CREATE TABLE IF NOT EXISTS experience_level(
 	id_level serial PRIMARY KEY NOT NULL,
 	level_name varchar(20),
-	achieve_money integer
+	achieve_money_min integer,
+	achieve_money_max integer
 );
 
 
