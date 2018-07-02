@@ -21,27 +21,30 @@ body {
     margin-top: 120px;
 }
 input[type="text"], input[type="password"] {
-    display: flex;
+    position: relative;
     height: 50px;
     font-size: 18px;
     margin-bottom: 35px;
     border-radius: 4px;
     padding-left: 40px;
+    min-width: 100%;
 }
 input[type="text"] {
     margin-top: 50px;
 }
 .input:before {
+    z-index: 2;
     font-family: "FontAwesome";
     content: "\f007";
     position: absolute;
     font-size: 30px;
     padding: 10px 0 0 7px;
-    left: 20px;
+    margin-top: 50px;
     color: #2c536c;
 }
 .input:nth-child(2):before {
     content: "\f023";
+    margin-top: 0;
 }
 input[type="submit"] {
     padding: 10px 25px;
@@ -57,7 +60,6 @@ input[type="submit"]:hover {
     background: #fff;
     color: #1a394f;
 }
-
 .user-image {
     display: flex;
     align-self: center;
