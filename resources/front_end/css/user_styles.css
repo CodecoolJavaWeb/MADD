@@ -176,13 +176,13 @@ header {
     color: #2c536c;
 }
 .show-mentors tr:hover {
-    background-color:  #64dfd4;
+    background-color:  #3adbfd;
 }
 .show-mentors th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #64dfd4;
+    background-color: #3adbfd;
     color: white;
 }
 /* Clear floats after the columns */
