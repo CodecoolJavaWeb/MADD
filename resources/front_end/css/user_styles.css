@@ -62,12 +62,14 @@ body * {
 .content {
     display:flex;
     width: 90%;
+    height: 100%;
     flex-direction: column;
     background-color: rgba(24, 33, 52, 0.7);
     margin: 5vw;
     border-top: 1px solid #3ADBFD;
     border-radius: 80px 0 5px 5px;
     min-width: max-content;
+    padding: 0 10px 10px 0;
 }
 header {
     position: relative;
@@ -175,9 +177,6 @@ header {
     background-color: #f2f2f2;
     color: #2c536c;
 }
-.show-mentors tr:hover {
-    background-color:  #64dfd4;
-}
 .show-mentors th {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -185,9 +184,89 @@ header {
     background-color: #64dfd4;
     color: white;
 }
-/* Clear floats after the columns */
+.show-mentors td a {
+    text-decoration: none;
+    color: white;
+    background-color: #e42e53;
+    padding: 5px;
+    border-radius: 3px;
+}
+.show-mentors td a:hover {
+    background-color: #3266df;
+}
+
+.save-changes-button {
+    padding: 10px;
+    align-self: center;
+}
+.save-changes-button input {
+    padding: 10px 25px;
+    background-color: #e42e53;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.save-changes-button input:hover {
+    background-color: #64dfd4;
+}
+    /* Clear floats after the columns */
 .row:after {
     content: "";
     display: table;
     clear: both;
+}
+/*---------------Styles for form create student----------------*/
+.col-25 {
+    float: left;
+    width: 30%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 70%;
+    margin-top: 6px;
+}
+#subject {
+    height: 200px;
+}
+#name, #surname, #email, #phone,
+#class, #coins, #level {
+    width: 80%;
+    padding: 12px;
+    border: 1px solid black;
+    border-radius: 3px;
+    resize: vertical;
+}
+.input-form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-content: center;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#save-changes-button {
+    background-color: #E42E53;
+    color: white;
+    padding: 12px 20px;
+    cursor: pointer;
+    border: 0;
+    box-shadow: none;
+    border-radius: 3px;
+}
+#save-changes-button:active {
+    top: 1px;
+}
+
+#save-changes-button:hover {
+    background-color: #64dfd4;
+    color: black;
 }
