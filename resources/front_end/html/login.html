@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="../javascript/scripts.js"></script>
+</head>
+<body>
+<div class="form-container">
+    <img src="../../images/user.jpg" title="user" class="user-image">
+    <img src="../../images/codecool_logo.png" title="user" class="logo">
+    <div class="greeting">
+        <h2>Welcome to queststore!</h2>
+    </div>
+    <form>
+        <div class="input">
+            <input type="text" class="input" id="login" name="username" placeholder="Your login" required>
+            <p id="err-login-fn"></p>
+        </div>
+        <div class="input">
+            <input type="password" class="input" id="pass" name="password" placeholder="Your password" onkeyup="validate()" required>
+            <p id="err-pass-fn"></p>
+        </div>
+        <input type="submit" class="submit-button" id="submit-button" name="submit" value="Sign in" >
+    </form>
+</div>
+
+<script>
+    const submitButton = document.getElementById("submit-button");
+    submitButton.disabled = true;
+
+    function validate() {
+        const login = document.getElementById("login").value;
+        const pass = document.getElementById("pass").value;
+        const loginREGEX = /[\w@\.-][^<>{}\[\]"~;$^%?#&]{1,20}$/;
+        const passREGEX = /^([\w^<>{}\[\]"~;$^%?#&]{4,20})$/;
+        if (!(login).match(loginREGEX)) {
+            document.getElementById("err-login-fn").innerHTML="Enter valid login";
+            return false;
+        }
+        else if (!(pass).match(passREGEX)) {
+            document.getElementById("err-pass-fn").innerHTML="Enter valid password (at least 4 symbols)";
+            return false;
+        } else {
+            submitButton.disabled = false;
+            document.getElementById("err-login-fn").innerHTML="";
+            document.getElementById("err-pass-fn").innerHTML="";
+            return true;
+        }
+    }
+</script>
+</body>
+</html>
