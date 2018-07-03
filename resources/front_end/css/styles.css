@@ -3,6 +3,13 @@ body {
     display: flex;
     justify-content: center;
 }
+.greeting h2 {
+    color: white;
+    text-transform: uppercase;
+    font-size: 3vw;
+    font-weight: normal;
+    margin-top: 40px;
+}
 .form-container * {
     box-sizing: border-box;
 }
@@ -11,7 +18,7 @@ body {
     position: relative;
     width:50%;
     min-width: max-content;
-    height: 450px;
+    height: 460px;
     background-color: rgba(24, 33, 52, 0.7);
     text-align: center;
     flex-direction: column;
@@ -29,9 +36,6 @@ input[type="text"], input[type="password"] {
     padding-left: 40px;
     min-width: 100%;
 }
-input[type="text"] {
-    margin-top: 50px;
-}
 .input:before {
     z-index: 2;
     font-family: "FontAwesome";
@@ -39,7 +43,6 @@ input[type="text"] {
     position: absolute;
     font-size: 30px;
     padding: 10px 0 0 7px;
-    margin-top: 50px;
     color: #2c536c;
 }
 .input:nth-child(2):before {
