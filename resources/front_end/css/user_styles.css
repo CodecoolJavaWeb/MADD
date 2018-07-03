@@ -64,9 +64,10 @@ body * {
     width: 90%;
     flex-direction: column;
     background-color: rgba(24, 33, 52, 0.7);
-    margin: 5vw;
+    margin: 5vw 5vw 0 5vw;
     border-top: 1px solid #3ADBFD;
     border-radius: 80px 0 5px 5px;
+    padding: 0px 10px 10px 0;
     min-width: max-content;
 }
 header {
@@ -195,12 +196,29 @@ header {
     min-width: 25%;
 }
 
-.accept-button{
+.accept-button {
     background-color: #e42e53;
     border:none;
     color:white;
     border-radius: 10%;
 }
-.accept-button:hover{
+.accept-button:hover {
      background-color:#000000;
+}
+
+footer {
+    display:flex;
+    width: 90%;
+    height: 25%;
+    flex-direction: column;
+    background-color: rgba(24, 33, 52, 0.7);
+    margin: 0 5vw 5vw 5vw;
+    border-radius: 5px;
+    
+    min-width: max-content;
+}
+
+footer a {
+    color: #3ADBFD;
+    text-decoration: none;
 }
