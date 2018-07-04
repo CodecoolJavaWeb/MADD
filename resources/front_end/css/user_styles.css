@@ -181,7 +181,7 @@ header {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #64dfd4;
+    background-color: #3266DF;
     color: white;
 }
 .show-mentors td a {
@@ -209,7 +209,7 @@ header {
     cursor: pointer;
 }
 .save-changes-button input:hover {
-    background-color: #64dfd4;
+    background-color: #3266DF;
 }
     /* Clear floats after the columns */
 .row:after {
@@ -270,6 +270,6 @@ label {
 }
 
 #save-changes-button:hover {
-    background-color: #64dfd4;
+    background-color: #3266DF;
     color: black;
 }

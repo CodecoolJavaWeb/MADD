@@ -14,7 +14,7 @@
     <div class="greeting">
         <h2>Welcome to queststore!</h2>
     </div>
-    <form>
+    <form action="mentor-top.html">
         <div class="input">
             <input type="text" class="input" id="login" name="username" placeholder="Your login" required>
             <p id="err-login-fn"></p>
@@ -23,19 +23,18 @@
             <input type="password" class="input" id="pass" name="password" placeholder="Your password" onkeyup="validate()" required>
             <p id="err-pass-fn"></p>
         </div>
-        <input type="submit" class="submit-button" id="submit-button" name="submit" value="Sign in" >
+        <input type="submit" class="submit-button" id="submit-button" name="submit" value="Sign in">
     </form>
 </div>
-
 <script>
-    const submitButton = document.getElementById("submit-button");
+    var submitButton = document.getElementById("submit-button");
     submitButton.disabled = true;
 
     function validate() {
-        const login = document.getElementById("login").value;
-        const pass = document.getElementById("pass").value;
-        const loginREGEX = /[\w@\.-][^<>{}\[\]"~;$^%?#&]{1,20}$/;
-        const passREGEX = /^([\w^<>{}\[\]"~;$^%?#&]{4,20})$/;
+        var login = document.getElementById("login").value;
+        var pass = document.getElementById("pass").value;
+        var loginREGEX = /[\w@\.-][^<>{}\[\]"~;$^%?#&]{1,20}$/;
+        var passREGEX = /^([\w^<>{}\[\]"~;$^%?#&]{4,20})$/;
         if (!(login).match(loginREGEX)) {
             document.getElementById("err-login-fn").innerHTML="Enter valid login";
             return false;

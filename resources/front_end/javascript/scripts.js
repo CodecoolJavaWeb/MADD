@@ -20,4 +20,3 @@ function validate() {
         return true;
     }
 }
-</scrip
