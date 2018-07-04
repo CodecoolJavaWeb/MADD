@@ -62,6 +62,7 @@ body * {
 .content {
     display:flex;
     width: 90%;
+<<<<<<< HEAD
     flex-direction: column;
     background-color: rgba(24, 33, 52, 0.7);
     margin: 5vw 5vw 0 5vw;
@@ -69,6 +70,16 @@ body * {
     border-radius: 80px 0 5px 5px;
     padding: 0px 10px 10px 0;
     min-width: max-content;
+=======
+    height: 100%;
+    flex-direction: column;
+    background-color: rgba(24, 33, 52, 0.7);
+    margin: 5vw;
+    border-top: 1px solid #3ADBFD;
+    border-radius: 80px 0 5px 5px;
+    min-width: max-content;
+    padding: 0 10px 10px 0;
+>>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
 }
 header {
     position: relative;
@@ -103,15 +114,23 @@ header {
     margin-top:-50px;
 }
 .info-top {
+<<<<<<< HEAD
     margin-top:25px;
+=======
+>>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
     align-self: flex-start;
 }
 .info h1 {
     font-size: 50px;
 }
 .info img {
+<<<<<<< HEAD
     width: 40px;
     height: 40px;
+=======
+    width: 50px;
+    height: 50px;
+>>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
 }
 .bar-content-block {
     display: flex;
@@ -164,6 +183,7 @@ header {
     flex-direction:column;
     align-items: flex-start;
 }
+<<<<<<< HEAD
 
 ul.breadcrumb {
     padding: 5px 5px;
@@ -185,12 +205,15 @@ ul.breadcrumb li a {
     text-decoration: none;
 }
 
+=======
+>>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
 .show-mentors {
     border-collapse: collapse;
     min-width: fit-content;
 }
 .show-mentors td,
 .show-mentors th {
+<<<<<<< HEAD
     text-align: center;
     border: 1px solid #ddd;
     padding: 8px;
@@ -200,17 +223,27 @@ ul.breadcrumb li a {
     text-align: left;
 }
 
+=======
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+>>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
 .show-mentors tr:nth-child(even){
     background-color: #f2f2f2;
     color: #2c536c;
 }
+<<<<<<< HEAD
 .show-mentors tr:hover {
     background-color:  #3adbfd;
 }
+=======
+>>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
 .show-mentors th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
+<<<<<<< HEAD
     background-color: #3adbfd;
     color: white;
 }
@@ -226,11 +259,45 @@ ul.breadcrumb li a {
 }
 
 /* Clear floats after the columns */
+=======
+    background-color: #3266DF;
+    color: white;
+}
+.show-mentors td a {
+    text-decoration: none;
+    color: white;
+    background-color: #e42e53;
+    padding: 5px;
+    border-radius: 3px;
+}
+.show-mentors td a:hover {
+    background-color: #3266df;
+}
+
+.save-changes-button {
+    padding: 10px;
+    align-self: center;
+}
+.save-changes-button input {
+    padding: 10px 25px;
+    background-color: #e42e53;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.save-changes-button input:hover {
+    background-color: #3266DF;
+}
+    /* Clear floats after the columns */
+>>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
+<<<<<<< HEAD
 .mark{
     min-width: 25%;
 }
@@ -271,4 +338,79 @@ footer a {
 .describe_item li{
     display:inline-block;
     font-size:45px;
+=======
+/*---------------Styles for form create student----------------*/
+.col-25 {
+    float: left;
+    width: 30%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 70%;
+    margin-top: 6px;
+}
+#subject {
+    height: 200px;
+}
+#name, #surname, #email, #phone, #description,
+#class, #coins, #level, #magic, #standard {
+    width: 80%;
+    padding: 12px;
+    border: 1px solid black;
+    border-radius: 3px;
+    resize: vertical;
+}
+#description {
+    height: 200px;
+}
+.input-form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-content: center;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#save-changes-button {
+    background-color: #E42E53;
+    color: white;
+    padding: 12px 20px;
+    cursor: pointer;
+    border: 0;
+    box-shadow: none;
+    border-radius: 3px;
+}
+#save-changes-button:active {
+    top: 1px;
+}
+
+#save-changes-button:hover {
+    background-color: #3266DF;
+    color: black;
+}
+footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: rgba(24, 33, 52, 0.7);
+    width: 100%;
+    height: 40px;
+    position: fixed;
+    bottom: 0;
+    justify-content: space-between;
+}
+footer a,
+footer p {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+>>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
 }
