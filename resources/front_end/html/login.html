@@ -5,7 +5,6 @@
     <title>Login</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="../javascript/scripts.js"></script>
 </head>
 <body>
 <div class="form-container">
@@ -14,7 +13,7 @@
     <div class="greeting">
         <h2>Welcome to queststore!</h2>
     </div>
-    <form action="mentor-top.html">
+    <form action="mentor-top.html" class="inputs-container">
         <div class="input">
             <input type="text" class="input" id="login" name="username" placeholder="Your login" required>
             <p id="err-login-fn"></p>
@@ -26,29 +25,6 @@
         <input type="submit" class="submit-button" id="submit-button" name="submit" value="Sign in">
     </form>
 </div>
-<script>
-    var submitButton = document.getElementById("submit-button");
-    submitButton.disabled = true;
-
-    function validate() {
-        var login = document.getElementById("login").value;
-        var pass = document.getElementById("pass").value;
-        var loginREGEX = /[\w@\.-][^<>{}\[\]"~;$^%?#&]{1,20}$/;
-        var passREGEX = /^([\w^<>{}\[\]"~;$^%?#&]{4,20})$/;
-        if (!(login).match(loginREGEX)) {
-            document.getElementById("err-login-fn").innerHTML="Enter valid login";
-            return false;
-        }
-        else if (!(pass).match(passREGEX)) {
-            document.getElementById("err-pass-fn").innerHTML="Enter valid password (at least 4 symbols)";
-            return false;
-        } else {
-            submitButton.disabled = false;
-            document.getElementById("err-login-fn").innerHTML="";
-            document.getElementById("err-pass-fn").innerHTML="";
-            return true;
-        }
-    }
-</script>
+<script src="../javascript/scripts.js"></script>
 </body>
 </html>
