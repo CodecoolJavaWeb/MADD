@@ -15,6 +15,11 @@ function refresh() {
     document.getElementById('topay').innerHTML = calculetePrice();
 }
 
+function goBack() {
+    alert("Congratulations! You bought artifact");
+    window.history.back();
+}
+
 function calculetePrice2() {
     var quantityStudents = document.getElementById('qS2').value;
     var price = 1;

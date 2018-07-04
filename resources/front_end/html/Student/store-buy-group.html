@@ -18,7 +18,7 @@
         </div>
         <div class="info">
             <div class="info-center">
-                <h1>Witaj Ania</h1>
+                <h1>Hello Ania</h1>
             </div>
             <div class="info-top">
                 <img src="../../../images/coin.png" alt="coin">
@@ -30,7 +30,7 @@
     <div class="bar-content-block">
         <div class="bar">
             <ul class="menu">
-                <li class="menu-item"><a href="codecooler.html">Basket</a></li>
+                <li class="menu-item"><a href="codecooler.html">Inventory</a></li>
                 <li class="menu-item"><a href="store.html" class="selected">Store</a></li>
                 <li class="menu-item"><a href="incubator.html">Incubator</a></li>
                 <li class="menu-item"><a href="quests.html">Quests</a></li>
@@ -38,6 +38,10 @@
             </ul>
         </div>
         <div class="content-block">
+            <ul class="breadcrumb">
+                <li>-> <a href="store.html">Store</a></li>
+                <li>Buying</li>
+            </ul>
             <h1>You are trying to buy</h1>
             <table class="show-mentors">
                 <thead>
@@ -65,7 +69,7 @@
                         <p id="topay"></p>
                     </td>
                     <td>
-                        <button class="accept-button" type="submit" id="buy" disabled>BUY</button>
+                        <button class="accept-button" type="submit" id="buy" onclick="goBack()" disabled>BUY</button>
                     </td>
                 </tr>
                 </tbody>
