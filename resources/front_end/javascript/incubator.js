@@ -3,5 +3,6 @@ function send_form(){
 
     var artifact_name = document.getElementsByClassName("artifact-name")[0].value;
     var price = document.getElementsByClassName("to-price")[0].value;
+    location.reload();
 
 }
