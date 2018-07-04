@@ -5,8 +5,12 @@
     <title>Student Homepage</title>
     <link rel="stylesheet" href="../../css/user_styles.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <script src="../../javascript/store.js"></script>
+
 </head>
 <body>
+        
 <div class="content">
     <header>
         <div id="user">
@@ -34,7 +38,7 @@
             </ul>
         </div>
         <div class="content-block">
-            <h1>Available artifacts</h1>
+            <h1>You are trying to buy</h1>
             <table class="show-mentors">
                 <thead>
                 <tr>
@@ -42,34 +46,50 @@
                     <th>Description</th>
                     <th>Price</th>
                     <th>Is group</th>
+                    <th>How many</th>
+                    <th>To pay</th>
                     <th></th>
+
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Remote work</td>
-                    <td>Student can work from home by one day</td>
-                    <td>1</td>
-                    <td>&#9746;</td>
-                    <td><a href="store-buy.html">BUY</a></td>
-                    
-                </tr>
-                <tr>
                     <td>Extra material</td>
                     <td>Student get extra material for the current topic (mentors will do it within 2 weeks)</td>
-                    <td>5</td>
+                    <td><p id="price">5</p></td>
                     <td>&#9745;</td>
-                    <td><a href="store-buy.html">BUY</a></td>
-                </tr>
-                <tr>
-                    <td>Training</td>
-                    <td>Private mentoring</td>
-                    <td>1</td>
-                    <td>&#9746;</td>
-                    <td><a href="store-buy.html">BUY</a></td>
+                    <td>
+                        <input type="number" name="quantity" id="qS" onclick="refresh()" min="1" max="5" step="1" value="0">
+                    </td>
+                    <td>               
+                        <p id="topay"></p>
+                       <!-- <script>
+                            function calculetePrice() {
+                                var quantityStudents = document.getElementById('qS').value;
+                                var price = 5;
+                                var buyButton = document.getElementById('buy');
+                            
+                                console.log(quantityStudents);
+                                if (price % quantityStudents != 0 ) {
+                                    buyButton.setAttribute("disabled", "true")
+                                    return price;
+                                } else
+                                    buyButton.removeAttribute("disabled")
+                                    return (price / quantityStudents);
+                            }
+
+                            function refresh() {
+                                document.getElementById('topay').innerHTML = calculetePrice();
+                            }
+                        </script> -->
+                    </td>
+                    <td>
+                        <button type="submit" id="buy" disabled>BUY</button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
+           
         </div>
     </div>
 </div>

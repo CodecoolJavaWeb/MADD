@@ -65,7 +65,7 @@ body * {
     flex-direction: column;
     background-color: rgba(24, 33, 52, 0.7);
     margin: 5vw 5vw 0 5vw;
-    border-top: 1px solid #3ADBFD;
+    border-top: 4px solid #3ADBFD;
     border-radius: 80px 0 5px 5px;
     padding: 0px 10px 10px 0;
     min-width: max-content;
@@ -186,6 +186,17 @@ header {
     background-color: #3adbfd;
     color: white;
 }
+
+.show-mentors a {
+    background-color: #e42e53;
+    text-decoration: none;
+    color: white;
+    box-sizing: border-box;
+    border-radius: 3px;
+    align-items: center;
+    padding: 2px 5px;
+}
+
 /* Clear floats after the columns */
 .row:after {
     content: "";
@@ -209,13 +220,13 @@ header {
 footer {
     display:flex;
     width: 90%;
-    height: 25%;
-    flex-direction: column;
+    height: 100px;
+    flex-direction: row;
     background-color: rgba(24, 33, 52, 0.7);
     margin: 0 5vw 5vw 5vw;
     border-radius: 5px;
-    
     min-width: max-content;
+
 }
 
 footer a {
