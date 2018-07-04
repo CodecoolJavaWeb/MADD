@@ -53,16 +53,34 @@ input[type="submit"] {
     padding: 10px 25px;
     background-color: #64dfd4;
     color: white;
+}
+
+.submit-button {
+    padding: 10px 25px;
+    background-color: #3adbfd;
     border: none;
     border-radius: 3px;
     font-size: 16px;
     cursor: pointer;
 }
+<<<<<<< HEAD
 input[type="submit"]:hover {
+=======
+.submit-button:hover {
+>>>>>>> html_skeleton
     transition: all 0.5s;
     background: #fff;
     color: #1a394f;
 }
+<<<<<<< HEAD
+=======
+#err-login-fn,
+#err-pass-fn {
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+>>>>>>> html_skeleton
 .user-image {
     display: flex;
     align-self: center;
