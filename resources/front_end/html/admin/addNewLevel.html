@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Homepage</title>
+    <link rel="stylesheet" href="../../css/admin_styles.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/user_styles.css">
+    <link rel="stylesheet" href="../../front_end/css/admin_styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="validation.js"></script>
+</head>
+
+<body>
+<div class="content">
+    <header>
+        <div id="user">
+            <img src="../../../images/user.jpg" alt="avatar" >
+        </div>
+
+        <div class="info">
+            <div class="info-center">
+                <h1>WELCOME ADMIN!</h1>
+            </div>
+            <div class="info-top">
+                <a href="login.html"><img src="../../images/out.png" alt="logout"></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="bar-content-block">
+        <div class="bar">
+            <ul class="menu">
+                <li class="menu-item"><a href="mentor.html">Mentor</a></li>
+                <li class="menu-item"><a href="class.html">Class</a></li>
+                <li class="menu-item"><a href="level.html" class="selected">Level</a></li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h1>Create level!</h1>
+
+            <form name="myform" method="post" action="#" onsubmit="return validateform();" >
+
+
+                <br/><br/>
+                Name: <input type="text" name="name"><br/>
+                Experience: <input type="text" name="last-name"><br/>
+
+
+
+                <input class="button-create-level" type="submit" value="Create level">
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<footer>
+    <a href='https://www.freepik.com/free-vector/assorted-user-avatars-collection_851876.htm'>Designed by Freepik</a>
+</footer>
+</body>
+</html>
