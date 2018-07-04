@@ -41,7 +41,7 @@ function validateUser() {
     } else if ((login).match(adminLogin) && (pass).match(adminPass)) {
         window.location.replace("#");
     } else if ((login).match(studentLogin) && (pass).match(studentPass)) {
-        window.location.replace("#");
+        window.location.replace("Student/codecooler.html");
     }
     return false;
 }
