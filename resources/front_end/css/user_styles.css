@@ -169,9 +169,15 @@ header {
 }
 .show-mentors td,
 .show-mentors th {
+    text-align: center;
     border: 1px solid #ddd;
     padding: 8px;
 }
+
+.left {
+    text-align: left;
+}
+
 .show-mentors tr:nth-child(even){
     background-color: #f2f2f2;
     color: #2c536c;
@@ -215,6 +221,12 @@ header {
 }
 .accept-button:hover {
      background-color:#000000;
+}
+
+button:disabled {
+    background-color: grey;
+    color: rgb(214, 212, 212);
+    cursor: auto;
 }
 
 footer {

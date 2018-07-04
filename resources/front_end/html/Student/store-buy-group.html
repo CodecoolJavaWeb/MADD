@@ -56,35 +56,16 @@
                 <tr>
                     <td>Extra material</td>
                     <td>Student get extra material for the current topic (mentors will do it within 2 weeks)</td>
-                    <td><p id="price">5</p></td>
+                    <td><p id="price">4</p></td>
                     <td>&#9745;</td>
                     <td>
                         <input type="number" name="quantity" id="qS" onclick="refresh()" min="1" max="5" step="1" value="0">
                     </td>
                     <td>               
                         <p id="topay"></p>
-                       <!-- <script>
-                            function calculetePrice() {
-                                var quantityStudents = document.getElementById('qS').value;
-                                var price = 5;
-                                var buyButton = document.getElementById('buy');
-                            
-                                console.log(quantityStudents);
-                                if (price % quantityStudents != 0 ) {
-                                    buyButton.setAttribute("disabled", "true")
-                                    return price;
-                                } else
-                                    buyButton.removeAttribute("disabled")
-                                    return (price / quantityStudents);
-                            }
-
-                            function refresh() {
-                                document.getElementById('topay').innerHTML = calculetePrice();
-                            }
-                        </script> -->
                     </td>
                     <td>
-                        <button type="submit" id="buy" disabled>BUY</button>
+                        <button class="accept-button" type="submit" id="buy" disabled>BUY</button>
                     </td>
                 </tr>
                 </tbody>
