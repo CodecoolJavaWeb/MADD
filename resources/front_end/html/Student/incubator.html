@@ -5,6 +5,7 @@
     <title>Student Homepage</title>
     <link rel="stylesheet" href="../../css/user_styles.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="../../javascript/incubator.js"></script>
 </head>
 <body>
 <div class="content">
@@ -17,9 +18,13 @@
                 <h1>Hello Ania</h1>
             </div>
             <div class="info-top">
-                <img src="../../../images/coin.png" alt="coin">
-                <img src="../../../images/progress.png" alt="progress">
-                <a href="login.html"><img src="../../../images/out.png" alt="logout"></a>
+                <ul class="describe_item">
+                    <li><p id="money">1100</p></li>
+                    <li><img src="../../../images/coin.png" alt="coin"></li>
+                    <li><p id="experience">5</p></li>
+                    <li><img src="../../../images/progress.png" alt="progress"></li>
+                    <li><a href="login.html"><img src="../../../images/out.png" alt="logout"></a></li>
+                </ul>
             </div>
         </div>
     </header>
@@ -47,18 +52,20 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Artefact 1</td>
+                    <td class="artifact-name">Artefact 1</td>
                     <td>100</td>
-                    <td>20</td>
+                    <td class="to-price">20</td>
                     <td>5</td>
-                    <td><button class="accept-button" type="button" onclick="alert('Done')">JOIN</button></td>
+                    <td><button class="accept-button" type="button" onclick="send_form()">JOIN</button></td>
+                        <span style="color:red" class="alert_button"></span>
                 </tr>
                 <tr>
-                    <td>Artefact 2</td>
+                    <td class="artifact-name">Artefact 2</td>
                     <td>2000</td>
-                    <td>200</td>
+                    <td class="to-price">200</td>
                     <td>10</td>
-                    <td><button class="accept-button" type="button" onclick="alert('Done')">JOIN</button></td>
+                    <td><button class="accept-button" type="button" onclick="send_form()">JOIN</button></td>
+                        <span style="color:red" class="alert_button"></span>
                 </tr>
                 </tbody>
             </table>

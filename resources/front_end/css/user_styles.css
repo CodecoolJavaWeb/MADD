@@ -103,14 +103,15 @@ header {
     margin-top:-50px;
 }
 .info-top {
+    margin-top:25px;
     align-self: flex-start;
 }
 .info h1 {
     font-size: 50px;
 }
 .info img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 .bar-content-block {
     display: flex;
@@ -265,4 +266,9 @@ footer {
 footer a {
     color: #3ADBFD;
     text-decoration: none;
+}
+
+.describe_item li{
+    display:inline-block;
+    font-size:45px;
 }
