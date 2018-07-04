@@ -5,6 +5,7 @@
     <title>Student Homepage</title>
     <link rel="stylesheet" href="../../css/user_styles.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="../../javascript/incubator.js"></script>
 </head>
 <body>
 <div class="content">
@@ -47,18 +48,20 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Artefact 1</td>
+                    <td class="artifact-name">Artefact 1</td>
                     <td>100</td>
-                    <td>20</td>
+                    <td class="to-price">20</td>
                     <td>5</td>
-                    <td><button class="accept-button" type="button" onclick="alert('Done')">JOIN</button></td>
+                    <td><button class="accept-button" type="button" onclick="send_form()">JOIN</button></td>
+                        <span style="color:red" class="alert_button"></span>
                 </tr>
                 <tr>
-                    <td>Artefact 2</td>
+                    <td class="artifact-name">Artefact 2</td>
                     <td>2000</td>
-                    <td>200</td>
+                    <td class="to-price">200</td>
                     <td>10</td>
-                    <td><button class="accept-button" type="button" onclick="alert('Done')">JOIN</button></td>
+                    <td><button class="accept-button" type="button" onclick="send_form()">JOIN</button></td>
+                        <span style="color:red" class="alert_button"></span>
                 </tr>
                 </tbody>
             </table>
