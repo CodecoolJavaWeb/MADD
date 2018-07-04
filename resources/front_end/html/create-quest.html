@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Student</title>
+    <title>Create Quest</title>
     <link rel="stylesheet" href="../css/user_styles.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
@@ -24,75 +24,54 @@
     <div class="bar-content-block">
         <div class="bar">
             <ul class="menu">
-                <li class="menu-item"><a href="mentor-top.html" class="selected">students</a></li>
-                <li class="menu-item"><a href="mentor-student-quests.html">quests</a></li>
-                <li class="menu-item"><a href="mentor-student-artifacts.html">artifacts</a></li>
+                <li class="menu-item"><a href="mentor-top.html">students</a></li>
+                <li class="menu-item"><a href="mentor-quests.html" class="selected">quests</a></li>
+                <li class="menu-item"><a href="mentor-artifacts.html">artifacts</a></li>
             </ul>
         </div>
         <div class="content-block">
-            <h1>Add student</h1>
+            <h1>Add quest</h1>
             <form class="input-form">
                 <div class="row">
                     <div class="col-25">
-                        <label for="name">Student's first name*</label>
+                        <label for="name">Name of the Quest*</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="name" name="name" placeholder="First name.." required>
+                        <input type="text" id="name" name="name" placeholder="Quest's name.." required>
                         <div id="err-name-fn"></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label for="surname">Student's last name*</label>
+                        <label for="surname">Value of the Quest*</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="surname" name="name" placeholder="Last name.." required>
+                        <input type="text" id="surname" name="name" placeholder="Quest's value.." required>
                         <div id="err-surname-fn"></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label for="email">Student's e-mail address*</label>
+                        <label for="standard">Basic</label>
                     </div>
                     <div class="col-75">
-                        <input type="email" id="email" name="email" placeholder="Email address.." onkeyup="validate()" required>
-                        <div id="err-email-fn"></div>
+                        <input type="radio" name="type" id="standard" value="basic" checked>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label for="phone">Student's phone number</label>
+                        <label for="magic">Extra</label>
                     </div>
                     <div class="col-75">
-                        <input type="tel" id="phone" name="phone" placeholder="Phone number.." required>
-                        <div id="err-phone-fn"></div>
+                        <input type="radio" name="type" id="magic" value="extra">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label for="class">Student's class</label>
+                        <label for="description">Description of the Quest</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="class" name="class" placeholder="Student's class.." required>
-                        <div id="err-class-fn"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="coins">Student's coins amount</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" id="coins" name="coins" placeholder="Coins amount.." required>
-                        <div id="err-coins-fn"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="level">Student's level</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" id="level" name="level" placeholder="Student's level.." required>
-                        <div id="err-level-fn"></div>
+                        <textarea id="description" name="description" placeholder="Describe the Quest.."></textarea>
                     </div>
                 </div>
             </form>

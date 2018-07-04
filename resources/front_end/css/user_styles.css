@@ -232,13 +232,16 @@ header {
 #subject {
     height: 200px;
 }
-#name, #surname, #email, #phone,
-#class, #coins, #level {
+#name, #surname, #email, #phone, #description,
+#class, #coins, #level, #magic, #standard {
     width: 80%;
     padding: 12px;
     border: 1px solid black;
     border-radius: 3px;
     resize: vertical;
+}
+#description {
+    height: 200px;
 }
 .input-form {
     display: flex;
