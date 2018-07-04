@@ -62,15 +62,6 @@ body * {
 .content {
     display:flex;
     width: 90%;
-<<<<<<< HEAD
-    flex-direction: column;
-    background-color: rgba(24, 33, 52, 0.7);
-    margin: 5vw 5vw 0 5vw;
-    border-top: 4px solid #3ADBFD;
-    border-radius: 80px 0 5px 5px;
-    padding: 0px 10px 10px 0;
-    min-width: max-content;
-=======
     height: 100%;
     flex-direction: column;
     background-color: rgba(24, 33, 52, 0.7);
@@ -79,7 +70,6 @@ body * {
     border-radius: 80px 0 5px 5px;
     min-width: max-content;
     padding: 0 10px 10px 0;
->>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
 }
 header {
     position: relative;
@@ -114,23 +104,15 @@ header {
     margin-top:-50px;
 }
 .info-top {
-<<<<<<< HEAD
     margin-top:25px;
-=======
->>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
     align-self: flex-start;
 }
 .info h1 {
     font-size: 50px;
 }
 .info img {
-<<<<<<< HEAD
-    width: 40px;
-    height: 40px;
-=======
     width: 50px;
     height: 50px;
->>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
 }
 .bar-content-block {
     display: flex;
@@ -183,8 +165,6 @@ header {
     flex-direction:column;
     align-items: flex-start;
 }
-<<<<<<< HEAD
-
 ul.breadcrumb {
     padding: 5px 5px;
     list-style: none;
@@ -204,16 +184,12 @@ ul.breadcrumb li a {
     color:  #ddd;
     text-decoration: none;
 }
-
-=======
->>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
 .show-mentors {
     border-collapse: collapse;
     min-width: fit-content;
 }
 .show-mentors td,
 .show-mentors th {
-<<<<<<< HEAD
     text-align: center;
     border: 1px solid #ddd;
     padding: 8px;
@@ -223,43 +199,17 @@ ul.breadcrumb li a {
     text-align: left;
 }
 
-=======
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-}
->>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
 .show-mentors tr:nth-child(even){
     background-color: #f2f2f2;
     color: #2c536c;
 }
-<<<<<<< HEAD
 .show-mentors tr:hover {
     background-color:  #3adbfd;
 }
-=======
->>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
 .show-mentors th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-<<<<<<< HEAD
-    background-color: #3adbfd;
-    color: white;
-}
-
-.show-mentors a {
-    background-color: #e42e53;
-    text-decoration: none;
-    color: white;
-    box-sizing: border-box;
-    border-radius: 3px;
-    align-items: center;
-    padding: 2px 5px;
-}
-
-/* Clear floats after the columns */
-=======
     background-color: #3266DF;
     color: white;
 }
@@ -291,17 +241,14 @@ ul.breadcrumb li a {
     background-color: #3266DF;
 }
     /* Clear floats after the columns */
->>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
-<<<<<<< HEAD
 .mark{
     min-width: 25%;
 }
-
 .accept-button {
     background-color: #e42e53;
     border:none;
@@ -311,34 +258,15 @@ ul.breadcrumb li a {
 .accept-button:hover {
      background-color:#000000;
 }
-
 button:disabled {
     background-color: grey;
     color: rgb(214, 212, 212);
     cursor: auto;
 }
-
-footer {
-    display:flex;
-    width: 90%;
-    height: 100px;
-    flex-direction: row;
-    background-color: rgba(24, 33, 52, 0.7);
-    margin: 0 5vw 5vw 5vw;
-    border-radius: 5px;
-    min-width: max-content;
-
+.describe_item li {
+    display: inline-block;
+    font-size: 45px;
 }
-
-footer a {
-    color: #3ADBFD;
-    text-decoration: none;
-}
-
-.describe_item li{
-    display:inline-block;
-    font-size:45px;
-=======
 /*---------------Styles for form create student----------------*/
 .col-25 {
     float: left;
@@ -412,5 +340,4 @@ footer p {
     padding: 15px;
     color: white;
     text-decoration: none;
->>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
 }

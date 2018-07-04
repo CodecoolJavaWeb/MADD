@@ -1,11 +1,8 @@
 const submitButton = document.getElementById("submit-button");
 submitButton.disabled = true;
 
-<<<<<<< HEAD
-=======
 console.log("hfhfhfh");
 
->>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
 function validate() {
     const login = document.getElementById("login").value;
     const pass = document.getElementById("pass").value;
@@ -25,9 +22,6 @@ function validate() {
         return true;
     }
 }
-<<<<<<< HEAD
-</scrip
-=======
 
 function validateUser() {
     const login = document.getElementById("login").value;
@@ -38,11 +32,11 @@ function validateUser() {
     const adminPass = "12345";
     const studentLogin = "student";
     const studentPass = "12345";
-    if (!(login).match(mentorLogin) || !(login).match(adminLogin) || !(login).match(studentLogin)) {
+    if (!(login).match(mentorLogin) && !(login).match(adminLogin) && !(login).match(studentLogin)) {
         document.getElementById("err-login-fn").innerHTML="Can't match your name";
     } else if (!(pass).match(mentorPass) || !(pass).match(adminPass) || !(pass).match(studentPass)) {
         document.getElementById("err-pass-fn").innerHTML="Can't match your password";
-    } else if ((pass).match(mentorPass) && (pass).match(mentorPass)) {
+    } else if ((login).match(mentorLogin) && (pass).match(mentorPass)) {
         window.location.replace("mentor-top.html");
     } else if ((login).match(adminLogin) && (pass).match(adminPass)) {
         window.location.replace("#");
@@ -51,4 +45,3 @@ function validateUser() {
     }
     return false;
 }
->>>>>>> 268a0eef4eb8b3f876f6bc7881c50a4372760c85
