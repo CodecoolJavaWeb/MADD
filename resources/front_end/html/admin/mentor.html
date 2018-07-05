@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:text-align="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
         <title>Admin Homepage</title>
@@ -41,51 +41,58 @@
                     <table class="show-mentors">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>First name:</th>
                                 <th>Last name</th>
-                                <th>E-mail</th>
-                                <th>Phone</th>
+                                <th>E-mail address</th>
+                                <th>Phone number</th>
                                 <th>Classes</th>
                                 <th>Edit</th>
                             </tr>
                         </thead>
+
                         <tbody>
                             <tr>
-                                <td>Zdzislawa</td>
-                                <td>Kwiatkowska</td>
-                                <td>kwiatkowska@codecool.pl</td>
-                                <td>609-765-321</td>
-                                <td><a href="login.html"></a></td>
+                                <td>Marek</td>
+                                <td>Grzybek</td>
+                                <td>marekgrzybek@codecool.pl</td>
+                                <td>200-100-200</td>
+                                <td>2017.1</td>
                                 <td><input class="edit-mentor-button" onclick="window.location.href='editMentor.html'" type="button" value="Edit"></td>
+
+                            </tr>
+
+                            <tr>
+                                <td>Jan</td>
+                                <td>Kowalski</td>
+                                <td>jan@kowalski.pl</td>
+                                <td>123-123-123</td>
+                                <td>2018.3</td>
+                                <td><input class="edit-mentor-button" onclick="window.location.href='editMentor.html'" type="button" value="Edit"></td>
+                            </tr>
+
+                            <tr>
+                                <td rowspan="3" class="table-row">Konrad</td>
+                                <td rowspan="3" class="table-row">Gadzina</td>
+                                <td rowspan="3" class="table-row">konrad.gadzina@wp.pl</td>
+                                <td rowspan="3" class="table-row">882-231-231</td>
+                                <td>2018.3</td>
+                                <td rowspan="3" class="table-row"><input class="edit-mentor-button table-row" onclick="window.location.href='AddNewMentor.html'" type="button" value="Edit"></td>
+
                             </tr>
                             <tr>
-                                <td>Bozydar</td>
-                                <td>Motyka</td>
-                                <td>motyka@codecool.pl</td>
-                                <td>609-754-123</td>
-                                <td><a href="login.html"></a></td>
-                                <td><input class="edit-mentor-button" onclick="window.location.href='editMentor.html'" type="button" value="Edit"></td>
+                                <td>2013.2</td>
                             </tr>
                             <tr>
-                                <td>Zdzislawa</td>
-                                <td>Kwiatkowska</td>
-                                <td>kwiatkowska@codecool.pl</td>
-                                <td>609-765-321</td>
-                                <td><a href="login.html"></a></td>
-                                <td><input class="edit-mentor-button" onclick="window.location.href='editMentor.html'" type="button" value="Edit"></td>
+                                <td>2014.9</td>
                             </tr>
-                            <tr>
-                                <td>Zdzislawa</td>
-                                <td>Kwiatkowska</td>
-                                <td>kwiatkowska@codecool.pl</td>
-                                <td>609-765-321</td>
-                                <td><a href="login.html"></a></td>
-                                <td><input class="edit-mentor-button" onclick="window.location.href='editMentor.html'" type="button" value="Edit"></td>
-                            </tr>
+
+
+
+
                         </tbody>
                     </table>
                     <form>
-                        <input class="add-button" onclick="window.location.href='AddNewMentor.html'" type="button" value="Addd">
+                        <input class="add-button" onclick="window.location.href='AddNewMentor.html'" type="button" value="Add">
                     </form>
                 </div>
             </div>
@@ -98,3 +105,4 @@
         </footer>
     </body>
 </html>
+
