@@ -14,7 +14,7 @@ function validateform() {
     var emailPattern = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$");
 
     var mentorClass = document.myform.class.value;
-    var mentorClassPattern = new RegExp("/^[a-zA-Z ]+$/");
+    var mentorClassPattern = new RegExp("^\\d{4}(.)\\d{2}$");
 
 
     if (!namePattern.test(name)) {
@@ -42,7 +42,7 @@ function validateform() {
     }
 
     else if (!mentorClassPattern.test(mentorClass)) {
-        console.log("wrong mentor class");
+        console.log("wrong class");
         document.getElementById("err-class").innerHTML="Enter valid class";
         return false;
     }

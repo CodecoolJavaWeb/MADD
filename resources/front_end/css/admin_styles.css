@@ -227,8 +227,9 @@ background-color:#117ca0;
 }
 
 
-#err-login-fn,
-#err-pass-fn {
+#err-name,
+err-lastname, err-phone, err-email, err-mentorclass {
     color: white;
-    margin: -20px 0 10px 0;
+
+    margin-left:40%;
 }
