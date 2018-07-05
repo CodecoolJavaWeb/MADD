@@ -41,12 +41,12 @@
             <h1>Create mentor!</h1>
 
             <form name="myform" method="post" action="#" onsubmit="return validateform();" >
-                
-                First name: <input type="text" name="name"><br/>
-                Last name: <input type="text" name="lastName"><br/>
-                Phone: <input type="text" name="phone"><br/>
-                Email: <input type="text" name="email"><br/>
-                Class: <input type="text" name="class"><br/>
+
+                First name: <input type="text" name="name"><p id="err-name"></p><br>
+                Last name: <input type="text" name="lastName"><p id="err-lastname"></p><br>
+                Phone: <input type="text" name="phone"><p id="err-phone"></p><br>
+                Email: <input type="text" name="email"><p id="err-email"></p><br>
+                Class: <input type="text" name="class"><p id="err-class"></p><br>
                 <input class="button-create-mentor" type="submit" value="Create mentor">
 
             </form>
