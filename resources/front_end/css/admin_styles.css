@@ -33,7 +33,7 @@ form {
 
 
 .add-button:hover {
-    background-color: #3266DF;
+    background-color: #117ca0;
 }
 
 
@@ -67,7 +67,7 @@ form {
 
 
 .button-create-class:hover {
-        background-color: #3266DF;
+        background-color: #117ca0;
 }
 
 
@@ -86,7 +86,7 @@ form {
 
 
 .add-class-button:hover {
-    background-color: #3266DF;
+    background-color: #117ca0;
 }
 
 
@@ -128,7 +128,7 @@ form {
 
 
 .edit-mentor-button:hover {
-    background-color: #3266DF;
+    background-color:#117ca0;
 }
 
 .table-row{
@@ -219,5 +219,5 @@ form {
 
 
 .button-create-level:hover {
-    background-color: #3266DF;
+    background-color: #117ca0;
 }
