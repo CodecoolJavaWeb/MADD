@@ -199,13 +199,11 @@ ul.breadcrumb li a {
     text-align: left;
 }
 
-.show-mentors tr:nth-child(even){
-    background-color: #f2f2f2;
-    color: #2c536c;
+.show-mentors tr {
+    color:white;
+   
 }
-.show-mentors tr:hover {
-    background-color:  #3adbfd;
-}
+
 .show-mentors th {
     padding-top: 12px;
     padding-bottom: 12px;
