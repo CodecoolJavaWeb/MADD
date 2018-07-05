@@ -166,19 +166,17 @@ header {
     align-items: flex-start;
 }
 ul.breadcrumb {
-    padding: 5px 5px;
+    padding: 15px 5px;
     list-style: none;
     color:  #ddd;
 }
 ul.breadcrumb li {
     display: inline;
-
 }
-ul.breadcrumb li+li:before {
-    padding: 5px;
+ul.breadcrumb li:nth-child(n+2):before {
+    padding: 15px 5px;
     color:  #ddd;
     content: "/\00a0";
-    
 }
 ul.breadcrumb li a {
     color:  #ddd;
@@ -198,12 +196,10 @@ ul.breadcrumb li a {
 .left {
     text-align: left;
 }
-
-.show-mentors tr {
-    color:white;
-
+.show-mentors tr:nth-child(even){
+    background-color: #f2f2f2;
+    color: #2c536c;
 }
-
 .show-mentors th {
     padding-top: 12px;
     padding-bottom: 12px;
