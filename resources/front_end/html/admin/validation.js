@@ -15,6 +15,9 @@ function validateform() {
 
     var mentorClass = document.myform.class.value;
     var mentorClassPattern = new RegExp("^\\d{4}(.)\\d{2}$");
+////////////////////////////////
+
+
 
 
     if (!namePattern.test(name)) {
@@ -33,6 +36,7 @@ function validateform() {
         console.log("wrong phone");
         document.getElementById("err-phone").innerHTML="Enter valid phone number";
         return false;
+
     }
 
     else if (!emailPattern.test(email)) {
@@ -49,7 +53,7 @@ function validateform() {
     else {
 
         console.log("VALID INPUT");
-        alert("Alert");
+        alert("SUBMITED");
         return true;
     }
 
