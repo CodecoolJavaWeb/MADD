@@ -219,7 +219,7 @@ ul.breadcrumb li a {
 }
 
 .save-changes-button {
-    padding: 10px;
+    padding: 20px;
     align-self: center;
 }
 .save-changes-button input {
@@ -234,6 +234,22 @@ ul.breadcrumb li a {
 .save-changes-button input:hover {
     background-color: #117ca0;
 }
+
+/*-------------------New styles for Save changes button as div------------------------*/
+.save-changes-button a {
+    padding: 10px 25px;
+    background-color: #e42e53;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.save-changes-button a:hover {
+    background-color: #117ca0;
+}
+
     /* Clear floats after the columns */
 .row:after {
     content: "";
@@ -334,4 +350,51 @@ footer p {
     padding: 15px;
     color: white;
     text-decoration: none;
+}
+/*============ Styles for the modal window=============*/
+.modal-window {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 200px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+.modal-content p {
+    font-size: 3vw;
+    justify-content: center;
+    color: black;
+}
+.show-modal {
+    display: block;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }

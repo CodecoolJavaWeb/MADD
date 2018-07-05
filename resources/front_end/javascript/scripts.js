@@ -1,7 +1,5 @@
 const submitButton = document.getElementById("submit-button");
-submitButton.disabled = true;
-
-console.log("hfhfhfh");
+//submitButton.disabled = true;
 
 function validate() {
     const login = document.getElementById("login").value;
@@ -39,9 +37,33 @@ function validateUser() {
     } else if ((login).match(mentorLogin) && (pass).match(mentorPass)) {
         window.location.replace("mentor-top.html");
     } else if ((login).match(adminLogin) && (pass).match(adminPass)) {
-        window.location.replace("#");
+        window.location.replace("admin/mentor.html");
     } else if ((login).match(studentLogin) && (pass).match(studentPass)) {
         window.location.replace("Student/codecooler.html");
     }
     return false;
 }
+
+const modal = document.getElementById("modalWindow");
+const span = document.getElementsByClassName("close")[0];
+
+submitButton.onclick = function () {addModal()};
+span.onclick = function () {removeModal()};
+
+function addModal() {
+    modal.classList.add("show-modal");
+}
+
+function removeModal() {
+    modal.classList.remove("show-modal");
+}
+
+function submitData() {
+    console.log('user hit send button');
+    addModal()
+}
+
+submitButton.addEventListener("onclick", function(event) {
+    event.preventDefault();
+    submitData()
+});
