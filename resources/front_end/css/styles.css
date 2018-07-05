@@ -98,12 +98,13 @@ input[type="text"], input[type="password"] {
     content: "\f023";
     margin-top: 0;
 }
+.login-button,
 .submit-button {
     padding: 10px 25px;
     background-color: #64dfd4;
     color: white;
 }
-
+.login-button,
 .submit-button {
     padding: 10px 25px;
     background-color: #3adbfd;
@@ -112,9 +113,8 @@ input[type="text"], input[type="password"] {
     font-size: 16px;
     cursor: pointer;
 }
-
+.login-button:hover,
 .submit-button:hover {
-
     transition: all 0.5s;
     background: #fff;
     color: #1a394f;

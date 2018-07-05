@@ -368,16 +368,18 @@ footer p {
 
 /* Modal Content */
 .modal-content {
-    background-color: #fefefe;
+    background-color: rgba(24, 33, 52, 0.9);
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 50%;
+    height: 150px;
 }
 .modal-content p {
     font-size: 3vw;
-    justify-content: center;
-    color: black;
+    color: white;
+    text-align: center;
+    margin: 30px;
 }
 .show-modal {
     display: block;

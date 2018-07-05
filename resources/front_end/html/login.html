@@ -15,16 +15,16 @@
     <div class="greeting">
         <h2>Welcome to queststore!</h2>
     </div>
-    <form action="#" onsubmit="return validateUser();" class="inputs-container">
+    <form action="#" onkeyup="validate();" onsubmit="return validateUser();" class="inputs-container">
         <div class="input">
             <input type="text" class="input" id="login" name="username" placeholder="Your login" required>
             <p id="err-login-fn"></p>
         </div>
         <div class="input">
-            <input type="password" class="input" id="pass" name="password" placeholder="Your password" onkeyup="validate()" required>
+            <input type="password" class="input" id="pass" name="password" placeholder="Your password" required>
             <p id="err-pass-fn"></p>
         </div>
-        <input type="submit" class="submit-button" id="submit-button" name="submit" value="Sign in" >
+        <input type="submit" class="login-button" id="login-button" name="submit" value="Sign in" >
     </form>
 </div>
 <script src="../javascript/scripts.js"></script>

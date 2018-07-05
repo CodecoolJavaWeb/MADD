@@ -1,5 +1,5 @@
-const submitButton = document.getElementById("submit-button");
-//submitButton.disabled = true;
+const loginButton = document.getElementById("login-button");
+loginButton.disabled = true;
 
 function validate() {
     const login = document.getElementById("login").value;
@@ -14,7 +14,7 @@ function validate() {
         document.getElementById("err-pass-fn").innerHTML="Enter valid password (at least 4 symbols)";
         return false;
     } else {
-        submitButton.disabled = false;
+        loginButton.disabled = false;
         document.getElementById("err-login-fn").innerHTML="";
         document.getElementById("err-pass-fn").innerHTML="";
         return true;
@@ -44,26 +44,3 @@ function validateUser() {
     return false;
 }
 
-const modal = document.getElementById("modalWindow");
-const span = document.getElementsByClassName("close")[0];
-
-submitButton.onclick = function () {addModal()};
-span.onclick = function () {removeModal()};
-
-function addModal() {
-    modal.classList.add("show-modal");
-}
-
-function removeModal() {
-    modal.classList.remove("show-modal");
-}
-
-function submitData() {
-    console.log('user hit send button');
-    addModal()
-}
-
-submitButton.addEventListener("onclick", function(event) {
-    event.preventDefault();
-    submitData()
-});
