@@ -6,7 +6,7 @@ console.log("hfhfhfh");
 function validate() {
     const login = document.getElementById("login").value;
     const pass = document.getElementById("pass").value;
-    const loginREGEX = /[\w@\.-][^<>{}\[\]"~;$^%?#&]{1,20}$/;
+    const loginREGEX = /^[\w@\.-][^<>{}\[\]"~;$^%?#&]{1,20}$/;
     const passREGEX = /^([\w^<>{}\[\]"~;$^%?#&]{4,20})$/;
     if (!(login).match(loginREGEX)) {
         document.getElementById("err-login-fn").innerHTML="Enter valid login";
@@ -41,7 +41,7 @@ function validateUser() {
     } else if ((login).match(adminLogin) && (pass).match(adminPass)) {
         window.location.replace("#");
     } else if ((login).match(studentLogin) && (pass).match(studentPass)) {
-        window.location.replace("#");
+        window.location.replace("Student/codecooler.html");
     }
     return false;
 }
