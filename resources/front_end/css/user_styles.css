@@ -66,7 +66,7 @@ body * {
     flex-direction: column;
     background-color: rgba(24, 33, 52, 0.7);
     margin: 5vw;
-    border-top: 1px solid #3ADBFD;
+    border-top: 4px solid #3ADBFD;
     border-radius: 80px 0 5px 5px;
     min-width: max-content;
     padding: 0 10px 10px 0;
@@ -101,7 +101,7 @@ header {
 }
 .info-center {
     align-self: center;
-    margin-top:-50px;
+    margin-top:-20px;
 }
 .info-top {
     margin-top:25px;
@@ -196,7 +196,6 @@ ul.breadcrumb li a {
 .left {
     text-align: left;
 }
-
 .show-mentors tr:nth-child(even){
     background-color: #f2f2f2;
     color: #2c536c;
@@ -205,7 +204,7 @@ ul.breadcrumb li a {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #3266DF;
+    background-color: #117ca0;
     color: white;
 }
 .show-mentors td a {
@@ -216,7 +215,7 @@ ul.breadcrumb li a {
     border-radius: 3px;
 }
 .show-mentors td a:hover {
-    background-color: #3266df;
+    background-color: #117ca0;
 }
 
 .save-changes-button {
@@ -233,7 +232,7 @@ ul.breadcrumb li a {
     cursor: pointer;
 }
 .save-changes-button input:hover {
-    background-color: #3266DF;
+    background-color: #117ca0;
 }
     /* Clear floats after the columns */
 .row:after {
@@ -315,7 +314,7 @@ label {
 }
 
 #save-changes-button:hover {
-    background-color: #3266DF;
+    background-color: #117ca0;
     color: black;
 }
 footer {
