@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../css/user_styles.css">
     <link rel="stylesheet" href="../../front_end/css/admin_styles.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <script src="validation.js"></script>
+    <script src="../../javascript/validation.js"></script>
 </head>
 
 <body>
@@ -38,12 +38,18 @@
         </div>
 
         <div class="content-block">
+            <ul class="breadcrumb">
+                <li>-> <a href="level.html">Level</a></li>
+                <li>Create level</li>
+            </ul>
             <h1>Create level!</h1>
-            <form name="myform" method="post" action="#" onsubmit="return validateform();" >
-                <br/><br/>
-                Name: <input type="text" name="name"><br/>
-                Experience: <input type="text" name="last-name"><br/>
+
+            <form name="myform" method="post" action="#" onsubmit="return validateformLevel();" >
+
+                Name: <input type="text" name="name"><p id="err-level-name"></p><br><br/>
+                Experience: <input type="text" name="experience"><p id="err-level-exp"></p><br><br/>
                 <input class="button-create-level" type="submit" value="Create level">
+
             </form>
         </div>
     </div>

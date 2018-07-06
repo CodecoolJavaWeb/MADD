@@ -1,3 +1,4 @@
+
 const loginButton = document.getElementById("login-button");
 loginButton.disabled = true;
 
@@ -6,6 +7,8 @@ function validate() {
     const pass = document.getElementById("pass").value;
     const loginREGEX = /^[\w@\.-][^<>{}\[\]"~;$^%?#&]{1,20}$/;
     const passREGEX = /^([\w^<>{}\[\]"~;$^%?#&]{4,20})$/;
+
+
     if (!(login).match(loginREGEX)) {
         document.getElementById("err-login-fn").innerHTML="Enter valid login";
         return false;

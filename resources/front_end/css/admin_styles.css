@@ -18,17 +18,16 @@ form {
 
 
 .add-button {
-    margin-top:15px;
-    margin-left:442%;
+    width:80px;
+    height: 40px;
+    margin-top:20px;
+    margin-left: 711%;
     margin-bottom:20px;
-    width:120px;
-    height: 60px;
     background-color: #e42e53;
     border: none;
     border-radius: 3px;
     font-size: 16px;
     color: white;
-    font-size: 16px;
  }
 
 
@@ -49,6 +48,10 @@ form {
     font-size: 16px;
     color: white;
     font-size: 16px;
+}
+
+.button-create-mentor:hover {
+    background-color: #117ca0;
 }
 
 
@@ -101,6 +104,11 @@ form {
     border-radius: 3px;
     font-size: 16px;
     color: white;
+}
+
+
+.add-level-button:hover {
+background-color:#117ca0;
 }
 
 
@@ -220,4 +228,12 @@ form {
 
 .button-create-level:hover {
     background-color: #117ca0;
+}
+
+
+#err-name,
+#err-lastname, #err-phone, #err-email, #err-class, #err-level-name, #err-level-exp {
+    color: white;
+
+    margin-left:30%;
 }
