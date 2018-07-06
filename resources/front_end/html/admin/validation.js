@@ -15,9 +15,6 @@ function validateform() {
 
     var mentorClass = document.myform.class.value;
     var mentorClassPattern = new RegExp("^\\d{4}(.)\\d{2}$");
-////////////////////////////////
-
-
 
 
     if (!namePattern.test(name)) {
@@ -56,5 +53,33 @@ function validateform() {
         alert("SUBMITED");
         return true;
     }
+}
 
+
+
+function validateformLevel() {
+    var name = document.myform.name.value;
+    var namePattern = new RegExp("\\d");
+
+    var experience = document.myform.experience.value;
+    var experiencePattern = new RegExp("\\d");
+
+    if (!namePattern.test(name)) {
+        console.log("wrong name");
+        document.getElementById("err-level-name").innerHTML="Enter valid first name";
+        return false;
+    }
+
+    else if(!experiencePattern.test(experience)) {
+        console.log("wrong exp");
+        document.getElementById("err-level-exp").innerHTML="Enter valid experience";
+        return false;
+    }
+
+     else {
+
+        console.log("VALID INPUT");
+        alert("SUBMITED");
+        return true;
+    }
 }

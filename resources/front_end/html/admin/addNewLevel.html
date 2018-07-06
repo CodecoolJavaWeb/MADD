@@ -39,11 +39,13 @@
 
         <div class="content-block">
             <h1>Create level!</h1>
-            <form name="myform" method="post" action="#" onsubmit="return validateform();" >
-                <br/><br/>
-                Name: <input type="text" name="name"><br/>
-                Experience: <input type="text" name="last-name"><br/>
+
+            <form name="myform" method="post" action="#" onsubmit="return validateformLevel();" >
+
+                Name: <input type="text" name="name"><p id="err-level-name"></p><br><br/>
+                Experience: <input type="text" name="experience"><p id="err-level-exp"></p><br><br/>
                 <input class="button-create-level" type="submit" value="Create level">
+
             </form>
         </div>
     </div>

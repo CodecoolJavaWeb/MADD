@@ -232,7 +232,7 @@ background-color:#117ca0;
 
 
 #err-name,
-#err-lastname, #err-phone, #err-email, err-mentorclass {
+#err-lastname, #err-phone, #err-email, #err-class, #err-level-name, #err-level-exp {
     color: white;
 
     margin-left:30%;
