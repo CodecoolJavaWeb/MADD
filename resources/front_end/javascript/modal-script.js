@@ -9,6 +9,7 @@ span.onclick = function () {removeModal()};
 
 function addModal() {
     modal.classList.add("show-modal");
+    console.log("aaaaaaaaaaaaaaaaa");
 }
 
 function removeModal() {
