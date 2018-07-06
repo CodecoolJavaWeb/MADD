@@ -39,7 +39,7 @@ function validateUser() {
     } else if ((login).match(mentorLogin) && (pass).match(mentorPass)) {
         window.location.replace("mentor-top.html");
     } else if ((login).match(adminLogin) && (pass).match(adminPass)) {
-        window.location.replace("#");
+        window.location.replace("admin/mentor.html");
     } else if ((login).match(studentLogin) && (pass).match(studentPass)) {
         window.location.replace("Student/codecooler.html");
     }
