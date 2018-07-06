@@ -56,21 +56,33 @@
                     <td>100</td>
                     <td class="to-price">20</td>
                     <td>5</td>
-                    <td><button class="accept-button" type="button" onclick="send_form()">JOIN</button></td>
-                        <span style="color:red" class="alert_button"></span>
+                    <form class="save-changes-button" onsubmit="return false">
+                        <td><button class="accept-button" type="button" onclick="addModal()">JOIN</button></td>
+                    </form>
+
                 </tr>
                 <tr>
                     <td class="artifact-name">Artefact 2</td>
                     <td>2000</td>
                     <td class="to-price">200</td>
                     <td>10</td>
-                    <td><button class="accept-button" type="button" onclick="send_form()">JOIN</button></td>
-                        <span style="color:red" class="alert_button"></span>
+                    <form class="save-changes-button" onsubmit="return false">
+                        <td><button class="accept-button" type="button" onclick="addModal()">JOIN</button></td>
+                    </form>
+
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
+</div>
+<!-- ==========Modal===================================-->
+<div id="modalWindow" class="modal-window">
+    <div class="modal-content">
+        <span class="close" onclick="removeModal()">&times;</span>
+        <p>Changes were submitted!</p>
+    </div>
+
 </div>
 <footer>
     <a href='https://www.freepik.com/free-vector/assorted-user-avatars-collection_851876.htm'>Designed by Freepik</a>
