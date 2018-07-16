@@ -1,9 +1,9 @@
 INSERT INTO app_user(first_name, last_name, phone, email, role)
-VALUES ('Jurek', 'Kowalski' '123456789', 'jurek@kowalski.pl', 'admin'),
-	('Konrad', 'Gadzina' '111222333', 'konrad@gadzina.pl', 'mentor'),
-	('Marek', 'Grzybek' '33445566', 'marek@grzybek.pl', 'mentor'),
-	('Michal', 'Grzegorzyk' '000999888', 'michal@grz.pl', 'student'),
-	('Anna', 'Idzi' '56565656', '111000111', 'anna@idzi.pl', 'student');
+VALUES ('Jurek', 'Kowalski', '123456789', 'jurek@kowalski.pl', 'admin'),
+	('Konrad', 'Gadzina', '111222333', 'konrad@gadzina.pl', 'mentor'),
+	('Marek', 'Grzybek', '33445566', 'marek@grzybek.pl', 'mentor'),
+	('Michal', 'Grzegorzyk', '000999888', 'michal@grz.pl', 'student'),
+	('Anna', 'Idzi', '111000111', 'anna@idzi.pl', 'student');
 
 INSERT INTO authentication (login, password, id_user) 
 VALUES ('admin', 'admin', 1), 
