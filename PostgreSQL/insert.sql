@@ -49,7 +49,7 @@ VALUES ('Exploring a dungeon', 100, 'basic', ' Finishing a Teamwork week'),
 	('Recruiting some n00bs', 100, 'magic', 'Taking part in the student screening process');
 
 
-INSERT INTO buyers_group
+INSERT INTO buyers_group (id_artifact, group_size)
 VALUES (5,2), (4,2);
 
 
