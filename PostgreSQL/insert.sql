@@ -23,7 +23,7 @@ VALUES (2),(3);
 INSERT INTO cool_class (class_name)
 VALUES ('2017.3'), ('2018.1');
 
-INSERT INTO student (id_user)
+INSERT INTO student (id_user, id_class, current_money, total_money)
 VALUES (4,1,0,0),(5,2,0,0);
 
 
