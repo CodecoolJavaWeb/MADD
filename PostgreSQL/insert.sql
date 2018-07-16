@@ -27,7 +27,7 @@ INSERT INTO student (id_user, id_class, current_money, total_money)
 VALUES (4,1,0,0),(5,2,0,0);
 
 
-INSERT INTO mentor_2_class
+INSERT INTO mentor_2_class (id_mentor, id_class)
 VALUES (1,1), (2,1);
 
 
