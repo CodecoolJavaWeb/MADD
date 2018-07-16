@@ -37,7 +37,6 @@ CREATE TABLE IF NOT EXISTS cool_class (
 	class_name varchar(20) NOT NULL
 );
 
-
 CREATE TABLE IF NOT EXISTS student (
 	id_student serial PRIMARY KEY,
 	id_user integer NOT NULL,
@@ -49,6 +48,7 @@ CREATE TABLE IF NOT EXISTS student (
 	current_money integer,
 	total_money integer
 );
+
 
 
 CREATE TABLE IF NOT EXISTS mentor_2_class (
