@@ -40,7 +40,7 @@ VALUES ('Combat training', 50, 'basic', 'Private mentoring'),
 	('Tome', 500, 'magic', 'Extra material for the current topic ');
 
 
-INSERT INTO quest
+INSERT INTO quest (quest_name, price, category, description)
 VALUES ('Exploring a dungeon', 100, 'basic', ' Finishing a Teamwork week'),
 	('Solving the magic puzzle', 100, 'basic', 'Finishing an SI assignment'),
 	('Slaying a dragon', 500, 'basic', 'Passing a Checkpoint'),
