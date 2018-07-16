@@ -31,7 +31,7 @@ INSERT INTO mentor_2_class (id_mentor, id_class)
 VALUES (1,1), (2,1);
 
 
-INSERT INTO artifact
+INSERT INTO artifact (artifact_name, price, category, description)
 VALUES ('Combat training', 50, 'basic', 'Private mentoring'),
 	('Sanctuary', 300, 'basic', 'You can spend a day in home office'),
 	('Time Travel', 500, 'basic', 'extend SI week assignment deadline by one day'),
