@@ -6,7 +6,7 @@ import java.net.InetSocketAddress;
 public class App {
     public static void main(String[] args) throws Exception {
         HttpServer httpServer = HttpServer.create(new InetSocketAddress(8000), 0);
-        httpServer.createContext("/", new RootController());
+        httpServer.createContext("/login", new LoginController());
         httpServer.createContext("/mentors", new MentorController());
         httpServer.createContext("/classes", new CodecoolClassController());
         httpServer.createContext("/levels", new LevelController());
