@@ -39,14 +39,11 @@ public class AuthenticationDAO {
                 Integer userId = resultSet.getInt("id_user");
                 return userId;
             } else {
-                System.out.println("no user was found with given login pass");
                 return null;
             }
         } catch(SQLException e) {
-            System.out.println("db error");
             e.printStackTrace();
         }
-        System.out.println("xfiles");
         return null;
     }
 }

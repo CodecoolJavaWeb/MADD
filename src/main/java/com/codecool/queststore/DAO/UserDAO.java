@@ -28,22 +28,15 @@ public class UserDAO {
 
     public User getUserById() {
         idUser = authController.getUserId();
-        System.out.println(idUser + " id user in getuserby id");
 
         try {
-            System.out.println("w try");
             PreparedStatement preparedStatement = connection.prepareStatement(GET_USER_BY_ID);
-            System.out.println("1");
             preparedStatement.setInt(1, idUser);
-            System.out.println("2");
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            System.out.println("przed ifem");
             if(resultSet.next()) {
-                System.out.println("weszlo w if");
                 return extractUserFromRow(resultSet);
             } else {
-                System.out.println("no user was found with given login pass");
                 return null;
             }
         } catch(SQLException e) {
