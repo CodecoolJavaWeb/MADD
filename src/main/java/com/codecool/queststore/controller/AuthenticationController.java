@@ -31,6 +31,7 @@ public class AuthenticationController implements HttpHandler {
 
 
         if (method.equals("POST")) {
+            System.out.println("xd");
             InputStreamReader isr = new InputStreamReader(httpExchange.getRequestBody(), "UTF8");
             BufferedReader br = new BufferedReader(isr);
             String inputs = br.readLine();
@@ -65,6 +66,7 @@ public class AuthenticationController implements HttpHandler {
             }
         }
         if (method.equals("GET")) {
+            System.out.println("xd");
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/login.twig");
             JtwigModel model = JtwigModel.newModel();
             response = template.render(model);
