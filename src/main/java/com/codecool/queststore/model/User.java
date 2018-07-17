@@ -5,23 +5,25 @@ public abstract class User {
     private Integer userId;
     private String firstName;
     private String lastName;
-    private Integer phoneNumber;
+    private String phoneNumber;
     private String email;
     private String role;
 
-    public User(Integer userId, String firstName, String lastName, Integer phoneNumber, String email) {
+    public User(Integer userId, String firstName, String lastName, String phoneNumber, String email, String role) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.role = role;
     }
 
-    public User(String firstName, String lastName, Integer phoneNumber, String email) {
+    public User(String firstName, String lastName, String phoneNumber, String email, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.role = role;
     }
 
     public Integer getUserId() {
@@ -48,11 +50,11 @@ public abstract class User {
         this.lastName = lastName;
     }
 
-    public Integer getPhoneNumer() {
+    public String getPhoneNumer() {
         return phoneNumber;
     }
 
-    public void setPhoneNumer(Integer phoneNumber) {
+    public void setPhoneNumer(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -70,11 +72,5 @@ public abstract class User {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public enum Role {
-        ADMIN,
-        MENTOR,
-        STUDENT
     }
 }
