@@ -1,13 +1,18 @@
 package com.codecool.queststore;
+import com.sun.net.httpserver.HttpServer;
+import java.net.InetSocketAddress;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+
+public class App {
+    public static void main(String[] args) throws Exception {
+//        HttpServer httpServer = HttpServer.create(new InetSocketAddress(8000), 0);
+//        httpServer.createContext("/login", new LoginController());
+//        httpServer.createContext("/mentors", new MentorController());
+//        httpServer.createContext("/classes", new CodecoolClassController());
+//        httpServer.createContext("/levels", new LevelController());
+//        httpServer.createContext("/store", new StoreController());
+//        httpServer.createContext("/students", new StudentController());
+//        httpServer.setExecutor(null);
+//        httpServer.start();
     }
 }
