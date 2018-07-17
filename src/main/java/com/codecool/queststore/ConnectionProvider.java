@@ -18,7 +18,7 @@ public final class ConnectionProvider {
 //    private static String DB_PASSWORD;
 
     private Connection connection;
-    private final String url = "jdbc:postgresql://localhost:5432/guestbook";
+    private final String url = "jdbc:postgresql://localhost:5432/queststore";
     private final String user = "postgres";
     private final String password = "dima1234";
 
@@ -30,14 +30,11 @@ public final class ConnectionProvider {
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Failed to create JDBC db connection " + e.getMessage());
         }
-
     }
 
     public Connection getConnection() {
         return this.connection;
     }
-
-
 //    static {
 //        DB_PROPERTIES_FILE = "database.properties";
 //        DB_CONNECTION_PROPERTIES = new Properties();

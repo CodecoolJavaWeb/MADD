@@ -13,7 +13,6 @@ import java.util.Map;
 
 public class AuthenticationDAO {
 
-    private Map<String, String> givenData;
     private Connection connection;
 
     private static final String GET_USER_BY_LOGIN =
@@ -26,18 +25,14 @@ public class AuthenticationDAO {
         connection = new ConnectionProvider().getConnection();
     }
 
-
     public Integer getUserIdByInputs(Map<String, String> formData) {
         String login = formData.get("login");
         String password = formData.get("password");
         try {
 
             PreparedStatement preparedStatement = connection.prepareStatement(GET_USER_BY_LOGIN);
-
-
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, password);
-
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if(resultSet.next()) {

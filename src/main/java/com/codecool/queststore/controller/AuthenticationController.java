@@ -43,19 +43,13 @@ public class AuthenticationController implements HttpHandler {
 
             User user = new UserDAO(this).getUserById();
 
-
-            System.out.println("rola = " + user.getRole());
             switch (user.getRole()) {
                 case "admin":
-                    JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/admin.twig");
+                    JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentor.twig");
                     JtwigModel model = JtwigModel.newModel();
                     response = template.render(model);
                     httpExchange.sendResponseHeaders(200, response.length());
-
             }
-
-
-            // httpRedirectTo("/form", httpExchange);
         }
         if (method.equals("GET")) {
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/login.twig");
