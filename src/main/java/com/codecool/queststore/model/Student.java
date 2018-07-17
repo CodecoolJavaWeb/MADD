@@ -7,15 +7,17 @@ public class Student extends User {
 
     private Integer currentMoney;
     private Integer totalMoney;
-    Integer studentId;
+    private Integer studentId;
 
-    public Student(Integer userId, String firstName, String lastName, String phoneNumber, String email, String role) {
+    public Student(Integer userId, String firstName, String lastName, String phoneNumber, String email,
+                   String role) {
         super(userId, firstName, lastName, phoneNumber, email, role);
         this.currentMoney = 0;
         this.totalMoney = 0;
     }
 
-    public Student(Integer userId, String firstName, String lastName, String phoneNumber, String email, String role, Integer currentMoney, Integer totalMoney) throws Exception {
+    public Student(Integer userId, String firstName, String lastName, String phoneNumber, String email,
+                   String role, Integer currentMoney, Integer totalMoney) throws Exception {
         super(userId, firstName, lastName, phoneNumber, email, role);
         this.currentMoney = currentMoney;
         this.totalMoney = totalMoney;
