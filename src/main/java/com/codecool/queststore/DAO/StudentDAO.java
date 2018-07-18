@@ -30,7 +30,6 @@ public class StudentDAO {
                 preparedStatement.close();
                 return studentId;
             } else {
-                System.out.println("no no student id was found");
                 return null;
             }
         } catch(SQLException e) {

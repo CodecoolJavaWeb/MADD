@@ -18,9 +18,9 @@ public final class ConnectionProvider {
 //    private static String DB_PASSWORD;
 
     private Connection connection;
-    private final String url = "jdbc:postgresql://localhost:5432/queststore";
-    private final String user = "postgres";
-    private final String password = "dima1234";
+    private final String url = "jdbc:postgresql://localhost:5432/postgres";
+    private final String user = "polikkox";
+    private final String password = "1234";
 
     public ConnectionProvider() {
         try {
