@@ -1,9 +1,6 @@
 package com.codecool.queststore.DAO;
 
 import com.codecool.queststore.ConnectionProvider;
-import com.codecool.queststore.controller.AuthenticationController;
-import com.codecool.queststore.model.Authentication;
-import com.codecool.queststore.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -29,8 +29,8 @@ public class StudentDAO {
 
             if(resultSet.next()) {
                 Integer studentId = resultSet.getInt("id_student");
-//                connection.close();
-//                preparedStatement.close();
+                connection.close();
+                preparedStatement.close();
                 return studentId;
             } else {
                 return null;
