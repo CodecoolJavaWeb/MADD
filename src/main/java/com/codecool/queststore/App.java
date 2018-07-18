@@ -1,5 +1,6 @@
 package com.codecool.queststore;
 //import com.codecool.queststore.controller.AdminController;
+import com.codecool.queststore.controller.AdminController;
 import com.codecool.queststore.controller.AuthenticationController;
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
@@ -10,6 +11,7 @@ public class App {
 
         HttpServer httpServer = HttpServer.create(new InetSocketAddress(8000), 0);
         httpServer.createContext("/login", new AuthenticationController());
+        httpServer.createContext("/admin/mentors", new AdminController());
 //        httpServer.createContext("/mentors", new MentorController());
 //        httpServer.createContext("/classes", new CodecoolClassController());
 //        httpServer.createContext("/levels", new LevelController());
