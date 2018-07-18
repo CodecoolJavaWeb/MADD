@@ -40,7 +40,7 @@ public final class ConnectionProvider {
             try {
                 connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
             } catch (SQLException e) {
-                System.out.println("no cdb onnection");
+                System.out.println("no cdb connection");
             }
         }
         return connection;

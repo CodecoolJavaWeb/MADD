@@ -1,5 +1,6 @@
 package com.codecool.queststore.DAO;
 
+import com.codecool.queststore.ConnectionProvider;
 import com.codecool.queststore.controller.AuthenticationController;
 import com.codecool.queststore.model.User;
 
@@ -12,9 +13,11 @@ public class StudentDAO {
 
     private Integer userId;
     private AuthenticationController authController;
-    private Connection connection;
+    private Connection connection = new ConnectionProvider().getConnection();
 
-    private static final String GET_STUDENT_ID = "SELECT id_student FROM student WHERE id_user = ?;";
+
+    private static final String GET_STUDENT_ID =
+            "SELECT id_student FROM student WHERE id_user = ?;";
 
     public Integer getStudentId() throws Exception {
         userId = new AuthenticationController().getUserId();
