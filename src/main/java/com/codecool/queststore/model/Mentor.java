@@ -9,16 +9,20 @@ public class Mentor extends User {
 
     public Mentor(Integer mentorId, String firstName, String lastName, String phoneNumber, String email, String role) {
         super(mentorId, firstName, lastName, phoneNumber, email, role);
-        classes = new ArrayList<>();
     }
 
     public Mentor(String firstName, String lastName, String phoneNumber, String email, String role) {
         super(firstName, lastName, phoneNumber, email, role);
-        classes = new ArrayList<>();
     }
 
     public List<CoolClass> getClasses() {
-        return classes;
+        return this.classes;
     }
-    
+
+
+    public void setClasses(List<CoolClass> mentorsClasses) {
+        this.classes = mentorsClasses;
+    }
+
+
 }
