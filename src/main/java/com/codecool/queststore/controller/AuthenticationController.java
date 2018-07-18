@@ -49,6 +49,19 @@ public class AuthenticationController implements HttpHandler {
                     JtwigModel model = JtwigModel.newModel();
                     response = template.render(model);
                     httpExchange.sendResponseHeaders(200, response.length());
+                    break;
+                case "mentor":
+                    template = JtwigTemplate.classpathTemplate("templates/mentor-students.twig");
+                    model = JtwigModel.newModel();
+                    response = template.render(model);
+                    httpExchange.sendResponseHeaders(200, response.length());
+                    break;
+                case "student":
+                    template = JtwigTemplate.classpathTemplate("templates/student/codecooler.twig");
+                    model = JtwigModel.newModel();
+                    response = template.render(model);
+                    httpExchange.sendResponseHeaders(200, response.length());
+                    break;
             }
         }
         if (method.equals("GET")) {
@@ -81,5 +94,4 @@ public class AuthenticationController implements HttpHandler {
     public Integer getUserId() {
         return userId;
     }
-
 }
