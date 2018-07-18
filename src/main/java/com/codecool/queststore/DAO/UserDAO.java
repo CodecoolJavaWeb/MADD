@@ -23,7 +23,7 @@ public class UserDAO {
 
     public UserDAO(AuthenticationController authenticationController) {
         authController = authenticationController;
-        connection = new ConnectionProvider().getConnection();
+        connection = ConnectionProvider.getConnection();
     }
 
     public User getUserById() {
