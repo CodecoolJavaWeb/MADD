@@ -40,32 +40,36 @@ public class AuthenticationController implements HttpHandler {
 
             userId =  authDAO.getUserIdByInputs(formData);
             System.out.println("userID = " + userId);
-
             User user = new UserDAO(this).getUserById();
+            System.out.println("role: " + user.getRole());
 
             switch (user.getRole()) {
                 case "admin":
-                    JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentor.twig");
+                    JtwigTemplate template = JtwigTemplate.classpathTemplate("/templates/mentor-students.twig");
                     JtwigModel model = JtwigModel.newModel();
+                    System.out.println("here");
                     response = template.render(model);
                     httpExchange.sendResponseHeaders(200, response.length());
                     break;
                 case "mentor":
-                    template = JtwigTemplate.classpathTemplate("templates/mentor-students.twig");
+                    template = JtwigTemplate.classpathTemplate("/templates/mentor-students.twig");
                     model = JtwigModel.newModel();
                     response = template.render(model);
                     httpExchange.sendResponseHeaders(200, response.length());
                     break;
                 case "student":
-                    template = JtwigTemplate.classpathTemplate("templates/student/codecooler.twig");
+                    template = JtwigTemplate.classpathTemplate("/templates/student/codecooler.twig");
                     model = JtwigModel.newModel();
                     response = template.render(model);
                     httpExchange.sendResponseHeaders(200, response.length());
                     break;
             }
+            OutputStream os = httpExchange.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
         }
         if (method.equals("GET")) {
-            JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/login.twig");
+            JtwigTemplate template = JtwigTemplate.classpathTemplate("/templates/login.twig");
             JtwigModel model = JtwigModel.newModel();
             response = template.render(model);
             httpExchange.sendResponseHeaders(200, response.length());

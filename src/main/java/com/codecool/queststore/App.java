@@ -12,8 +12,8 @@ public class App {
 
         HttpServer httpServer = HttpServer.create(new InetSocketAddress(8000), 0);
         httpServer.createContext("/login", new AuthenticationController());
-        httpServer.createContext("/static/", new StaticController());
-//        httpServer.createContext("/mentors", new MentorController());
+        httpServer.createContext("/static", new StaticController());
+        httpServer.createContext("/mentors", new MentorController());
 //        httpServer.createContext("/classes", new CodecoolClassController());
 //        httpServer.createContext("/levels", new LevelController());
 //        httpServer.createContext("/store", new StoreController());

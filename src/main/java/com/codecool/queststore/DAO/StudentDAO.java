@@ -19,7 +19,7 @@ public class StudentDAO {
     private static final String GET_STUDENT_ID =
             "SELECT id_student FROM student WHERE id_user = ?;";
 
-    public Integer getStudentId() throws Exception {
+    public Integer getStudentId() {
         userId = new AuthenticationController().getUserId();
 
         try {

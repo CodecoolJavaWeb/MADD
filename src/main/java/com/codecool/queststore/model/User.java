@@ -18,12 +18,11 @@ public abstract class User {
         this.role = role;
     }
 
-    public User(String firstName, String lastName, String phoneNumber, String email, String role) {
+    public User(String firstName, String lastName, String phoneNumber, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.role = role;
     }
 
     public Integer getUserId() {
