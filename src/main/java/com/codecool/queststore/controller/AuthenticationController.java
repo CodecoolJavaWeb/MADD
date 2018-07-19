@@ -45,22 +45,25 @@ public class AuthenticationController implements HttpHandler {
 
             switch (user.getRole()) {
                 case "admin":
-                    JtwigTemplate template = JtwigTemplate.classpathTemplate("/templates/mentor-students.twig");
+                    JtwigTemplate template = JtwigTemplate.classpathTemplate("/templates/mentorstudents.twig");
                     JtwigModel model = JtwigModel.newModel();
                     System.out.println("here");
                     response = template.render(model);
+                    httpRedirectTo("/mentors", httpExchange);
                     httpExchange.sendResponseHeaders(200, response.length());
                     break;
                 case "mentor":
-                    template = JtwigTemplate.classpathTemplate("/templates/mentor-students.twig");
+                    template = JtwigTemplate.classpathTemplate("/templates/mentorstudents.twig");
                     model = JtwigModel.newModel();
                     response = template.render(model);
+                    httpRedirectTo("/mentors", httpExchange);
                     httpExchange.sendResponseHeaders(200, response.length());
                     break;
                 case "student":
                     template = JtwigTemplate.classpathTemplate("/templates/student/codecooler.twig");
                     model = JtwigModel.newModel();
                     response = template.render(model);
+                    httpRedirectTo("/mentors", httpExchange);
                     httpExchange.sendResponseHeaders(200, response.length());
                     break;
             }
@@ -97,5 +100,11 @@ public class AuthenticationController implements HttpHandler {
 
     public Integer getUserId() {
         return userId;
+    }
+
+    private void httpRedirectTo(String dest, HttpExchange httpExchange) throws IOException {
+        String hostPort = httpExchange.getRequestHeaders().get("host").get(0);
+        httpExchange.getResponseHeaders().set("Location", "http://" + hostPort + dest);
+        httpExchange.sendResponseHeaders(301, -1);
     }
 }

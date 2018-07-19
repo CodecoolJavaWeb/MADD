@@ -61,6 +61,11 @@ public class MentorDAO {
         return students;
     }
 
+    public void addStudent(Map<String, String> studentData) {
+        addStudentToUsersTable(studentData);
+        addStudentToStudentsTable(studentData);
+    }
+
     //First stage of adding student (add data to app_user table)
     public void addStudentToUsersTable(Map<String, String> studentData) {
         firstName = studentData.get("name");
@@ -74,10 +79,11 @@ public class MentorDAO {
              PreparedStatement preparedStatement = connection.prepareStatement(sql1)) {
             preparedStatement.setString(1, firstName);
             preparedStatement.setString(2, lastName);
-            preparedStatement.setString(3, email);
-            preparedStatement.setString(4, phone);
+            preparedStatement.setString(3, phone);
+            preparedStatement.setString(4, email);
             preparedStatement.setString(5, role);
             preparedStatement.executeUpdate();
+            System.out.println("done to users");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -86,8 +92,9 @@ public class MentorDAO {
     //Second stage of adding student (get id_user of the student from app_data table)
     public Integer getStudentUserId(Map<String, String> studentData) {
         email = studentData.get("email");
+        System.out.println(email);
 
-        String sql = "SELECT id_student FROM app_user WHERE email = ?";
+        String sql = "SELECT id_user FROM app_user WHERE email = ?";
         try (Connection connection = this.connect()) {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, email);
@@ -125,20 +132,24 @@ public class MentorDAO {
     public void addStudentToStudentsTable(Map<String, String> studentData) {
         userId = getStudentUserId(studentData);
         classId = getStudentClassId(studentData);
-        currentMoney = 0;
+        System.out.println("begin "+ userId + classId+ currentMoney + totalMoney);
+        currentMoney = Integer.parseInt(studentData.get("coins"));
         totalMoney = Integer.parseInt(studentData.get("level"));
 
         String sql = "INSERT INTO student (id_user, id_class, current_money, total_money) VALUES(?,?,?,?)";
         try (Connection connection = this.connect();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            System.out.println("inside");
             preparedStatement.setInt(1, userId);
             preparedStatement.setInt(2, classId);
             preparedStatement.setInt(3, currentMoney);
             preparedStatement.setInt(4, totalMoney);
             preparedStatement.executeUpdate();
+            System.out.println("done");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
     }
 
 }

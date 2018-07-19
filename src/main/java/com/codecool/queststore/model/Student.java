@@ -16,7 +16,6 @@ public class Student extends User {
         super(userId, firstName, lastName, phoneNumber, email, role);
         this.currentMoney = 0;
         this.totalMoney = 0;
-        this.studentId = new StudentDAO().getStudentId();
         this.studentClass = "";
     }
 
@@ -29,21 +28,20 @@ public class Student extends User {
     }
 
     public Student(Integer userId, String firstName, String lastName, String phoneNumber, String email,
-                   String role, Integer currentMoney, Integer totalMoney) throws Exception {
-        super(userId, firstName, lastName, phoneNumber, email, role);
-        this.currentMoney = currentMoney;
-        this.totalMoney = totalMoney;
-        this.studentId = new StudentDAO().getStudentId();
-        this.studentClass = "";
-    }
-
-    public Student(Integer userId, String firstName, String lastName, String phoneNumber, String email,
                    String role, Integer currentMoney, Integer totalMoney, String studentClass) throws Exception {
         super(userId, firstName, lastName, phoneNumber, email, role);
         this.currentMoney = currentMoney;
         this.totalMoney = totalMoney;
-        this.studentId = new StudentDAO().getStudentId();
+        this.studentClass = studentClass;
     }
+
+//    public Student(Integer userId, String firstName, String lastName, String phoneNumber, String email,
+//                   String role, Integer currentMoney, Integer totalMoney, String studentClass) throws Exception {
+//        super(userId, firstName, lastName, phoneNumber, email, role);
+//        this.currentMoney = currentMoney;
+//        this.totalMoney = totalMoney;
+//        this.studentId = new StudentDAO().getStudentId();
+//    }
 
     public Integer getCurrentMoney() {
         return currentMoney;
