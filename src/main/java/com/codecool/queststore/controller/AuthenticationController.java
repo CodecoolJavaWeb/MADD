@@ -2,7 +2,6 @@ package com.codecool.queststore.controller;
 
 import com.codecool.queststore.DAO.AuthenticationDAO;
 import com.codecool.queststore.DAO.UserDAO;
-import com.codecool.queststore.Static;
 import com.codecool.queststore.model.User;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -10,7 +9,6 @@ import org.jtwig.JtwigModel;
 import org.jtwig.JtwigTemplate;
 
 import java.io.*;
-import java.net.URI;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,9 +43,11 @@ public class AuthenticationController implements HttpHandler {
 
             switch (user.getRole()) {
                 case "admin":
-                    JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentor.twig");
+                    System.out.println("were in admin");
+                    JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentormain.twig");
                     JtwigModel model = JtwigModel.newModel();
                     response = template.render(model);
+                    System.out.println("were in admin");
                     httpRedirectTo("/admin/mentors", httpExchange);
                     httpExchange.sendResponseHeaders(200, response.length());
                     break;

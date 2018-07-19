@@ -30,7 +30,7 @@ public class AdminController implements HttpHandler {
                 Integer userId = Integer.valueOf(parsePath(httpExchange)[4]);
                 Mentor mentor = mentorDAO.getMentorByUserId(userId);
                 mentorDAO.updateMentorByUserId(mentorDAO.getMentorByUserId(userId), parseInputs(inputs,5));
-                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentor.twig");
+                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentormain.twig");
                 JtwigModel model = JtwigModel.newModel();
                 response = template.render(model);
                 httpRedirectTo("/admin/mentors", httpExchange);
@@ -40,7 +40,7 @@ public class AdminController implements HttpHandler {
                 String[] parsedInputs = parseInputs(inputs,5);
                 Mentor newMentor = mentorDAO.addUserToDB(parsedInputs[0], parsedInputs[1], parsedInputs[2], parsedInputs[3], "mentor");
                 mentorDAO.addMentorToDB(newMentor);
-                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentor.twig");
+                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentormain.twig");
                 JtwigModel model = JtwigModel.newModel();
                 response = template.render(model);
                 httpRedirectTo("/admin/mentors", httpExchange);
@@ -50,7 +50,7 @@ public class AdminController implements HttpHandler {
                 String[] parsedInputs = parseInputs(inputs,2);
                 Integer experience = Integer.valueOf(parsedInputs[1]);
                 levelDAO.addLevelToDB(parsedInputs[0], experience);
-                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentor.twig");
+                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentormain.twig");
                 JtwigModel model = JtwigModel.newModel();
                 response = template.render(model);
                 httpRedirectTo("/admin/levels", httpExchange);
@@ -61,7 +61,7 @@ public class AdminController implements HttpHandler {
         if (method.equals("GET") && parsePath(httpExchange).length == 3) {
 
             if(parsePath(httpExchange)[2].equals("mentors")) {
-                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentor.twig");
+                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentormain.twig");
                 JtwigModel model = JtwigModel.newModel();
                 model.with("mentors", mentorDAO.getMentorsList());
                 response = template.render(model);

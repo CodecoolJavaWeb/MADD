@@ -37,6 +37,5 @@ target/
 .settings/
 bin/
 
-resources/
-database.properties
+*.properties
 
