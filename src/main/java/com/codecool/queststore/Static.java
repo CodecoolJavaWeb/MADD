@@ -1,6 +1,6 @@
-package com.codecool.queststore.controller;
+package com.codecool.queststore;
 
-import com.codecool.queststore.Helpers.MimeTypeResolver;
+import com.codecool.queststore.helpers.MimeTypeResolver;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
@@ -11,13 +11,13 @@ import java.io.OutputStream;
 import java.net.URI;
 import java.net.URL;
 
-public class StaticController implements HttpHandler {
-
+public class Static implements HttpHandler {
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
+
         // get file path from url
         URI uri = httpExchange.getRequestURI();
-    //    System.out.println("looking for: " + uri.getPath());
+        System.out.println("looking for: " + uri.getPath());
         String path = "." + uri.getPath();
 
         // get file from resources folder, see: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
@@ -65,4 +65,6 @@ public class StaticController implements HttpHandler {
         }
         os.close();
     }
+
+
 }

@@ -2,6 +2,7 @@ package com.codecool.queststore.controller;
 
 import com.codecool.queststore.DAO.AuthenticationDAO;
 import com.codecool.queststore.DAO.UserDAO;
+import com.codecool.queststore.Static;
 import com.codecool.queststore.model.User;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -9,6 +10,7 @@ import org.jtwig.JtwigModel;
 import org.jtwig.JtwigTemplate;
 
 import java.io.*;
+import java.net.URI;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,13 +21,13 @@ public class AuthenticationController implements HttpHandler {
     private AuthenticationDAO authDAO;
     private Integer userId;
 
+
     public AuthenticationController()  {
         authDAO = new AuthenticationDAO();
     }
 
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
-
         String method = httpExchange.getRequestMethod();
         String response = "";
 
@@ -35,21 +37,18 @@ public class AuthenticationController implements HttpHandler {
             BufferedReader br = new BufferedReader(isr);
             String inputs = br.readLine();
 
-            //read inputs into formData map.
             parseInputs(inputs);
-
             userId =  authDAO.getUserIdByInputs(formData);
-            System.out.println("userID = " + userId);
+
             User user = new UserDAO(this).getUserById();
             System.out.println("role: " + user.getRole());
 
             switch (user.getRole()) {
                 case "admin":
-                    JtwigTemplate template = JtwigTemplate.classpathTemplate("/templates/mentorstudents.twig");
+                    JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentor.twig");
                     JtwigModel model = JtwigModel.newModel();
-                    System.out.println("here");
                     response = template.render(model);
-                    httpRedirectTo("/mentors", httpExchange);
+                    httpRedirectTo("/admin/mentors", httpExchange);
                     httpExchange.sendResponseHeaders(200, response.length());
                     break;
                 case "mentor":
@@ -60,10 +59,10 @@ public class AuthenticationController implements HttpHandler {
                     httpExchange.sendResponseHeaders(200, response.length());
                     break;
                 case "student":
-                    template = JtwigTemplate.classpathTemplate("/templates/student/codecooler.twig");
+                    template = JtwigTemplate.classpathTemplate("templates/student/codecooler.twig");
                     model = JtwigModel.newModel();
                     response = template.render(model);
-                    httpRedirectTo("/mentors", httpExchange);
+                    httpRedirectTo("/codecooler", httpExchange);
                     httpExchange.sendResponseHeaders(200, response.length());
                     break;
             }
@@ -108,3 +107,4 @@ public class AuthenticationController implements HttpHandler {
         httpExchange.sendResponseHeaders(301, -1);
     }
 }
+

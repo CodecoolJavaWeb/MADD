@@ -34,4 +34,9 @@ public class CoolClass {
     public List<Student> getClassStudents() {
         return classStudents;
     }
+
+    @Override
+    public String toString() {
+        return this.className;
+    }
 }

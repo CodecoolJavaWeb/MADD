@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS mentor_2_class (
 );
 
 
-CREATE TABLE IF NOT EXISTS artifact (
+CREATE TABLE IF NOT EXISTS studentArtifact (
 	id_artifact serial PRIMARY KEY,
 	artifact_name varchar(50) NOT NULL,
 	price integer NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS quest (
 CREATE TABLE IF NOT EXISTS buyers_group (
 	id_group serial PRIMARY KEY,
 	id_artifact integer NOT NULL,
-	FOREIGN KEY (id_artifact) REFERENCES artifact(id_artifact),
+	FOREIGN KEY (id_artifact) REFERENCES studentArtifact(id_artifact),
 		-- ON DELETE CASCADE ON UPDATE NO ACTION,
 	group_size integer NOT NULL
 );
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS student_transaction (
     	id_artifact integer NOT NULL,
     	FOREIGN KEY (id_student) REFERENCES student(id_student),
 		-- ON DELETE CASCADE ON UPDATE NO ACTION,
-	FOREIGN KEY (id_artifact) REFERENCES artifact(id_artifact)
+	FOREIGN KEY (id_artifact) REFERENCES studentArtifact(id_artifact)
 		-- ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS group_transaction (
 	id_artifact integer NOT NULL,
 	FOREIGN KEY (id_group) REFERENCES buyers_group(id_group),
 		-- ON DELETE CASCADE ON UPDATE NO ACTION,
-	FOREIGN KEY (id_artifact) REFERENCES artifact(id_artifact)
+	FOREIGN KEY (id_artifact) REFERENCES studentArtifact(id_artifact)
 		-- ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS student_artifact(
 	 FOREIGN KEY (id_student) REFERENCES student(id_student),
 		-- ON DELETE CASCADE ON UPDATE NO ACTION,
 	id_artifact integer NOT NULL,
-	FOREIGN KEY (id_artifact) REFERENCES artifact(id_artifact),
+	FOREIGN KEY (id_artifact) REFERENCES studentArtifact(id_artifact),
 		-- ON DELETE CASCADE ON UPDATE NO ACTION,
 	quantity integer
 );

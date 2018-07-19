@@ -5,18 +5,19 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.jtwig.JtwigModel;
 import org.jtwig.JtwigTemplate;
-
 import java.io.*;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class MentorController implements HttpHandler {
 
     private MentorDAO mentorDAO;
     private Map<String, String> formData;
 
-    public MentorController() {
+    public MentorController() throws SQLException {
         mentorDAO = new MentorDAO();
     }
 

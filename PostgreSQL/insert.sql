@@ -10,7 +10,7 @@ VALUES ('admin', 'admin', 1),
 	('mentork', 'mentork', 2), 
 	('mentorm', 'mentorm', 3), 
 	('studentm', 'studentm', 4), 
-	('studenta', 'studenta', 5);
+	('student', 'student', 5);
 
 INSERT INTO administrator (id_user)
 VALUES (1);
@@ -28,10 +28,10 @@ VALUES (4,1,0,0),(5,2,0,0);
 
 
 INSERT INTO mentor_2_class (id_mentor, id_class)
-VALUES (1,1), (2,1);
+VALUES (1,1), (2,1), (2,2);
 
 
-INSERT INTO artifact (artifact_name, price, category, description)
+INSERT INTO studentArtifact (artifact_name, price, category, description)
 VALUES ('Combat training', 50, 'basic', 'Private mentoring'),
 	('Sanctuary', 300, 'basic', 'You can spend a day in home office'),
 	('Time Travel', 500, 'basic', 'extend SI week assignment deadline by one day'),
