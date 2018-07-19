@@ -34,9 +34,9 @@
             <!--======================Breadcrumbs========================         -->
             <ul class="breadcrumb">
                 <li>-> <a href="mentor-artifacts.html">Artifacts</a></li>
-                <li>Add artifact</li>
+                <li>Add studentArtifact</li>
             </ul>
-            <h1>Add artifact</h1>
+            <h1>Add studentArtifact</h1>
             <!--=====================Input Form for student creation================         -->
             <form class="input-form">
                 <div class="row">

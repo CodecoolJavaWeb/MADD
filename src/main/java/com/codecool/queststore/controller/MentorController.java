@@ -5,17 +5,18 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class MentorController implements HttpHandler {
 
     private MentorDAO mentorDAO;
 
-    public MentorController() {
+    public MentorController() throws SQLException {
         mentorDAO = new MentorDAO();
     }
 
     @Override
-    public void handle(HttpExchange httpExchange) throws IOException {
+    public void handle(HttpExchange httpExchange){
 
         String method = httpExchange.getRequestMethod();
         String response = "";
