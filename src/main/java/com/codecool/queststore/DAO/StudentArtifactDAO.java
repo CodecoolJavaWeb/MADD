@@ -33,7 +33,7 @@ public class StudentArtifactDAO {
     public List<Integer> getArifcatQuantiyAndID(int studentID){
 
         List<Integer> listIDOfStudent = new ArrayList<>();
-
+        listIDOfStudent.clear();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(GET_ARTIFACTS_BY_ID_STUDENT);
             preparedStatement.setInt(1, studentID);
@@ -52,6 +52,7 @@ public class StudentArtifactDAO {
 
     public void getArtifactMetaData(List<Integer> listIDOfStudents){
 
+        artifactList.clear();
         for(int id : listIDOfStudents){
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(GET_ARTIFACTS_BY_ID_ARTIFACT);
@@ -79,6 +80,7 @@ public class StudentArtifactDAO {
     public List<Artifact> getArtifactByID(int idArtifact){
 
         List<Artifact> artifacts = new ArrayList<>();
+        artifacts.clear();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(GET_ARTIFACTS_BY_ID_ARTIFACT);
             preparedStatement.setInt(1, idArtifact);
