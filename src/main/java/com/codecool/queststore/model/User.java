@@ -49,7 +49,7 @@ public abstract class User {
         this.lastName = lastName;
     }
 
-    public String getPhoneNumer() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
