@@ -17,7 +17,7 @@ public final class ConnectionProvider {
     private static String DB_USERNAME;
     private static String DB_PASSWORD;
 
-    private static Connection connection;
+    private static Connection connection = null;
 
     static {
         DB_PROPERTIES_FILE = "database.properties";
@@ -36,12 +36,11 @@ public final class ConnectionProvider {
     }
 
     public static Connection getConnection() {
-        connection = null;
-            try {
-                connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-            } catch (SQLException e) {
-                System.out.println("no cdb connection");
-            }
+        try {
+            connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+        } catch (SQLException e) {
+            System.out.println("no cdb connection");
+        }
         return connection;
     }
 }

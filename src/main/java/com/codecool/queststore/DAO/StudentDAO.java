@@ -2,20 +2,12 @@ package com.codecool.queststore.DAO;
 
 import com.codecool.queststore.ConnectionProvider;
 import com.codecool.queststore.controller.AuthenticationController;
-import com.codecool.queststore.model.User;
-import com.sun.net.httpserver.HttpExchange;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class StudentDAO {
 
@@ -31,7 +23,7 @@ public class StudentDAO {
     private static final String GET_STUDENT_NAME =
             "SELECT first_name FROM app_user WHERE id_user = ?;";
 
-    public Integer getStudentId() throws Exception {
+    public Integer getStudentId() {
         userId = new AuthenticationController().getUserId();
 
         try {
