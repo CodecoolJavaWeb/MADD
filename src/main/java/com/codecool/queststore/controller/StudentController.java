@@ -12,10 +12,7 @@ import org.jtwig.JtwigTemplate;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.SQLException;
-<<<<<<< HEAD
-=======
 import java.util.List;
->>>>>>> login_backend
 
 public class StudentController implements HttpHandler {
     private StudentDAO studentDAO;
@@ -49,14 +46,9 @@ public class StudentController implements HttpHandler {
 
                 studentArtifactDAO.getStudentArtifactList();
 
-<<<<<<< HEAD
-                Integer[] artifact = studentArtifactDAO.getArifcatQuantiyAndID(studentID);
-                studentArtifactDAO.getArtifactMetaData(artifact[artifactID]);
-=======
                 List<Integer> listIDOfStudents = studentArtifactDAO.getArifcatQuantiyAndID(studentID);
                 studentArtifactDAO.getArtifactMetaData(listIDOfStudents);
                 System.out.println("dd");
->>>>>>> login_backend
 
                 JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecooler.twig");
                 JtwigModel model = JtwigModel.newModel();
@@ -64,10 +56,7 @@ public class StudentController implements HttpHandler {
 
                 model.with("artifacts", studentArtifactDAO.getArtifactList());
                // model.with("quanity", studentArtifactDAO.getStudentArtifactList());
-<<<<<<< HEAD
-=======
                 System.out.println();
->>>>>>> login_backend
 
                 response = template.render(model);
 
