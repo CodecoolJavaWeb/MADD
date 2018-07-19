@@ -1,14 +1,12 @@
 package com.codecool.queststore;
-<<<<<<< HEAD
 import com.codecool.queststore.controller.*;
-=======
+
+import com.codecool.queststore.controller.AdminController;
+
 import com.codecool.queststore.controller.AuthenticationController;
 import com.codecool.queststore.controller.StudentController;
-
-import com.codecool.queststore.controller.MentorController;
 import com.codecool.queststore.controller.StaticController;
 
->>>>>>> bd6336a9c28db036f2a7f77556238572e44d2023
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
 
@@ -18,12 +16,10 @@ public class App {
         AuthenticationController authenticationController;
 
         HttpServer httpServer = HttpServer.create(new InetSocketAddress(8000), 0);
+
         httpServer.createContext("/login", authenticationController = new AuthenticationController());
         httpServer.createContext("/static", new Static());
         httpServer.createContext("/static/", new StaticController());
-//        httpServer.createContext("/mentors", new MentorController());
-//        httpServer.createContext("/classes", new CodecoolClassController());
-//        httpServer.createContext("/levels", new LevelController());
         httpServer.createContext("/store", new StoreController());
         httpServer.createContext("/codecooler", new StudentController(authenticationController));
         httpServer.createContext("/incubator", new IncubatorController());
@@ -31,7 +27,10 @@ public class App {
         httpServer.createContext("/store-buy-one", new StoreBuyOneController());
         httpServer.createContext("/transactionhistory", new TransactionController());
         httpServer.createContext("/quest", new QuestController());
-
+        httpServer.createContext("/login", new AuthenticationController());
+        httpServer.createContext("/admin/mentors", new AdminController());
+        httpServer.createContext("/admin/class", new AdminController());
+        httpServer.createContext("/admin/level", new AdminController());
         httpServer.setExecutor(null);
         httpServer.start();
     }

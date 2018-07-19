@@ -28,7 +28,7 @@ VALUES (4,1,0,0),(5,2,0,0);
 
 
 INSERT INTO mentor_2_class (id_mentor, id_class)
-VALUES (1,1), (2,1);
+VALUES (1,1), (2,1), (2,2);
 
 
 INSERT INTO studentArtifact (artifact_name, price, category, description)

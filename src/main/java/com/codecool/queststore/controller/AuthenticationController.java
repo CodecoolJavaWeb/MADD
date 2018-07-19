@@ -10,6 +10,7 @@ import org.jtwig.JtwigModel;
 import org.jtwig.JtwigTemplate;
 
 import java.io.*;
+import java.net.URI;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,13 +21,13 @@ public class AuthenticationController implements HttpHandler {
     private AuthenticationDAO authDAO;
     private Integer userId;
 
+
     public AuthenticationController()  {
         authDAO = new AuthenticationDAO();
     }
 
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
-
         String method = httpExchange.getRequestMethod();
         String response = "";
 
@@ -36,20 +37,20 @@ public class AuthenticationController implements HttpHandler {
             BufferedReader br = new BufferedReader(isr);
             String inputs = br.readLine();
 
-            //read inputs into formData map.
             parseInputs(inputs);
-
             userId =  authDAO.getUserIdByInputs(formData);
-            System.out.println("userID = " + userId);
-
             User user = new UserDAO(this).getUserById();
 
             switch (user.getRole()) {
                 case "admin":
-                    JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/mentor-students.twig");
+                    System.out.println("weszło w posta admina");
+
+                    JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentor.twig");
                     JtwigModel model = JtwigModel.newModel();
                     System.out.println("here");
                     response = template.render(model);
+                    System.out.println("wyświetlło response");
+                    httpRedirectTo("/admin/mentors", httpExchange);
                     httpExchange.sendResponseHeaders(200, response.length());
                     break;
                 case "mentor":
@@ -100,9 +101,11 @@ public class AuthenticationController implements HttpHandler {
         return userId;
     }
 
+
     private void httpRedirectTo(String dest, HttpExchange httpExchange) throws IOException {
         String hostPort = httpExchange.getRequestHeaders().get("host").get(0);
         httpExchange.getResponseHeaders().set("Location", "http://" + hostPort + dest);
         httpExchange.sendResponseHeaders(301, -1);
     }
 }
+
