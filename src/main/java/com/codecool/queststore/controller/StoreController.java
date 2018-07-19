@@ -49,7 +49,7 @@ public class StoreController implements HttpHandler {
         }
         if(method.equals("POST")){
             add(httpExchange);
-            httpRedirectTo("/store-buy-one", httpExchange);
+            httpRedirectTo("/store/store-buy-one", httpExchange);
         }
         httpExchange.sendResponseHeaders(200, response.length());
         OutputStream os = httpExchange.getResponseBody();

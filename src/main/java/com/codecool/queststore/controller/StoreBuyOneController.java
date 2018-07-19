@@ -55,7 +55,7 @@ public class StoreBuyOneController implements HttpHandler {
         if(method.equals("POST")){
             Map<String, String> map = add(httpExchange);
            new StoreDAO().addArtifactToStudent(studentID, itemID);
-            httpRedirectTo("/codecooler", httpExchange);
+            httpRedirectTo("/inventory", httpExchange);
 
         }
 

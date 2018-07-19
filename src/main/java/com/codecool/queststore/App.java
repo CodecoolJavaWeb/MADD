@@ -22,10 +22,10 @@ public class App {
         httpServer.createContext("/login", authenticationController = new AuthenticationController());
         httpServer.createContext("/static/", new StaticController());
         httpServer.createContext("/store", storeController = new StoreController(authenticationController));
-        httpServer.createContext("/codecooler", new StudentController(authenticationController));
+        httpServer.createContext("/inventory", new StudentController(authenticationController));
         httpServer.createContext("/incubator", new IncubatorController(authenticationController));
-        httpServer.createContext("/store-buy-group", new StoreBuyGroupController(authenticationController));
-        httpServer.createContext("/store-buy-one", new StoreBuyOneController(authenticationController, storeController));
+        httpServer.createContext("/store/store-buy-group", new StoreBuyGroupController(authenticationController));
+        httpServer.createContext("/store/store-buy-one", new StoreBuyOneController(authenticationController, storeController));
         httpServer.createContext("/transactionhistory", new TransactionController(authenticationController));
         httpServer.createContext("/quest", new QuestController(authenticationController));
       //  httpServer.createContext("/mentors", new MentorController());

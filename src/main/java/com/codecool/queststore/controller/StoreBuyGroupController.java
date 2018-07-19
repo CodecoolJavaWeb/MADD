@@ -33,7 +33,7 @@ public class StoreBuyGroupController implements HttpHandler {
             int userID = getUserID();
             int studentID = getStudentID(userID);
 
-            JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/incubator.twig");
+            JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecooler.twig");
             JtwigModel model = JtwigModel.newModel();
 
             model.with("userName",  studentDAO.getStudentName(userID));
