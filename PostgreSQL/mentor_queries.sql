@@ -15,7 +15,7 @@ INSERT INTO quest (quest_name, price, category, description)
 VALUES ('si', 20, 'basic', 'si finished blabla');
 
 --9.
-INSERT INTO artifact(artifact_name, category, description, price)
+INSERT INTO studentArtifact(artifact_name, category, description, price)
 VALUES ('nazwaArtefaktuHEHE', 'magic', '60 min workshop', 1000);
 
 
@@ -29,7 +29,7 @@ WHERE id_quest = 1;
 
 
 --11. 
-INSERT INTO artifact (artifact_name, category, price, description)
+INSERT INTO studentArtifact (artifact_name, category, price, description)
 VALUES ('artifactName', 'magic', 40, 'eefsfdsgis');
 
 

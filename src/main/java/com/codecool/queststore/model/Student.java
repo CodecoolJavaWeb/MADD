@@ -3,6 +3,7 @@ package com.codecool.queststore.model;
 
 import com.codecool.queststore.DAO.StudentDAO;
 
+
 public class Student extends User {
 
     private Integer currentMoney;
@@ -39,4 +40,5 @@ public class Student extends User {
     public void setTotalMoney(Integer totalMoney) {
         this.totalMoney = totalMoney;
     }
+
 }
