@@ -25,6 +25,7 @@ public class StoreController implements HttpHandler {
         this.authenticationController = authenticationController;
         this.studentDAO = new StudentDAO();
         this.storeDAO = new StoreDAO();
+        this.storeBuyOneController = new StoreBuyOneController(this);
     }
 
     @Override
@@ -43,13 +44,26 @@ public class StoreController implements HttpHandler {
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/store.twig");
             JtwigModel model = JtwigModel.newModel();
 
+            model.with("studentMoney", studentDAO.getStudentMoney(studentID));
             model.with("artifacts", storeDAO.getStudentArtifactList());
             model.with("userName",  studentDAO.getStudentName(userID));
             response = template.render(model);
         }
         if(method.equals("POST")){
             add(httpExchange);
-            httpRedirectTo("/store/store-buy-one", httpExchange);
+            Boolean isPayed = storeBuyOneController.validatePay();
+            if(isPayed){
+                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/store-buy-one.twig");
+                JtwigModel model = JtwigModel.newModel();
+                response = template.render(model);
+                httpRedirectTo("/store/store-buy-one", httpExchange);
+            }
+            else {
+                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/store.twig");
+                JtwigModel model = JtwigModel.newModel();
+                response = template.render(model);
+                httpRedirectTo("/store", httpExchange);
+            }
         }
         httpExchange.sendResponseHeaders(200, response.length());
         OutputStream os = httpExchange.getResponseBody();
@@ -57,13 +71,18 @@ public class StoreController implements HttpHandler {
         os.close();
 
     }
-    private int getUserID(){
+    public int getUserID(){
         int userID = this.authenticationController.getUserId();
         return userID;
 
     }
     public int getStudentID(int user){
         int studentID = this.studentDAO.getStudentIDToStudentController(user);
+        return studentID;
+    }
+    public int getStudentID(){
+        int userID = this.authenticationController.getUserId();
+        int studentID = this.studentDAO.getStudentIDToStudentController(userID);
         return studentID;
     }
     private Map<String, String> add(HttpExchange httpExchange) throws IOException {

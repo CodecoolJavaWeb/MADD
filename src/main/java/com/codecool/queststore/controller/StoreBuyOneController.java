@@ -24,12 +24,20 @@ public class StoreBuyOneController implements HttpHandler {
     private Connection connection = new ConnectionProvider().getConnection();
     private StoreController storeController;
     private StudentArtifactDAO studentArtifactDAO;
+    private StoreDAO storeDAO;
 
     public StoreBuyOneController(AuthenticationController authenticationController, StoreController storeController){
         this.authenticationController = authenticationController;
         this.studentDAO = new StudentDAO();
         this.storeController = storeController;
         this.studentArtifactDAO = new StudentArtifactDAO();
+        this.storeDAO = new StoreDAO();
+    }
+    public StoreBuyOneController(StoreController storeController){
+        this.studentDAO = new StudentDAO();
+        this.storeController = storeController;
+        this.studentArtifactDAO = new StudentArtifactDAO();
+        this.storeDAO = new StoreDAO();
     }
 
     @Override
@@ -48,6 +56,7 @@ public class StoreBuyOneController implements HttpHandler {
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/store-buy-one.twig");
             JtwigModel model = JtwigModel.newModel();
 
+            model.with("studentMoney", studentDAO.getStudentMoney(studentID));
             model.with("artifacts", studentArtifactDAO.getArtifactByID(itemID));
             response = template.render(model);
         }
@@ -99,6 +108,23 @@ public class StoreBuyOneController implements HttpHandler {
         httpExchange.getResponseHeaders().set("Location", "http://" + hostPort + dest);
         httpExchange.sendResponseHeaders(301, -1);
 
+    }
+    public Boolean validatePay(){
+        int studentID = storeController.getStudentID();
+        int studentMoney = studentDAO.getStudentMoney(studentID);
+        int itemID = Integer.parseInt(storeController.getMap().get("BUY"));
+
+        for(Artifact artifact : storeDAO.getStudentArtifactList()){
+            if(itemID == artifact.getId_artifact()){
+                if(artifact.getPrice() > studentMoney){
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }

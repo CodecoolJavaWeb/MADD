@@ -22,6 +22,7 @@ public class StudentDAO {
             "SELECT * FROM student;";
     private static final String GET_STUDENT_NAME =
             "SELECT first_name FROM app_user WHERE id_user = ?;";
+    private static final String GET_STUDENT_MONEY = "SELECT current_money FROM student WHERE id_student = ?;";
 
     public Integer getStudentId() {
         userId = new AuthenticationController().getUserId();
@@ -76,7 +77,23 @@ public class StudentDAO {
             e.printStackTrace();
         }
         return null;
+    }
+    public Integer getStudentMoney(int studentID){
 
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(GET_STUDENT_MONEY);
+            preparedStatement.setInt(1, studentID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int studentMoney = resultSet.getInt("current_money");
+                return studentMoney;
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
