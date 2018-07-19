@@ -18,16 +18,12 @@ public class StoreBuyOneController implements HttpHandler {
     private AuthenticationController authenticationController;
     private StudentDAO studentDAO;
     private Connection connection = new ConnectionProvider().getConnection();
-    private Map<String,String> artifacts;
+    private StoreController storeController;
 
-    public StoreBuyOneController(AuthenticationController authenticationController, Map<String,String> artifacts) {
+    public StoreBuyOneController(AuthenticationController authenticationController, StoreController storeController) {
         this.authenticationController = authenticationController;
         this.studentDAO = new StudentDAO();
-        this.artifacts = artifacts;
-    }
-    public StoreBuyOneController(AuthenticationController authenticationController) {
-        this.authenticationController = authenticationController;
-        this.studentDAO = new StudentDAO();
+        this.storeController = storeController;
     }
 
     @Override

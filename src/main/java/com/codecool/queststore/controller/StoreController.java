@@ -18,6 +18,7 @@ public class StoreController implements HttpHandler {
     private StudentDAO studentDAO;
     private StoreDAO storeDAO;
     private StoreBuyOneController storeBuyOneController;
+    private Map<String, String> map;
 
 
     public StoreController(AuthenticationController authenticationController) {
@@ -48,8 +49,8 @@ public class StoreController implements HttpHandler {
             response = template.render(model);
         }
         if(method.equals("POST")){
-           Map<String,String> artifacts = add(httpExchange);
-           storeBuyOneController = new StoreBuyOneController(authenticationController, artifacts);
+            add(httpExchange);
+            httpRedirectTo("/store-buy-one", httpExchange);
         }
         httpExchange.sendResponseHeaders(200, response.length());
         OutputStream os = httpExchange.getResponseBody();
@@ -72,7 +73,7 @@ public class StoreController implements HttpHandler {
         BufferedReader br = new BufferedReader(isr);
         String inputs = br.readLine();
         System.out.println(inputs);
-        Map<String, String> map = parseInputs(inputs);
+        this.map = parseInputs(inputs);
         return map;
     }
     private static Map<String, String> parseInputs(String inputs) throws UnsupportedEncodingException {
@@ -85,5 +86,9 @@ public class StoreController implements HttpHandler {
         }
         return map;
     }
-
+    private void httpRedirectTo(String dest, HttpExchange httpExchange) throws IOException {
+        String hostPort = httpExchange.getRequestHeaders().get("host").get(0);
+        httpExchange.getResponseHeaders().set("Location", "http://" + hostPort + dest);
+        httpExchange.sendResponseHeaders(301, -1);
+    }
 }

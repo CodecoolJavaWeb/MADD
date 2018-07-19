@@ -17,6 +17,7 @@ import java.net.InetSocketAddress;
 public class App {
     public static void main(String[] args) throws Exception {
         AuthenticationController authenticationController;
+        StoreController storeController;
 
         HttpServer httpServer = HttpServer.create(new InetSocketAddress(8000), 0);
 
@@ -26,11 +27,11 @@ public class App {
 //        httpServer.createContext("/mentors", new MentorController());
 //        httpServer.createContext("/classes", new CodecoolClassController());
 //        httpServer.createContext("/levels", new LevelController());
-        httpServer.createContext("/store", new StoreController(authenticationController));
+        httpServer.createContext("/store", storeController = new StoreController(authenticationController));
         httpServer.createContext("/codecooler", new StudentController(authenticationController));
         httpServer.createContext("/incubator", new IncubatorController(authenticationController));
         httpServer.createContext("/store-buy-group", new StoreBuyGroupController(authenticationController));
-        httpServer.createContext("/store-buy-one", new StoreBuyOneController(authenticationController));
+        httpServer.createContext("/store-buy-one", new StoreBuyOneController(authenticationController, storeController));
         httpServer.createContext("/transactionhistory", new TransactionController(authenticationController));
         httpServer.createContext("/quest", new QuestController(authenticationController));
 
