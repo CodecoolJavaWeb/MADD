@@ -43,7 +43,6 @@ public class StoreDAO {
 
     private Artifact extractArtifactFromRow(ResultSet resultSet) throws SQLException{
 
-
         Integer id_artifact = resultSet.getInt("id_artifact");
         String artifact_name = resultSet.getString("artifact_name");
         Integer price = resultSet.getInt("price");

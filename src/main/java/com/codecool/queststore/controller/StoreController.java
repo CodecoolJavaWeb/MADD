@@ -7,14 +7,17 @@ import com.sun.net.httpserver.HttpHandler;
 import org.jtwig.JtwigModel;
 import org.jtwig.JtwigTemplate;
 
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
+import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.Map;
 
 public class StoreController implements HttpHandler {
 
     private AuthenticationController authenticationController;
     private StudentDAO studentDAO;
     private StoreDAO storeDAO;
+    private StoreBuyOneController storeBuyOneController;
 
 
     public StoreController(AuthenticationController authenticationController) {
@@ -44,6 +47,10 @@ public class StoreController implements HttpHandler {
             model.with("userName",  studentDAO.getStudentName(userID));
             response = template.render(model);
         }
+        if(method.equals("POST")){
+           Map<String,String> artifacts = add(httpExchange);
+           storeBuyOneController = new StoreBuyOneController(authenticationController, artifacts);
+        }
         httpExchange.sendResponseHeaders(200, response.length());
         OutputStream os = httpExchange.getResponseBody();
         os.write(response.getBytes());
@@ -59,4 +66,24 @@ public class StoreController implements HttpHandler {
         int studentID = this.studentDAO.getStudentIDToStudentController(user);
         return studentID;
     }
+    private Map<String, String> add(HttpExchange httpExchange) throws IOException {
+
+        InputStreamReader isr = new InputStreamReader(httpExchange.getRequestBody(), "UTF8");
+        BufferedReader br = new BufferedReader(isr);
+        String inputs = br.readLine();
+        System.out.println(inputs);
+        Map<String, String> map = parseInputs(inputs);
+        return map;
+    }
+    private static Map<String, String> parseInputs(String inputs) throws UnsupportedEncodingException {
+        Map<String, String> map = new HashMap<>();
+        String [] pairs = inputs.split("&");
+        for (String element : pairs) {
+            String [] keyValue = element.split("=");
+            String value = URLDecoder.decode(keyValue[1], "UTF8");
+            map.put(value, keyValue[0]);
+        }
+        return map;
+    }
+
 }
