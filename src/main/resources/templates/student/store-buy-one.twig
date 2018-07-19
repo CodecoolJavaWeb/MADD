@@ -47,6 +47,7 @@
                     <li>Buying</li>
             </ul>
             <h1>You are trying to buy</h1>
+            <form method="post">
             <table class="show-mentors">
                 <thead>
                 <tr>
@@ -74,13 +75,13 @@
                         <p id="topay2"></p>
                     </td>
                     <td>
-                        <button class="accept-button" type="submit" id="buy2" onclick=goBack() disabled>BUY</button>
+                        <button class="accept-button" name="buy" value="BUY" type="submit" id="buy2" onclick=goBack() disabled>BUY</button>
                     </td>
                 </tr>
                 {% endfor %}
                 </tbody>
             </table>
-           
+            </form>
         </div>
     </div>
 </div>

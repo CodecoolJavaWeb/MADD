@@ -22,6 +22,7 @@ public class StoreDAO {
     }
 
     private static final String GET_ARTIFATS = "SELECT * FROM studentArtifact;";
+    private static final String INSERT_VALUES = "INSERT INTO student_artifact(id_student, id_artifact, quantity) VALUES (?, ?, ?);";
 
     public void addArtifactToList() {
 
@@ -56,5 +57,20 @@ public class StoreDAO {
     public List<Artifact> getStudentArtifactList(){
 
         return this.studentArtifactList;
+    }
+    public void addArtifactToStudent(int studentID, int itemID){
+        System.out.println("sudentid " + studentID);
+        try{
+
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_VALUES);
+            preparedStatement.setInt(1, studentID);
+            preparedStatement.setInt(2, itemID);
+            preparedStatement.setInt(3, 0);
+            preparedStatement.executeUpdate();
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

@@ -31,7 +31,6 @@ public class StoreController implements HttpHandler {
     public void handle(HttpExchange httpExchange) throws IOException {
 
         String method = httpExchange.getRequestMethod();
-        System.out.println("method " + method);
         String response = "";
         System.out.println("HERE Store");
 
