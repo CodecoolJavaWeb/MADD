@@ -63,11 +63,9 @@ public class StudentArtifactDAO {
         return studentArtifact;
     }
 
-    public List<Integer> getArifcatQuantiyAndID(int studentID) throws SQLException {
+    public List<Integer> getArifcatQuantiyAndID(int studentID){
 
-        int artifactID = 0;
-        int quanity = 1;
-        Integer[] artifact = new Integer[2];
+
         List<Integer> listIDOfStudent = new ArrayList<>();
 
 
@@ -79,8 +77,6 @@ public class StudentArtifactDAO {
             while(resultSet.next()) {
                 listIDOfStudent.add(resultSet.getInt("id_artifact"));
               //  artifact[quanity] = resultSet.getInt("quantity");
-                System.out.println("dupa " + studentID);
-                System.out.println("artifacttt id"  + resultSet.getInt("id_artifact"));
             }
         }
         catch(SQLException e) {
