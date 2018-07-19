@@ -1,5 +1,6 @@
 package com.codecool.queststore.controller;
 
+import com.codecool.queststore.DAO.StoreDAO;
 import com.codecool.queststore.DAO.StudentDAO;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -13,10 +14,13 @@ public class StoreController implements HttpHandler {
 
     private AuthenticationController authenticationController;
     private StudentDAO studentDAO;
+    private StoreDAO storeDAO;
+
 
     public StoreController(AuthenticationController authenticationController) {
         this.authenticationController = authenticationController;
         this.studentDAO = new StudentDAO();
+        this.storeDAO = new StoreDAO();
     }
 
     @Override
@@ -36,6 +40,7 @@ public class StoreController implements HttpHandler {
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/store.twig");
             JtwigModel model = JtwigModel.newModel();
 
+            model.with("artifacts", storeDAO.getStudentArtifactList());
             model.with("userName",  studentDAO.getStudentName(userID));
             response = template.render(model);
         }

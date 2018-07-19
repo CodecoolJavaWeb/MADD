@@ -39,7 +39,6 @@ public class StudentController implements HttpHandler {
             int userID = getUserID();
             int studentID = getStudentID(userID);
 
-            studentArtifactDAO.getStudentArtifactList();
             List<Integer> listIDOfStudents = studentArtifactDAO.getArifcatQuantiyAndID(studentID);
             studentArtifactDAO.getArtifactMetaData(listIDOfStudents);
 

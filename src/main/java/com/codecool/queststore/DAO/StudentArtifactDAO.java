@@ -11,12 +11,12 @@ import java.util.List;
 
 
 public class StudentArtifactDAO {
-    private List<StudentArtifact> studentArtifactList;
+
     private StudentController studentController;
     private Connection connection;
-    private StudentArtifact studentArtifact;
     private Artifact artifact;
     private List<Artifact> artifactList;
+
 
     private static final String GET_ALL_ARTIFACTS = "SELECT * FROM student_artifact;";
     private static final String GET_ARTIFACTS_BY_ID_STUDENT = "SELECT id_artifact, quantity FROM student_artifact WHERE id_student = ?;";
@@ -25,42 +25,9 @@ public class StudentArtifactDAO {
 
     public StudentArtifactDAO(StudentController studentController) throws SQLException {
         this.studentController = studentController;
-        this.studentArtifactList = new ArrayList<>();
+
         this.artifactList = new ArrayList<>();
         connection = ConnectionProvider.getConnection();
-        addArtifactToList();
-    }
-    public List<StudentArtifact> getStudentArtifactList(){
-
-        return this.studentArtifactList;
-    }
-
-    public void addArtifactToList() {
-
-        try{
-
-            PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_ARTIFACTS);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while(resultSet.next()) {
-
-                StudentArtifact studentArtifact = extractArtifactFromRow(resultSet);
-                studentArtifactList.add(studentArtifact);
-            }
-        } catch(SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    private StudentArtifact extractArtifactFromRow(ResultSet resultSet) throws SQLException{
-
-        Integer id_student = resultSet.getInt("id_student");
-        Integer id_artifact = resultSet.getInt("id_artifact");
-        Integer quantity = resultSet.getInt("quantity");
-        studentArtifact = new StudentArtifact(id_student, id_artifact, quantity);
-
-        return studentArtifact;
     }
 
     public List<Integer> getArifcatQuantiyAndID(int studentID){

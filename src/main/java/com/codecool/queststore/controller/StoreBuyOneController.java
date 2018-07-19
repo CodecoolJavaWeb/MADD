@@ -1,5 +1,7 @@
 package com.codecool.queststore.controller;
 
+import com.codecool.queststore.ConnectionProvider;
+import com.codecool.queststore.DAO.StoreDAO;
 import com.codecool.queststore.DAO.StudentDAO;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -8,22 +10,24 @@ import org.jtwig.JtwigTemplate;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.sql.Connection;
 
 public class StoreBuyOneController implements HttpHandler {
 
     private AuthenticationController authenticationController;
     private StudentDAO studentDAO;
+    private Connection connection = new ConnectionProvider().getConnection();
 
     public StoreBuyOneController(AuthenticationController authenticationController) {
         this.authenticationController = authenticationController;
         this.studentDAO = new StudentDAO();
+
     }
 
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
 
         String method = httpExchange.getRequestMethod();
-        System.out.println("method " + method);
         String response = "";
         System.out.println("HERE storebyone");
 
@@ -36,7 +40,6 @@ public class StoreBuyOneController implements HttpHandler {
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/store-buy-one.twig");
             JtwigModel model = JtwigModel.newModel();
 
-            model.with("userName",  studentDAO.getStudentName(userID));
             response = template.render(model);
         }
         httpExchange.sendResponseHeaders(200, response.length());
@@ -54,4 +57,5 @@ public class StoreBuyOneController implements HttpHandler {
         int studentID = this.studentDAO.getStudentIDToStudentController(user);
         return studentID;
     }
+
 }
