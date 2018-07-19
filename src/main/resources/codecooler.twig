@@ -15,7 +15,7 @@
         </div>
         <div class="info">
             <div class="info-center">
-                <h1>Hello {{ userName }}</h1>
+                <h1>Hello Ania</h1>
             </div>
             <div class="info-top">
                 <ul class="describe_item">
@@ -31,11 +31,11 @@
     <div class="bar-content-block">
         <div class="bar">
             <ul class="menu">
-                <li class="menu-item"><a href="inventory" class="selected">Inventory</a></li>
-                <li class="menu-item"><a href="store">Store</a></li>
-                <li class="menu-item"><a href="incubator">Incubator</a></li>
-                <li class="menu-item"><a href="quests">Quests</a></li>
-                <li class="menu-item"><a href="transactionhistory">Transaction</a></li>
+                <li class="menu-item"><a href="codecooler.twig" class="selected">Inventory</a></li>
+                <li class="menu-item"><a href="store.twig">Store</a></li>
+                <li class="menu-item"><a href="incubator.twig">Incubator</a></li>
+                <li class="menu-item"><a href="quests.twig">Quests</a></li>
+                <li class="menu-item"><a href="transactionhistory.twig">Transaction</a></li>
             </ul>
         </div>
         <div class="content-block">
@@ -47,17 +47,28 @@
                     <th>Description</th>
                     <th>Quantity</th>
                     <th>Is group</th>
+
                 </tr>
                 </thead>
                 <tbody>
-                {% for artifact in artifacts %}
                 <tr>
-                    <td>{{ artifact.getArtifact_name() }}</td>
-                    <td>{{ artifact.getDescription() }}</td>
-                    <td>{{ artifact.getDescription() }}</td>
-                    <td>{{ artifact.getCategory() }}</td>
+                    <td>Training</td>
+                    <td>Private mentoring</td>
+                    <td>1</td>
+                    <td>&#9746;</td>
                 </tr>
-                {% endfor %}
+                <tr>
+                    <td>Remote work</td>
+                    <td>Student can work from home by one day</td>
+                    <td>1</td>
+                    <td>&#9746;</td>
+                </tr>
+                <tr>
+                    <td>Extra material</td>
+                    <td>Student get extra material for the current topic (mentors will do it within 2 weeks)</td>
+                    <td>5</td>
+                    <td>&#9745;</td>
+                </tr>
 
                 </tbody>
             </table>

@@ -62,7 +62,7 @@ public class AuthenticationController implements HttpHandler {
                     template = JtwigTemplate.classpathTemplate("templates/student/codecooler.twig");
                     model = JtwigModel.newModel();
                     response = template.render(model);
-                    httpRedirectTo("/codecooler", httpExchange);
+                    httpRedirectTo("/inventory", httpExchange);
                     httpExchange.sendResponseHeaders(200, response.length());
                     break;
             }

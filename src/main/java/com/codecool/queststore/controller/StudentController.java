@@ -28,8 +28,6 @@ public class StudentController implements HttpHandler {
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
 
-        int id = 0;
-        int quanity = 1;
         String method = httpExchange.getRequestMethod();
         System.out.println("method " + method);
         String response = "";
@@ -37,34 +35,21 @@ public class StudentController implements HttpHandler {
 
 
         if (method.equals("GET")) {
-            int artifactID = 0;
 
-            try {
-                int userID = getUserID();
-                int studentID = getStudentID(userID);
+            int userID = getUserID();
+            int studentID = getStudentID(userID);
 
+            List<Integer> listIDOfStudents = studentArtifactDAO.getArifcatQuantiyAndID(studentID);
+            studentArtifactDAO.getArtifactMetaData(listIDOfStudents);
 
-                studentArtifactDAO.getStudentArtifactList();
+            JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecooler.twig");
+            JtwigModel model = JtwigModel.newModel();
 
-                List<Integer> listIDOfStudents = studentArtifactDAO.getArifcatQuantiyAndID(studentID);
-                studentArtifactDAO.getArtifactMetaData(listIDOfStudents);
-                System.out.println("dd");
+            model.with("userName",  studentDAO.getStudentName(userID));
+            model.with("artifacts", studentArtifactDAO.getArtifactList());
 
-                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecooler.twig");
-                JtwigModel model = JtwigModel.newModel();
-
-
-                model.with("artifacts", studentArtifactDAO.getArtifactList());
-               // model.with("quanity", studentArtifactDAO.getStudentArtifactList());
-                System.out.println();
-
-                response = template.render(model);
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
+            response = template.render(model);
+            // model.with("quanity", studentArtifactDAO.getStudentArtifactList());
         }
         httpExchange.sendResponseHeaders(200, response.length());
         OutputStream os = httpExchange.getResponseBody();

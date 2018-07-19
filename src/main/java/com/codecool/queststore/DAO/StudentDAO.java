@@ -20,6 +20,8 @@ public class StudentDAO {
             "SELECT id_student FROM student WHERE id_user = ?;";
     private static final String GET_ALL_STUDENTS =
             "SELECT * FROM student;";
+    private static final String GET_STUDENT_NAME =
+            "SELECT first_name FROM app_user WHERE id_user = ?;";
 
     public Integer getStudentId() {
         userId = new AuthenticationController().getUserId();
@@ -58,4 +60,23 @@ public class StudentDAO {
         }
         return null;
     }
+    public String getStudentName(int userId){
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(GET_STUDENT_NAME);
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String studentId = resultSet.getString("first_name");
+                return studentId;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
 }

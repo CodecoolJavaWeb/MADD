@@ -5,7 +5,7 @@
     <title>Student Homepage</title>
     <link rel="stylesheet" href="/static/css/user_styles.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/static/js/javascript/incubator.js"></script>
 </head>
 <body>
 <div class="content">
@@ -23,7 +23,7 @@
                     <li><img src="/static/images/coin.png" alt="coin"></li>
                     <li><p id="experience">5</p></li>
                     <li><img src="/static/images/progress.png" alt="progress"></li>
-                    <li><a href="../login.twig"><img src="/static/images/out.png" alt="logout" title="Log out"></a></li>
+                    <li><a href="../login.html"><img src="/static/images/out.png" alt="logout"></a></li>
                 </ul>
             </div>
         </div>
@@ -31,38 +31,58 @@
     <div class="bar-content-block">
         <div class="bar">
             <ul class="menu">
-                <li class="menu-item"><a href="inventory" class="selected">Inventory</a></li>
+                <li class="menu-item"><a href="inventory">Inventory</a></li>
                 <li class="menu-item"><a href="store">Store</a></li>
-                <li class="menu-item"><a href="incubator">Incubator</a></li>
+                <li class="menu-item"><a href="incubator" class="selected">Incubator</a></li>
                 <li class="menu-item"><a href="quests">Quests</a></li>
                 <li class="menu-item"><a href="transactionhistory">Transaction</a></li>
             </ul>
         </div>
         <div class="content-block">
-            <h1>Your artifacts</h1>
+            <h1>Group artefacts</h1>
             <table class="show-mentors">
                 <thead>
                 <tr>
-                    <th>Artifact</th>
-                    <th>Description</th>
-                    <th>Quantity</th>
-                    <th>Is group</th>
+                    <th>Artefact</th>
+                    <th>Overall price</th>
+                    <th>To price</th>
+                    <th>Group size</th>
+                    <th>Option</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for artifact in artifacts %}
                 <tr>
-                    <td>{{ artifact.getArtifact_name() }}</td>
-                    <td>{{ artifact.getDescription() }}</td>
-                    <td>{{ artifact.getDescription() }}</td>
-                    <td>{{ artifact.getCategory() }}</td>
-                </tr>
-                {% endfor %}
+                    <td class="studentArtifact-name">Artefact 1</td>
+                    <td>100</td>
+                    <td class="to-price">20</td>
+                    <td>5</td>
+                    <form class="save-changes-button" onsubmit="return false">
+                        <td><button class="accept-button" type="button" onclick="addModal()">JOIN</button></td>
+                    </form>
 
+                </tr>
+                <tr>
+                    <td class="studentArtifact-name">Artefact 2</td>
+                    <td>2000</td>
+                    <td class="to-price">200</td>
+                    <td>10</td>
+                    <form class="save-changes-button" onsubmit="return false">
+                        <td><button class="accept-button" type="button" onclick="addModal()">JOIN</button></td>
+                    </form>
+
+                </tr>
                 </tbody>
             </table>
         </div>
     </div>
+</div>
+<!-- ==========Modal===================================-->
+<div id="modalWindow" class="modal-window">
+    <div class="modal-content">
+        <span class="close" onclick="removeModal()">&times;</span>
+        <p>Changes were submitted!</p>
+    </div>
+
 </div>
 <footer>
     <a href='https://www.freepik.com/free-vector/assorted-user-avatars-collection_851876.htm'>Designed by Freepik</a>
