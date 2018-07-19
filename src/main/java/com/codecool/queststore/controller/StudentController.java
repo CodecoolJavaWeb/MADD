@@ -50,8 +50,6 @@ public class StudentController implements HttpHandler {
 
             response = template.render(model);
             // model.with("quanity", studentArtifactDAO.getStudentArtifactList());
-
-
         }
         httpExchange.sendResponseHeaders(200, response.length());
         OutputStream os = httpExchange.getResponseBody();

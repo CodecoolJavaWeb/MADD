@@ -83,6 +83,7 @@ public class StoreController implements HttpHandler {
             String [] keyValue = element.split("=");
             String value = URLDecoder.decode(keyValue[1], "UTF8");
             map.put(value, keyValue[0]);
+            System.out.println("mapa" + map);
         }
         return map;
     }
@@ -90,5 +91,8 @@ public class StoreController implements HttpHandler {
         String hostPort = httpExchange.getRequestHeaders().get("host").get(0);
         httpExchange.getResponseHeaders().set("Location", "http://" + hostPort + dest);
         httpExchange.sendResponseHeaders(301, -1);
+    }
+    public Map<String, String> getMap(){
+        return this.map;
     }
 }

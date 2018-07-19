@@ -13,7 +13,7 @@ import java.util.List;
 public class StudentArtifactDAO {
 
     private StudentController studentController;
-    private Connection connection;
+    private Connection connection = new ConnectionProvider().getConnection();
     private Artifact artifact;
     private List<Artifact> artifactList;
 
@@ -22,19 +22,17 @@ public class StudentArtifactDAO {
     private static final String GET_ARTIFACTS_BY_ID_STUDENT = "SELECT id_artifact, quantity FROM student_artifact WHERE id_student = ?;";
     private static final String GET_ARTIFACTS_BY_ID_ARTIFACT = "SELECT * FROM studentArtifact WHERE id_artifact = ?;";
 
-
     public StudentArtifactDAO(StudentController studentController) throws SQLException {
         this.studentController = studentController;
-
         this.artifactList = new ArrayList<>();
-        connection = ConnectionProvider.getConnection();
+    }
+    public StudentArtifactDAO(){
+
     }
 
     public List<Integer> getArifcatQuantiyAndID(int studentID){
 
-
         List<Integer> listIDOfStudent = new ArrayList<>();
-
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(GET_ARTIFACTS_BY_ID_STUDENT);
@@ -76,6 +74,33 @@ public class StudentArtifactDAO {
     }
     public List<Artifact> getArtifactList(){
         return this.artifactList;
+    }
+
+    public List<Artifact> getArtifactByID(int idArtifact){
+
+        List<Artifact> artifacts = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(GET_ARTIFACTS_BY_ID_ARTIFACT);
+            preparedStatement.setInt(1, idArtifact);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int idArtifactt = resultSet.getInt("id_artifact");
+                String artifact_name = resultSet.getString("artifact_name");
+                String category = resultSet.getString("category");
+                int price = resultSet.getInt("price");
+                String description = resultSet.getString("description");
+                artifact = new Artifact(idArtifactt, artifact_name, price, category, description);
+                artifacts.add(artifact);
+
+                return artifacts;
+            }
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
 
