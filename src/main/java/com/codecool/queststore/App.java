@@ -19,6 +19,7 @@ public class App {
         httpServer.createContext("/login", authenticationController = new AuthenticationController());
         httpServer.createContext("/static", new StaticController());
         httpServer.createContext("/mentors", new MentorController());
+        httpServer.createContext("/mentors/mentor-quests", new QuestController());
         httpServer.createContext("/store", new StoreController());
         httpServer.createContext("/codecooler", new StudentController(authenticationController));
         httpServer.createContext("/incubator", new IncubatorController());
