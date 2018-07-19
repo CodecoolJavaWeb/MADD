@@ -1,14 +1,15 @@
 package com.codecool.queststore;
-<<<<<<< Updated upstream
+
+import com.codecool.queststore.controller.*;
+
 import com.codecool.queststore.controller.AuthenticationController;
 import com.codecool.queststore.controller.StudentController;
 
 import com.codecool.queststore.controller.MentorController;
 import com.codecool.queststore.controller.StaticController;
 
-=======
 import com.codecool.queststore.controller.*;
->>>>>>> Stashed changes
+
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
 
@@ -18,14 +19,10 @@ public class App {
         AuthenticationController authenticationController;
 
         HttpServer httpServer = HttpServer.create(new InetSocketAddress(8000), 0);
-<<<<<<< Updated upstream
-        httpServer.createContext("/login", new AuthenticationController());
-        httpServer.createContext("/static", new Static());
-=======
-        httpServer.createContext("/login", authenticationController = new AuthenticationController());
->>>>>>> Stashed changes
-        httpServer.createContext("/static/", new StaticController());
 
+        httpServer.createContext("/login", authenticationController = new AuthenticationController());
+        httpServer.createContext("/static", new Static());
+        httpServer.createContext("/static/", new StaticController());
 //        httpServer.createContext("/mentors", new MentorController());
 //        httpServer.createContext("/classes", new CodecoolClassController());
 //        httpServer.createContext("/levels", new LevelController());
