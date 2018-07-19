@@ -34,7 +34,6 @@ public class MentorController implements HttpHandler {
             mentorDAO.addStudentToUsersTable(studentData);
             mentorDAO.getStudentUserId(studentData);
             mentorDAO.addStudentToStudentsTable(studentData);
-            System.out.println(studentData + " daat studenta");
 
             JtwigTemplate template = JtwigTemplate.classpathTemplate("/templates/mentorstudents.twig");
             JtwigModel model = JtwigModel.newModel();
@@ -43,6 +42,9 @@ public class MentorController implements HttpHandler {
             System.out.println("here");
             httpRedirectTo("/mentors", httpExchange);
             httpExchange.sendResponseHeaders(200, response.length());
+        }
+        else if (method.equals("POST") && parsePath(httpExchange)[2].equals("editstudent")){
+
         }
 
         if (method.equals("GET") && parsePath(httpExchange).length <=2) {
@@ -56,6 +58,15 @@ public class MentorController implements HttpHandler {
             JtwigTemplate template = JtwigTemplate.classpathTemplate("/templates/createstudent.twig");
             JtwigModel model = JtwigModel.newModel();
             response = template.render(model);
+            httpExchange.sendResponseHeaders(200, response.length());
+        }
+        else if (method.equals("GET") && parsePath(httpExchange)[2].equals("editstudent")){
+            System.out.println("entered edition");
+            JtwigTemplate template = JtwigTemplate.classpathTemplate("/templates/editstudent.twig");
+            JtwigModel model = JtwigModel.newModel();
+            model.with("student", mentorDAO.getStudentById(Integer.valueOf(parsePath(httpExchange)[3])));
+            response = template.render(model);
+            System.out.println("continued edition");
             httpExchange.sendResponseHeaders(200, response.length());
         }
         OutputStream os = httpExchange.getResponseBody();

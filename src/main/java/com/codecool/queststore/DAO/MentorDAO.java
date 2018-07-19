@@ -22,7 +22,7 @@ public class MentorDAO {
 
     public MentorDAO()  {
         connection = new ConnectionProvider().getConnection();
-        mentors = createMentorList();
+        //mentors = createMentorList();
     }
 
     private Integer userId;
@@ -41,6 +41,7 @@ public class MentorDAO {
             "SELECT * FROM app_user " +
                     "JOIN student ON (app_user.id_user = student.id_user) " +
                     "JOIN cool_class ON (student.id_class = cool_class.id_class);";
+    private static final String GET_STUDENT_BY_ID = "SELECT * FROM app_user WHERE id_user LIKE ? JOIN student ON (app_user.id_user = student.id_user) JOIN cool_class ON (student.id_class = cool_class.id_class);";
 
     private Connection connect() {
         return new ConnectionProvider().getConnection();
@@ -48,6 +49,7 @@ public class MentorDAO {
 
     public List<Student> getStudents() {
         List<Student> students = new ArrayList<>();
+
 
         try (Connection connection = this.connect()) {
             PreparedStatement preparedStatement = connection.prepareStatement(GET_STUDENTS);
@@ -163,12 +165,9 @@ public class MentorDAO {
         }
     }
 
-
-
     public List<Mentor> getMentorsList() {
         return mentors;
     }
-
 
     private List<Mentor> createMentorList() {
         List<Mentor> mentorList = new ArrayList<>();
@@ -220,7 +219,6 @@ public class MentorDAO {
         return null;
 
     }
-
 
     public List<CoolClass> getMentorClasses(List<Integer> classIds) {
         List<CoolClass> coolClasses = new ArrayList<>();
@@ -277,11 +275,6 @@ public class MentorDAO {
         updateMentorInDatabase(userId, FIRST_NAME, LAST_NAME, PHONE_NUMBER, EMAIL_ADDRESS);
 //        TODO ----->>>>> UPDATE CLASSES
     }
-
-
-
-
-
 
     public Mentor getMentorByUserId(Integer userId) {
         for(Mentor mentor : mentors) if(mentor.getUserId().equals(userId)) return mentor;
@@ -354,6 +347,32 @@ public class MentorDAO {
             e.printStackTrace();
         }
         System.out.println("[ERROR MentorDAO] getUserIdByMentorMail(String mail) ======>>> null"); return null;
+    }
 
+    public Student getStudentById(Integer userId) {
+
+        try {
+
+            PreparedStatement preparedStatement = connection.prepareStatement(GET_STUDENT_BY_ID);
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                userId = resultSet.getInt("id_user");
+
+                firstName = resultSet.getString("first_name");
+                lastName = resultSet.getString("last_name");
+                phone = resultSet.getString("phone");
+                email = resultSet.getString("email");
+                role = resultSet.getString("role");
+                currentMoney = resultSet.getInt("current_money");
+                totalMoney = resultSet.getInt("total_money");
+                studentClassName = resultSet.getString("class_name");
+
+                return new Student(userId, firstName, lastName, phone, email, role, currentMoney, totalMoney, studentClassName);
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

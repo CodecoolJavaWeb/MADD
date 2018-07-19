@@ -16,3 +16,5 @@ SELECT  studentArtifact.artifact_name FROM student
 
 --2
 
+SELECT * FROM app_user WHERE id_user = 8 JOIN student ON (app_user.id_user = student.id_user) JOIN cool_class ON (student.id_class = cool_class.id_class)
+;
