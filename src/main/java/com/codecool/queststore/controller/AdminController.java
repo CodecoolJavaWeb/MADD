@@ -29,7 +29,6 @@ public class AdminController implements HttpHandler {
             if(parsePath(httpExchange)[2].equals("mentors") && parsePath(httpExchange)[3].equals("edit")) {
                 Integer userId = Integer.valueOf(parsePath(httpExchange)[4]);
                 Mentor mentor = mentorDAO.getMentorByUserId(userId);
-                System.out.println(mentor.getUserId());
                 mentorDAO.updateMentorByUserId(mentorDAO.getMentorByUserId(userId), parseInputs(inputs,5));
                 JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentor.twig");
                 JtwigModel model = JtwigModel.newModel();
@@ -135,7 +134,7 @@ public class AdminController implements HttpHandler {
 
     private void httpRedirectTo(String dest, HttpExchange httpExchange) throws IOException {
         String hostPort = httpExchange.getRequestHeaders().get("host").get(0);
-        httpExchange.getResponseHeaders().set("Location", "http://" + hostPort + dest);
+        httpExchange.getResponseHeaders().set("Location", "http://" + hostPort + dest);http://
         httpExchange.sendResponseHeaders(301, -1);
     }
 

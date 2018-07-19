@@ -14,10 +14,6 @@ public class App {
         httpServer.createContext("/admin/mentors", new AdminController());
         httpServer.createContext("/admin/class", new AdminController());
         httpServer.createContext("/admin/level", new AdminController());
-//        httpServer.createContext("/classes", new CodecoolClassController());
-//        httpServer.createContext("/levels", new LevelController());
-//        httpServer.createContext("/store", new StoreController());
-//        httpServer.createContext("/students", new StudentController());
         httpServer.setExecutor(null);
         httpServer.start();
     }

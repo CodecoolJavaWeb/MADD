@@ -18,7 +18,7 @@ public class AuthenticationDAO {
 //                    "WHERE login = ? " +
 //                    "AND password = ?;";
 
-    private static final String GET_USER_BY_LOGIN = "select * from authentication where login = 'admin' and password = 'admin';";
+    private static final String GET_USER_BY_LOGIN = "select * from authentication where login = ? and password = ?;";
 
 
 
@@ -33,8 +33,8 @@ public class AuthenticationDAO {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(GET_USER_BY_LOGIN);
-//            preparedStatement.setString(1, login);
-//            preparedStatement.setString(2, password);
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if(resultSet.next()) {

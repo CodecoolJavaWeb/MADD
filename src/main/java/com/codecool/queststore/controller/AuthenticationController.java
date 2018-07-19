@@ -36,18 +36,19 @@ public class AuthenticationController implements HttpHandler {
             BufferedReader br = new BufferedReader(isr);
             String inputs = br.readLine();
 
-            //read inputs into formData map.
             parseInputs(inputs);
             userId =  authDAO.getUserIdByInputs(formData);
-            System.out.println("userID = " + userId);
             User user = new UserDAO(this).getUserById();
 
             switch (user.getRole()) {
                 case "admin":
-                    System.out.println("weszło w admina");
+                    System.out.println("weszło w posta admina");
+
                     JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/admin/mentor.twig");
                     JtwigModel model = JtwigModel.newModel();
                     response = template.render(model);
+                    System.out.println("wyświetlło response");
+                    httpRedirectTo("/admin/mentors", httpExchange);
                     httpExchange.sendResponseHeaders(200, response.length());
                     break;
                 case "mentor":
