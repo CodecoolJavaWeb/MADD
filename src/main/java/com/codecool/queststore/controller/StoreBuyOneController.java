@@ -55,6 +55,8 @@ public class StoreBuyOneController implements HttpHandler {
         if(method.equals("POST")){
             Map<String, String> map = add(httpExchange);
            new StoreDAO().addArtifactToStudent(studentID, itemID);
+            httpRedirectTo("/codecooler", httpExchange);
+
         }
 
         httpExchange.sendResponseHeaders(200, response.length());
@@ -91,6 +93,12 @@ public class StoreBuyOneController implements HttpHandler {
             System.out.println("mapa" + map);
         }
         return map;
+    }
+    private void httpRedirectTo(String dest, HttpExchange httpExchange) throws IOException {
+        String hostPort = httpExchange.getRequestHeaders().get("host").get(0);
+        httpExchange.getResponseHeaders().set("Location", "http://" + hostPort + dest);
+        httpExchange.sendResponseHeaders(301, -1);
+
     }
 
 }

@@ -90,6 +90,7 @@ public class StoreController implements HttpHandler {
         String hostPort = httpExchange.getRequestHeaders().get("host").get(0);
         httpExchange.getResponseHeaders().set("Location", "http://" + hostPort + dest);
         httpExchange.sendResponseHeaders(301, -1);
+        httpRedirectTo("/store-buy-one", httpExchange);
     }
     public Map<String, String> getMap(){
         return this.map;
