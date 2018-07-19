@@ -2,6 +2,7 @@ package com.codecool.queststore.controller;
 
 import com.codecool.queststore.DAO.AuthenticationDAO;
 import com.codecool.queststore.DAO.UserDAO;
+import com.codecool.queststore.Static;
 import com.codecool.queststore.model.User;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -68,6 +69,7 @@ public class AuthenticationController implements HttpHandler {
             }
         }
         if (method.equals("GET")) {
+
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/login.twig");
             JtwigModel model = JtwigModel.newModel();
             response = template.render(model);

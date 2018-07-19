@@ -1,8 +1,16 @@
 package com.codecool.queststore;
+<<<<<<< HEAD
 import com.codecool.queststore.controller.*;
+=======
+import com.codecool.queststore.controller.AuthenticationController;
+import com.codecool.queststore.controller.StudentController;
+
+import com.codecool.queststore.controller.MentorController;
+import com.codecool.queststore.controller.StaticController;
+
+>>>>>>> bd6336a9c28db036f2a7f77556238572e44d2023
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
-import java.sql.Connection;
 
 
 public class App {
@@ -11,6 +19,7 @@ public class App {
 
         HttpServer httpServer = HttpServer.create(new InetSocketAddress(8000), 0);
         httpServer.createContext("/login", authenticationController = new AuthenticationController());
+        httpServer.createContext("/static", new Static());
         httpServer.createContext("/static/", new StaticController());
 //        httpServer.createContext("/mentors", new MentorController());
 //        httpServer.createContext("/classes", new CodecoolClassController());
