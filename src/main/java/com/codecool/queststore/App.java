@@ -10,11 +10,13 @@ public class App {
 
         HttpServer httpServer = HttpServer.create(new InetSocketAddress(8000), 0);
         httpServer.createContext("/login", new AuthenticationController());
+
 //        httpServer.createContext("/mentors", new MentorController());
 //        httpServer.createContext("/classes", new CodecoolClassController());
 //        httpServer.createContext("/levels", new LevelController());
 //        httpServer.createContext("/store", new StoreController());
-        httpServer.createContext("/students", new StudentController());
+//        httpServer.createContext("/students", new StudentController());
+//        httpServer.createContext("/static", new Static());
         httpServer.setExecutor(null);
         httpServer.start();
     }
