@@ -39,7 +39,6 @@ public class MentorController implements HttpHandler {
             JtwigModel model = JtwigModel.newModel();
             model.with("studentList", mentorDAO.getStudents());
             response = template.render(model);
-            System.out.println("here");
             httpRedirectTo("/mentors", httpExchange);
             httpExchange.sendResponseHeaders(200, response.length());
         }
@@ -61,12 +60,10 @@ public class MentorController implements HttpHandler {
             httpExchange.sendResponseHeaders(200, response.length());
         }
         else if (method.equals("GET") && parsePath(httpExchange)[2].equals("editstudent")){
-            System.out.println("entered edition");
             JtwigTemplate template = JtwigTemplate.classpathTemplate("/templates/editstudent.twig");
             JtwigModel model = JtwigModel.newModel();
             model.with("student", mentorDAO.getStudentById(Integer.valueOf(parsePath(httpExchange)[3])));
             response = template.render(model);
-            System.out.println("continued edition");
             httpExchange.sendResponseHeaders(200, response.length());
         }
         OutputStream os = httpExchange.getResponseBody();

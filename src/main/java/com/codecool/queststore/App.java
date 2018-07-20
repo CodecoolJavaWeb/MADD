@@ -27,8 +27,11 @@ public class App {
         httpServer.createContext("/store/store-buy-group", new StoreBuyGroupController(authenticationController));
         httpServer.createContext("/store/store-buy-one", new StoreBuyOneController(authenticationController, storeController));
         httpServer.createContext("/transactionhistory", new TransactionController(authenticationController));
-        httpServer.createContext("/quest", new QuestController(authenticationController));
-      //  httpServer.createContext("/mentors", new MentorController());
+        httpServer.createContext("/static", new StaticController());
+        httpServer.createContext("/mentors", new MentorController());
+        httpServer.createContext("/mentors/mentor-quests", new QuestController());
+        httpServer.createContext("/codecooler", new StudentController(authenticationController));
+        httpServer.createContext("/quest", new QuestController());
         httpServer.createContext("/login", new AuthenticationController());
      //   httpServer.createContext("/admin/mentors", new AdminController());
      //   httpServer.createContext("/admin/class", new AdminController());
