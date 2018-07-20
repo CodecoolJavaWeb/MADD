@@ -53,7 +53,7 @@ public class StoreBuyOneController implements HttpHandler {
 
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/store-buy-one.twig");
             JtwigModel model = JtwigModel.newModel();
-
+	    model.with("userName",  studentDAO.getStudentName(userID));
             model.with("studentMoney", studentDAO.getStudentMoney(studentID));
             model.with("artifacts", studentArtifactDAO.getArtifactByID(itemID));
             response = template.render(model);
