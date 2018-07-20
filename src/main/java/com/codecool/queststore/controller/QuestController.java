@@ -36,9 +36,19 @@ public class QuestController implements HttpHandler {
             httpRedirectTo("/mentors/mentor-quests", httpExchange);
             httpExchange.sendResponseHeaders(200, response.length());
         }
+        else if (method.equals("POST") && parsePath(httpExchange)[3].equals("edit-quest")) {
+            System.out.println("start");
+            questDAO.editQuest(Integer.valueOf(parsePath(httpExchange)[4]), parseInputs(httpExchange));
+            System.out.println("finish");
+            JtwigTemplate template = JtwigTemplate.classpathTemplate("/templates/mentor-quests.twig");
+            JtwigModel model = JtwigModel.newModel();
+            model.with("questList", questDAO.getQuests());
+            response = template.render(model);
+            httpRedirectTo("/mentors/mentor-quests", httpExchange);
+            httpExchange.sendResponseHeaders(200, response.length());
+        }
 
         if (method.equals("GET") && parsePath(httpExchange).length <=3) {
-            System.out.println("pre entered");
             JtwigTemplate template = JtwigTemplate.classpathTemplate("/templates/mentor-quests.twig");
             JtwigModel model = JtwigModel.newModel();
             model.with("questList", questDAO.getQuests());
@@ -46,9 +56,17 @@ public class QuestController implements HttpHandler {
             httpExchange.sendResponseHeaders(200, response.length());
         }
         else if (method.equals("GET") && parsePath(httpExchange)[3].equals("create-quest")) {
-            System.out.println("entered");
             JtwigTemplate template = JtwigTemplate.classpathTemplate("/templates/create-quest.twig");
             JtwigModel model = JtwigModel.newModel();
+            response = template.render(model);
+            httpExchange.sendResponseHeaders(200, response.length());
+        }
+        else if (method.equals("GET") && parsePath(httpExchange)[3].equals("edit-quest")) {
+            System.out.println("entered");
+            System.out.println(parsePath(httpExchange)[4]);
+            JtwigTemplate template = JtwigTemplate.classpathTemplate("/templates/edit-quest.twig");
+            JtwigModel model = JtwigModel.newModel();
+            model.with("quest", questDAO.getQuestById(Integer.valueOf(parsePath(httpExchange)[4])));
             response = template.render(model);
             httpExchange.sendResponseHeaders(200, response.length());
         }
