@@ -22,7 +22,7 @@ public class MentorDAO {
 
     public MentorDAO()  {
         connection = new ConnectionProvider().getConnection();
-        //mentors = createMentorList();
+        mentors = createMentorList();
     }
 
     private Integer userId;
