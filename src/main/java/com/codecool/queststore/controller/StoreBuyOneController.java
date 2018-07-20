@@ -44,9 +44,7 @@ public class StoreBuyOneController implements HttpHandler {
     public void handle(HttpExchange httpExchange) throws IOException {
 
         String method = httpExchange.getRequestMethod();
-        System.out.println("method " + method);
         String response = "";
-        System.out.println("HERE storebyone");
         int itemID = Integer.parseInt(storeController.getMap().get("BUY"));
         int userID = getUserID();
         int studentID = getStudentID(userID);
@@ -62,12 +60,25 @@ public class StoreBuyOneController implements HttpHandler {
         }
 
         if(method.equals("POST")){
-            Map<String, String> map = add(httpExchange);
-           new StoreDAO().addArtifactToStudent(studentID, itemID);
+            Map<String, String> map = add(httpExchange);  // To extends in future
+            new StoreDAO().addArtifactToStudent(studentID, itemID);
             httpRedirectTo("/inventory", httpExchange);
 
-        }
+            if(payForItem()){
 
+                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecoolers.twig");
+                JtwigModel model = JtwigModel.newModel();
+                response = template.render(model);
+                httpRedirectTo("/inventory", httpExchange);
+            }
+            else {
+                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecoolers.twig");
+                JtwigModel model = JtwigModel.newModel();
+                response = template.render(model);
+                httpRedirectTo("/inventory", httpExchange);
+            }
+
+        }
         httpExchange.sendResponseHeaders(200, response.length());
         OutputStream os = httpExchange.getResponseBody();
         os.write(response.getBytes());
@@ -75,23 +86,26 @@ public class StoreBuyOneController implements HttpHandler {
 
     }
     private int getUserID(){
+
         int userID = this.authenticationController.getUserId();
         return userID;
 
     }
     public int getStudentID(int user){
+
         int studentID = this.studentDAO.getStudentIDToStudentController(user);
         return studentID;
     }
+
     private Map<String, String> add(HttpExchange httpExchange) throws IOException {
 
         InputStreamReader isr = new InputStreamReader(httpExchange.getRequestBody(), "UTF8");
         BufferedReader br = new BufferedReader(isr);
         String inputs = br.readLine();
-        System.out.println(inputs);
         Map<String, String> map = parseInputs(inputs);
         return map;
     }
+
     private static Map<String, String> parseInputs(String inputs) throws UnsupportedEncodingException {
         Map<String, String> map = new HashMap<>();
         String [] pairs = inputs.split("&");
@@ -99,16 +113,17 @@ public class StoreBuyOneController implements HttpHandler {
             String [] keyValue = element.split("=");
             String value = URLDecoder.decode(keyValue[1], "UTF8");
             map.put(value, keyValue[0]);
-            System.out.println("mapa" + map);
         }
         return map;
     }
+
     private void httpRedirectTo(String dest, HttpExchange httpExchange) throws IOException {
         String hostPort = httpExchange.getRequestHeaders().get("host").get(0);
         httpExchange.getResponseHeaders().set("Location", "http://" + hostPort + dest);
         httpExchange.sendResponseHeaders(301, -1);
 
     }
+
     public Boolean validatePay(){
         int studentID = storeController.getStudentID();
         int studentMoney = studentDAO.getStudentMoney(studentID);
@@ -116,10 +131,7 @@ public class StoreBuyOneController implements HttpHandler {
 
         for(Artifact artifact : storeDAO.getStudentArtifactList()){
             if(itemID == artifact.getId_artifact()){
-                if(artifact.getPrice() > studentMoney){
-                    return false;
-                }
-                else {
+                if(studentMoney > artifact.getPrice()){
                     return true;
                 }
             }
@@ -127,4 +139,16 @@ public class StoreBuyOneController implements HttpHandler {
         return false;
     }
 
+    public Boolean payForItem(){
+
+        int itemID = Integer.parseInt(storeController.getMap().get("BUY"));
+
+        for(Artifact artifact : storeDAO.getStudentArtifactList()){
+            if(itemID == artifact.getId_artifact()) {
+                studentDAO.updateMoney(artifact.getPrice(), storeController.getStudentID());
+                return true;
+            }
+        }
+        return false;
+    }
 }

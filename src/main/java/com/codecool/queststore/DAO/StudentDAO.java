@@ -15,7 +15,6 @@ public class StudentDAO {
     private AuthenticationController authController;
     private Connection connection = new ConnectionProvider().getConnection();
 
-
     private static final String GET_STUDENT_ID =
             "SELECT id_student FROM student WHERE id_user = ?;";
     private static final String GET_ALL_STUDENTS =
@@ -23,6 +22,7 @@ public class StudentDAO {
     private static final String GET_STUDENT_NAME =
             "SELECT first_name FROM app_user WHERE id_user = ?;";
     private static final String GET_STUDENT_MONEY = "SELECT current_money FROM student WHERE id_student = ?;";
+    private static final String UPDATE_MONEY = "UPDATE student SET current_money = ? WHERE id_student = ?;";
 
     public Integer getStudentId() {
         userId = new AuthenticationController().getUserId();
@@ -53,7 +53,8 @@ public class StudentDAO {
             if (resultSet.next()) {
                 Integer studentId = resultSet.getInt("id_student");
                 return studentId;
-            } else {
+            }
+            else {
                 return null;
             }
         } catch (SQLException e) {
@@ -94,6 +95,21 @@ public class StudentDAO {
             e.printStackTrace();
         }
         return null;
+    }
+    public void updateMoney(int money, int studentID){
+
+        int studentMoney =  getStudentMoney(studentID);
+        int moneyAfterBuy = (studentMoney - money);
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_MONEY);
+            preparedStatement.setInt(1, moneyAfterBuy);
+            preparedStatement.setInt(2, studentID);
+            preparedStatement.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

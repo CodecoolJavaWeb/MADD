@@ -69,32 +69,38 @@ public class StoreController implements HttpHandler {
         OutputStream os = httpExchange.getResponseBody();
         os.write(response.getBytes());
         os.close();
-
     }
+
     public int getUserID(){
+
         int userID = this.authenticationController.getUserId();
         return userID;
-
     }
+
     public int getStudentID(int user){
+
         int studentID = this.studentDAO.getStudentIDToStudentController(user);
         return studentID;
     }
+
     public int getStudentID(){
+
         int userID = this.authenticationController.getUserId();
         int studentID = this.studentDAO.getStudentIDToStudentController(userID);
         return studentID;
     }
+
     private Map<String, String> add(HttpExchange httpExchange) throws IOException {
 
         InputStreamReader isr = new InputStreamReader(httpExchange.getRequestBody(), "UTF8");
         BufferedReader br = new BufferedReader(isr);
         String inputs = br.readLine();
-        System.out.println(inputs);
         this.map = parseInputs(inputs);
         return map;
     }
+
     private static Map<String, String> parseInputs(String inputs) throws UnsupportedEncodingException {
+
         Map<String, String> map = new HashMap<>();
         String [] pairs = inputs.split("&");
         for (String element : pairs) {
@@ -106,11 +112,13 @@ public class StoreController implements HttpHandler {
         return map;
     }
     private void httpRedirectTo(String dest, HttpExchange httpExchange) throws IOException {
+
         String hostPort = httpExchange.getRequestHeaders().get("host").get(0);
         httpExchange.getResponseHeaders().set("Location", "http://" + hostPort + dest);
         httpExchange.sendResponseHeaders(301, -1);
         httpRedirectTo("/store-buy-one", httpExchange);
     }
+
     public Map<String, String> getMap(){
         return this.map;
     }

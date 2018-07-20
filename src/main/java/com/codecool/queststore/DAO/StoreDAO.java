@@ -27,19 +27,16 @@ public class StoreDAO {
     public void addArtifactToList() {
 
         try{
-
             PreparedStatement preparedStatement = connection.prepareStatement(GET_ARTIFATS);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()) {
-
                 Artifact artifact = extractArtifactFromRow(resultSet);
                 studentArtifactList.add(artifact);
             }
         } catch(SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     private Artifact extractArtifactFromRow(ResultSet resultSet) throws SQLException{
@@ -59,7 +56,7 @@ public class StoreDAO {
         return this.studentArtifactList;
     }
     public void addArtifactToStudent(int studentID, int itemID){
-        System.out.println("sudentid " + studentID);
+
         try{
 
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_VALUES);
@@ -71,6 +68,5 @@ public class StoreDAO {
         } catch(SQLException e) {
             e.printStackTrace();
         }
-
     }
 }
