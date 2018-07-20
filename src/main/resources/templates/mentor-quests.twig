@@ -37,6 +37,7 @@
                     <th>Name</th>
                     <th>Value</th>
                     <th>Category</th>
+                    <th>Description</th>
                     <th>Edit quest</th>
                 </tr>
                 </thead>
@@ -46,7 +47,8 @@
                     <td>{{quest.getQuestName()}}</td>
                     <td>{{quest.getQuestValue()}}</td>
                     <td>{{quest.getQuestCategory()}}</td>
-                    <td><a href="/mentors/mentor-quests/edit-quest">Edit</a></td>
+                    <td>{{quest.getQuestDescription()}}</td>
+                    <td><a href="/mentors/mentor-quests/edit-quest/{{ quest.getQuestId() }}">Edit</a></td>
                 </tr>
                 {% endfor %}
                 </tbody>

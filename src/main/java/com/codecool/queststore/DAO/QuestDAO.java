@@ -24,8 +24,8 @@ public class QuestDAO {
 
     private Connection connection;
     private List<Quest> quests;
-    private static final String GET_QUESTS =
-            "SELECT * FROM quest;";
+    private static final String GET_QUESTS = "SELECT * FROM quest;";
+    private static final String GET_QUEST_BY_ID = "SELECT * FROM quest WHERE id_quest = ?;";
 
 
     public QuestDAO()  {
@@ -48,7 +48,7 @@ public class QuestDAO {
                 questValue = resultSet.getInt("price");
                 questCategory = resultSet.getString("category");
 
-                Quest quest = new Quest(questId, questName, questCategory, questValue, questDescription);
+                Quest quest = new Quest(questId, questName, questDescription, questValue, questCategory);
                 quests.add(quest);
             }
         } catch(Exception e) {
@@ -75,5 +75,53 @@ public class QuestDAO {
         catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void editQuest(Integer questId, Map<String, String> questData) {
+        questName = questData.get("name");
+        questValue = Integer.valueOf(questData.get("value"));
+        questCategory = questData.get("type");
+        questDescription = questData.get("description");
+        String sql = "UPDATE quest SET quest_name = ?, price = ?, category = ?, description = ? WHERE id_quest = ?;";
+
+        try (Connection connection = this.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, questName);
+            preparedStatement.setInt(2, questValue);
+            preparedStatement.setString(3, questCategory);
+            preparedStatement.setString(4, questDescription);
+            preparedStatement.setInt(5, questId);
+            preparedStatement.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public Quest getQuestById(Integer questId) {
+        Quest quest;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(GET_QUEST_BY_ID);
+            preparedStatement.setInt(1, questId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                questId = resultSet.getInt("id_quest");
+                questName = resultSet.getString("quest_name");
+                questCategory = resultSet.getString("category");
+                questValue = resultSet.getInt("price");
+                questDescription = resultSet.getString("description");
+                if (questCategory.equals("basic")) {
+                    quest = new Quest(questId, questName, questDescription, questValue,  "checked");
+                } else {
+                    quest = new Quest(questId, questName, questDescription, questValue,  "checked1");
+                }
+                return quest;
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
