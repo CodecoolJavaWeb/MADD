@@ -36,8 +36,7 @@ public class StudentController implements HttpHandler {
 
         if (method.equals("GET")) {
 
-            int userID = getUserID();
-            int studentID = getStudentID(userID);
+            int studentID = getStudentID(getUserID());
 
             List<Integer> listIDOfStudents = studentArtifactDAO.getArifcatQuantiyAndID(studentID);
             studentArtifactDAO.getArtifactMetaData(listIDOfStudents);
@@ -45,7 +44,7 @@ public class StudentController implements HttpHandler {
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecooler.twig");
             JtwigModel model = JtwigModel.newModel();
             model.with("studentMoney", studentDAO.getStudentMoney(studentID));
-            model.with("userName",  studentDAO.getStudentName(userID));
+            model.with("userName",  studentDAO.getStudentName(getUserID()));
             model.with("artifacts", studentArtifactDAO.getArtifactList());
 
             response = template.render(model);
@@ -57,7 +56,7 @@ public class StudentController implements HttpHandler {
         os.close();
     }
 
-    private int getUserID(){
+    public int getUserID(){
         int userID = this.authenticationController.getUserId();
         return userID;
 
