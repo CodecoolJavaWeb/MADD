@@ -24,21 +24,27 @@ public class StoreBuyOneController implements HttpHandler {
     private Connection connection = new ConnectionProvider().getConnection();
     private StoreController storeController;
     private StudentArtifactDAO studentArtifactDAO;
+    private StoreDAO storeDAO;
 
     public StoreBuyOneController(AuthenticationController authenticationController, StoreController storeController){
         this.authenticationController = authenticationController;
         this.studentDAO = new StudentDAO();
         this.storeController = storeController;
         this.studentArtifactDAO = new StudentArtifactDAO();
+        this.storeDAO = new StoreDAO();
+    }
+    public StoreBuyOneController(StoreController storeController){
+        this.studentDAO = new StudentDAO();
+        this.storeController = storeController;
+        this.studentArtifactDAO = new StudentArtifactDAO();
+        this.storeDAO = new StoreDAO();
     }
 
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
 
         String method = httpExchange.getRequestMethod();
-        System.out.println("method " + method);
         String response = "";
-        System.out.println("HERE storebyone");
         int itemID = Integer.parseInt(storeController.getMap().get("BUY"));
         int userID = getUserID();
         int studentID = getStudentID(userID);
@@ -48,17 +54,31 @@ public class StoreBuyOneController implements HttpHandler {
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/store-buy-one.twig");
             JtwigModel model = JtwigModel.newModel();
 
+            model.with("studentMoney", studentDAO.getStudentMoney(studentID));
             model.with("artifacts", studentArtifactDAO.getArtifactByID(itemID));
             response = template.render(model);
         }
 
         if(method.equals("POST")){
-            Map<String, String> map = add(httpExchange);
-           new StoreDAO().addArtifactToStudent(studentID, itemID);
+            Map<String, String> map = add(httpExchange);  // To extends in future
+            new StoreDAO().addArtifactToStudent(studentID, itemID);
             httpRedirectTo("/inventory", httpExchange);
 
-        }
+            if(payForItem()){
 
+                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecoolers.twig");
+                JtwigModel model = JtwigModel.newModel();
+                response = template.render(model);
+                httpRedirectTo("/inventory", httpExchange);
+            }
+            else {
+                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecoolers.twig");
+                JtwigModel model = JtwigModel.newModel();
+                response = template.render(model);
+                httpRedirectTo("/inventory", httpExchange);
+            }
+
+        }
         httpExchange.sendResponseHeaders(200, response.length());
         OutputStream os = httpExchange.getResponseBody();
         os.write(response.getBytes());
@@ -66,23 +86,26 @@ public class StoreBuyOneController implements HttpHandler {
 
     }
     private int getUserID(){
+
         int userID = this.authenticationController.getUserId();
         return userID;
 
     }
     public int getStudentID(int user){
+
         int studentID = this.studentDAO.getStudentIDToStudentController(user);
         return studentID;
     }
+
     private Map<String, String> add(HttpExchange httpExchange) throws IOException {
 
         InputStreamReader isr = new InputStreamReader(httpExchange.getRequestBody(), "UTF8");
         BufferedReader br = new BufferedReader(isr);
         String inputs = br.readLine();
-        System.out.println(inputs);
         Map<String, String> map = parseInputs(inputs);
         return map;
     }
+
     private static Map<String, String> parseInputs(String inputs) throws UnsupportedEncodingException {
         Map<String, String> map = new HashMap<>();
         String [] pairs = inputs.split("&");
@@ -90,10 +113,10 @@ public class StoreBuyOneController implements HttpHandler {
             String [] keyValue = element.split("=");
             String value = URLDecoder.decode(keyValue[1], "UTF8");
             map.put(value, keyValue[0]);
-            System.out.println("mapa" + map);
         }
         return map;
     }
+
     private void httpRedirectTo(String dest, HttpExchange httpExchange) throws IOException {
         String hostPort = httpExchange.getRequestHeaders().get("host").get(0);
         httpExchange.getResponseHeaders().set("Location", "http://" + hostPort + dest);
@@ -101,4 +124,31 @@ public class StoreBuyOneController implements HttpHandler {
 
     }
 
+    public Boolean validatePay(){
+        int studentID = storeController.getStudentID();
+        int studentMoney = studentDAO.getStudentMoney(studentID);
+        int itemID = Integer.parseInt(storeController.getMap().get("BUY"));
+
+        for(Artifact artifact : storeDAO.getStudentArtifactList()){
+            if(itemID == artifact.getId_artifact()){
+                if(studentMoney > artifact.getPrice()){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public Boolean payForItem(){
+
+        int itemID = Integer.parseInt(storeController.getMap().get("BUY"));
+
+        for(Artifact artifact : storeDAO.getStudentArtifactList()){
+            if(itemID == artifact.getId_artifact()) {
+                studentDAO.updateMoney(artifact.getPrice(), storeController.getStudentID());
+                return true;
+            }
+        }
+        return false;
+    }
 }

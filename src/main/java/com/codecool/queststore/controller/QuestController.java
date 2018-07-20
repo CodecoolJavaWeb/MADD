@@ -19,7 +19,6 @@ public class QuestController implements HttpHandler {
         questDAO = new QuestDAO();
     }
 
-
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
 

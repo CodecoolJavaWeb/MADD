@@ -32,10 +32,12 @@ public class App {
         httpServer.createContext("/mentors/mentor-quests", new QuestController());
         httpServer.createContext("/codecooler", new StudentController(authenticationController));
         httpServer.createContext("/quest", new QuestController());
+        httpServer.createContext("/quest", new QuestController(authenticationController));
+        httpServer.createContext("/mentors", new MentorController());
         httpServer.createContext("/login", new AuthenticationController());
-     //   httpServer.createContext("/admin/mentors", new AdminController());
-     //   httpServer.createContext("/admin/class", new AdminController());
-      //  httpServer.createContext("/admin/level", new AdminController());
+        httpServer.createContext("/admin/mentors", new AdminController());
+        httpServer.createContext("/admin/class", new AdminController());
+        httpServer.createContext("/admin/level", new AdminController());
         httpServer.setExecutor(null);
         httpServer.start();
     }
