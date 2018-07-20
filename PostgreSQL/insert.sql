@@ -52,7 +52,11 @@ VALUES ('Exploring a dungeon', 100, 'basic', ' Finishing a Teamwork week'),
 INSERT INTO buyers_group (id_artifact, group_size)
 VALUES (5,2), (4,2);
 
+INSERT INTO student_artifact (id_student,id_artifact, quantity)
+VALUES (5,4,1);
 
 
 
-
+INSERT INTO student_artifact (id_student,id_artifact, quantity) VALUES (5,2,1);
+INSERT INTO student (id_user, id_class, current_money, total_money)
+VALUES (5,2,100,4);

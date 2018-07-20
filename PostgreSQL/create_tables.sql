@@ -141,5 +141,12 @@ CREATE TABLE IF NOT EXISTS experience_level(
 	achieve_money integer
 );
 
+CREATE TABLE IF NOT EXISTS studentArtifact (
+    id_artifact serial PRIMARY KEY,
+    artifact_name varchar(50) NOT NULL,
+    price integer NOT NULL,
+    category varchar(50) NOT NULL,
+    description varchar(255)
+);
 
 
