@@ -32,7 +32,7 @@ public class StudentController implements HttpHandler {
         System.out.println("method " + method);
         String response = "";
         System.out.println("HERE CodeColer");
-        
+
         this.userID = this.authenticationController.getUserId();
         this.studentID = this.studentDAO.getStudentIDToStudentController(userID);
 
@@ -49,10 +49,9 @@ public class StudentController implements HttpHandler {
             JtwigModel model = JtwigModel.newModel();
             model.with("studentMoney", studentDAO.getStudentMoney(this.studentID));
             model.with("userName",  studentDAO.getStudentName(this.userID));
-            model.with("artifacts", studentArtifactDAO.getArtifactList());
+            model.with("artifacts", studentArtifactDAO.getStudentArtifactsList());
 
             response = template.render(model);
-            // model.with("quanity", studentArtifactDAO.getStudentArtifactList());
         }
         httpExchange.sendResponseHeaders(200, response.length());
         OutputStream os = httpExchange.getResponseBody();
