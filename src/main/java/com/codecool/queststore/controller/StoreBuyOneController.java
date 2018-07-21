@@ -53,7 +53,7 @@ public class StoreBuyOneController implements HttpHandler {
 
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/store-buy-one.twig");
             JtwigModel model = JtwigModel.newModel();
-	    model.with("userName",  studentDAO.getStudentName(userID));
+	        model.with("userName",  studentDAO.getStudentName(userID));
             model.with("studentMoney", studentDAO.getStudentMoney(studentID));
             model.with("artifacts", studentArtifactDAO.getArtifactByID(itemID));
             response = template.render(model);
@@ -61,18 +61,16 @@ public class StoreBuyOneController implements HttpHandler {
 
         if(method.equals("POST")){
             Map<String, String> map = add(httpExchange);  // To extends in future
-            new StoreDAO().addArtifactToStudent(studentID, itemID);
-            httpRedirectTo("/inventory", httpExchange);
 
             if(payForItem()){
-
-                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecoolers.twig");
+                new StoreDAO().addArtifactToStudent(studentID, itemID);
+                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecooler.twig");
                 JtwigModel model = JtwigModel.newModel();
                 response = template.render(model);
                 httpRedirectTo("/inventory", httpExchange);
             }
             else {
-                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecoolers.twig");
+                JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecooler.twig");
                 JtwigModel model = JtwigModel.newModel();
                 response = template.render(model);
                 httpRedirectTo("/inventory", httpExchange);

@@ -22,7 +22,8 @@ public class StoreDAO {
     }
 
     private static final String GET_ARTIFATS = "SELECT * FROM studentArtifact;";
-    private static final String INSERT_VALUES = "INSERT INTO student_artifact(id_student, id_artifact, quantity) VALUES (?, ?, ?);";
+    private static final String GET_QUANTITY = "SELECT quantity FROM student_Artifact WHERE id_student = ? AND id_artifact = ?;";
+    private static final String INSERT_VALUES_IF_NEW_ARTIFACT = "INSERT INTO student_artifact(id_student, id_artifact, quantity) VALUES (?, ?, ?);";
 
     public void addArtifactToList() {
 
@@ -56,17 +57,65 @@ public class StoreDAO {
         return this.studentArtifactList;
     }
     public void addArtifactToStudent(int studentID, int itemID){
+        String UPDATE_VALUES_IF_ADD_ARTIFACT = "UPDATE student_artifact SET quantity = ? WHERE id_student = ? AND id_artifact = ?;";
+
+
+        int quantity = checkQuantityOfItems(studentID, itemID);
+        System.out.println("Quantity " + quantity);
+
+        if(quantity >= 1){
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_VALUES_IF_ADD_ARTIFACT);
+                preparedStatement.setInt(1, quantity);
+                preparedStatement.setInt(2, studentID);
+                preparedStatement.setInt(3, itemID);
+                preparedStatement.executeUpdate();
+            }
+            catch(SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            try{
+                PreparedStatement preparedStatement = connection.prepareStatement(INSERT_VALUES_IF_NEW_ARTIFACT);
+                preparedStatement.setInt(1, studentID);
+                preparedStatement.setInt(2, itemID);
+                preparedStatement.setInt(3, 1);
+                preparedStatement.executeUpdate();
+
+            } catch(SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private int checkQuantityOfItems(int studentID, int itemID){
+
+        Integer quantity = 0;
 
         try{
 
-            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_VALUES);
+            PreparedStatement preparedStatement = connection.prepareStatement(GET_QUANTITY);
             preparedStatement.setInt(1, studentID);
             preparedStatement.setInt(2, itemID);
-            preparedStatement.setInt(3, 0);
-            preparedStatement.executeUpdate();
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+                quantity = resultSet.getInt("quantity");
+                System.out.println("duuupa " + quantity);
+            }
 
         } catch(SQLException e) {
             e.printStackTrace();
         }
+
+        if(quantity > 0){
+            quantity++;
+        }
+        else{
+            quantity = 0;
+        }
+        return quantity;
+
     }
 }
