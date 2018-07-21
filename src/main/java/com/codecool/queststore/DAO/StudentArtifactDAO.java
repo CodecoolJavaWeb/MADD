@@ -25,18 +25,21 @@ public class StudentArtifactDAO {
     public StudentArtifactDAO(StudentController studentController) throws SQLException {
         this.studentController = studentController;
         this.artifactList = new ArrayList<>();
+
+        getArtifactMetaData();
+
     }
     public StudentArtifactDAO(){
 
     }
 
-    public List<Integer> getArifcatQuantiyAndID(int studentID){
+    public List<Integer> getArtifactQuantityAndID(){
 
         List<Integer> listIDOfStudent = new ArrayList<>();
         listIDOfStudent.clear();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(GET_ARTIFACTS_BY_ID_STUDENT);
-            preparedStatement.setInt(1, studentID);
+            preparedStatement.setInt(1, studentController.getStudentID());
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()) {
@@ -50,9 +53,11 @@ public class StudentArtifactDAO {
         return listIDOfStudent;
     }
 
-    public void getArtifactMetaData(List<Integer> listIDOfStudents){
+    public void getArtifactMetaData(){
 
+        List<Integer> listIDOfStudents = getArtifactQuantityAndID();
         artifactList.clear();
+
         for(int id : listIDOfStudents){
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(GET_ARTIFACTS_BY_ID_ARTIFACT);

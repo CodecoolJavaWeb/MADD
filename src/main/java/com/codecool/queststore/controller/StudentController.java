@@ -2,8 +2,6 @@ package com.codecool.queststore.controller;
 
 import com.codecool.queststore.DAO.StudentArtifactDAO;
 import com.codecool.queststore.DAO.StudentDAO;
-import com.codecool.queststore.model.Artifact;
-import com.codecool.queststore.model.StudentArtifact;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.jtwig.JtwigModel;
@@ -19,11 +17,11 @@ public class StudentController implements HttpHandler {
     private AuthenticationController authenticationController;
     private StudentArtifactDAO studentArtifactDAO;
     private int userID;
+    private int studentID;
 
     public StudentController(AuthenticationController authenticationController) throws SQLException {
-        this.studentDAO = new StudentDAO();
         this.authenticationController = authenticationController;
-        this.studentArtifactDAO = new StudentArtifactDAO(this);
+        this.studentDAO = new StudentDAO();
 
     }
 
@@ -34,19 +32,22 @@ public class StudentController implements HttpHandler {
         System.out.println("method " + method);
         String response = "";
         System.out.println("HERE CodeColer");
-        this.userID= this.authenticationController.getUserId();
+        
+        this.userID = this.authenticationController.getUserId();
+        this.studentID = this.studentDAO.getStudentIDToStudentController(userID);
 
+        try {
+            this.studentArtifactDAO = new StudentArtifactDAO(this);
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         if (method.equals("GET")) {
 
-         //   int studentID = getStudentID(this.userID);
-
-            List<Integer> listIDOfStudents = studentArtifactDAO.getArifcatQuantiyAndID(getStudentID(this.userID));
-            studentArtifactDAO.getArtifactMetaData(listIDOfStudents);
-
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecooler.twig");
             JtwigModel model = JtwigModel.newModel();
-            model.with("studentMoney", studentDAO.getStudentMoney(getStudentID(this.userID)));
+            model.with("studentMoney", studentDAO.getStudentMoney(this.studentID));
             model.with("userName",  studentDAO.getStudentName(this.userID));
             model.with("artifacts", studentArtifactDAO.getArtifactList());
 
@@ -63,9 +64,8 @@ public class StudentController implements HttpHandler {
         return this.userID;
 
     }
-    public int getStudentID(int user){
-        int studentID = this.studentDAO.getStudentIDToStudentController(user);
-        return studentID;
+    public int getStudentID(){
+        return this.studentID;
     }
 }
 
