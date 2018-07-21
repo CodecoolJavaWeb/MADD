@@ -21,8 +21,8 @@ public class App {
 
         httpServer.createContext("/login", authenticationController = new AuthenticationController());
         httpServer.createContext("/static/", new StaticController());
-        httpServer.createContext("/store", storeController = new StoreController(authenticationController));
         httpServer.createContext("/inventory", new StudentController(authenticationController));
+        httpServer.createContext("/store", storeController = new StoreController(authenticationController));
         httpServer.createContext("/incubator", new IncubatorController(authenticationController));
         httpServer.createContext("/store/store-buy-group", new StoreBuyGroupController(authenticationController));
         httpServer.createContext("/store/store-buy-one", new StoreBuyOneController(authenticationController, storeController));
@@ -30,7 +30,7 @@ public class App {
         httpServer.createContext("/static", new StaticController());
         httpServer.createContext("/mentors", new MentorController());
         httpServer.createContext("/mentors/mentor-quests", new QuestController());
-        httpServer.createContext("/codecooler", new StudentController(authenticationController));
+    //    httpServer.createContext("/codecooler", new StudentController(authenticationController));
         httpServer.createContext("/quest", new QuestController());
         httpServer.createContext("/mentors", new MentorController());
         httpServer.createContext("/login", new AuthenticationController());

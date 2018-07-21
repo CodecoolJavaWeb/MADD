@@ -1,4 +1,6 @@
-package com.codecool.queststore.Helpers;// Copyright (c) 2003-2009, Jodd Team (jodd.org). All Rights Reserved.
+package com.codecool.queststore.Helpers;
+
+// Copyright (c) 2003-2009, Jodd Team (jodd.org). All Rights Reserved.
 
 
 import java.util.HashMap;
@@ -299,3 +301,4 @@ public class MimeTypes {
             }};
     }
 }
+

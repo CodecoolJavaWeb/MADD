@@ -18,11 +18,13 @@ public class StudentController implements HttpHandler {
     private StudentDAO studentDAO;
     private AuthenticationController authenticationController;
     private StudentArtifactDAO studentArtifactDAO;
+    private int userID;
 
     public StudentController(AuthenticationController authenticationController) throws SQLException {
         this.studentDAO = new StudentDAO();
         this.authenticationController = authenticationController;
         this.studentArtifactDAO = new StudentArtifactDAO(this);
+
     }
 
     @Override
@@ -32,19 +34,20 @@ public class StudentController implements HttpHandler {
         System.out.println("method " + method);
         String response = "";
         System.out.println("HERE CodeColer");
+        this.userID= this.authenticationController.getUserId();
 
 
         if (method.equals("GET")) {
 
-            int studentID = getStudentID(getUserID());
+         //   int studentID = getStudentID(this.userID);
 
-            List<Integer> listIDOfStudents = studentArtifactDAO.getArifcatQuantiyAndID(studentID);
+            List<Integer> listIDOfStudents = studentArtifactDAO.getArifcatQuantiyAndID(getStudentID(this.userID));
             studentArtifactDAO.getArtifactMetaData(listIDOfStudents);
 
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecooler.twig");
             JtwigModel model = JtwigModel.newModel();
-            model.with("studentMoney", studentDAO.getStudentMoney(studentID));
-            model.with("userName",  studentDAO.getStudentName(getUserID()));
+            model.with("studentMoney", studentDAO.getStudentMoney(getStudentID(this.userID)));
+            model.with("userName",  studentDAO.getStudentName(this.userID));
             model.with("artifacts", studentArtifactDAO.getArtifactList());
 
             response = template.render(model);
@@ -57,8 +60,7 @@ public class StudentController implements HttpHandler {
     }
 
     public int getUserID(){
-        int userID = this.authenticationController.getUserId();
-        return userID;
+        return this.userID;
 
     }
     public int getStudentID(int user){
