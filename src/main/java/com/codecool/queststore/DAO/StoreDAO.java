@@ -57,9 +57,8 @@ public class StoreDAO {
         return this.studentArtifactList;
     }
     public void addArtifactToStudent(int studentID, int itemID){
+
         String UPDATE_VALUES_IF_ADD_ARTIFACT = "UPDATE student_artifact SET quantity = ? WHERE id_student = ? AND id_artifact = ?;";
-
-
         int quantity = checkQuantityOfItems(studentID, itemID);
         System.out.println("Quantity " + quantity);
 

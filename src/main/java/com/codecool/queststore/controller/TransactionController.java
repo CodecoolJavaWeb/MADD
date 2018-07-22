@@ -1,6 +1,7 @@
 package com.codecool.queststore.controller;
 
 import com.codecool.queststore.DAO.StudentDAO;
+import com.codecool.queststore.DAO.TransactionDAO;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.jtwig.JtwigModel;
@@ -37,6 +38,7 @@ public class TransactionController implements HttpHandler {
             JtwigModel model = JtwigModel.newModel();
             model.with("studentMoney", studentDAO.getStudentMoney(studentID));
             model.with("userName",  studentDAO.getStudentName(userID));
+            model.with("transactions", new TransactionDAO().getAllStudentTransaction(studentID));
             response = template.render(model);
         }
         httpExchange.sendResponseHeaders(200, response.length());

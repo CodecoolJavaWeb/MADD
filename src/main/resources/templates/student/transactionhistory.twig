@@ -43,21 +43,22 @@
                 <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Category</th>
+                    <th>Description</th>
                     <th>Quantity</th>
                     <th>Group</th>
                 </tr>
                 </thead>
+                {% for transaction in transactions %}
                 <tbody>
                 <tr>
-                    <td>Artifact 1</td>
-                    <td>1</td>
+                    <td> {{ transaction.getArtifact_Name }} </td>
+                    <td> {{ transaction.getCategory }} </td>
+                    <td> {{ transaction.getDescription }} </td>
+                    <td> 1 </td>
                     <td>&#9745</td>
                 </tr>
-                <tr>
-                    <td>Artifact 2</td>
-                    <td>5</td>
-                    <td>&#9746</td>
-                </tr>
+                 {% endfor %}
                 </tbody>
             </table>
         </div>

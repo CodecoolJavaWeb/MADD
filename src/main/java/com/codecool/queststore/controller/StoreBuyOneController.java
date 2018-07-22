@@ -4,6 +4,7 @@ import com.codecool.queststore.ConnectionProvider;
 import com.codecool.queststore.DAO.StoreDAO;
 import com.codecool.queststore.DAO.StudentArtifactDAO;
 import com.codecool.queststore.DAO.StudentDAO;
+import com.codecool.queststore.DAO.TransactionDAO;
 import com.codecool.queststore.model.Artifact;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -64,6 +65,7 @@ public class StoreBuyOneController implements HttpHandler {
 
             if(payForItem()){
                 new StoreDAO().addArtifactToStudent(studentID, itemID);
+                new TransactionDAO().addItemToHistoryTransactioN(studentID, itemID);
                 JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecooler.twig");
                 JtwigModel model = JtwigModel.newModel();
                 response = template.render(model);
