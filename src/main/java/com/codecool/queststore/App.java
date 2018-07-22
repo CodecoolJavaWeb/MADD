@@ -30,7 +30,7 @@ public class App {
         httpServer.createContext("/static", new StaticController());
         httpServer.createContext("/mentors", new MentorController());
         httpServer.createContext("/mentors/mentor-quests", new QuestController());
-        httpServer.createContext("/quest", new QuestController());
+        httpServer.createContext("/quest", new StudentQuestController(authenticationController));
         httpServer.createContext("/mentors", new MentorController());
         httpServer.createContext("/login", new AuthenticationController());
         httpServer.createContext("/admin/mentors", new AdminController());

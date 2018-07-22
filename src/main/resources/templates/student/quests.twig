@@ -43,18 +43,23 @@
                 <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Price</th>
                     <th>Mark is done</th>
+
                 </tr>
                 </thead>
                 <tbody>
+                  {% for quest in quests %}
                 <tr>
-                    <td>Quest 1</td>
+                    <td>{{ quest.getQuestName }}</td>
+                    <td>{{ quest.getQuestDescription }}</td>
+                    <td>{{ quest.getQuestCategory }}</td>
+                    <td>{{ quest.getQuestValue }}</td>
                     <td>&#9744</td>
                 </tr>
-                <tr>
-                    <td>Quest 2</td>
-                    <td>&#9745</td>
-                </tr>
+                   {% endfor %}
                 </tbody>
             </table>
         </div>
