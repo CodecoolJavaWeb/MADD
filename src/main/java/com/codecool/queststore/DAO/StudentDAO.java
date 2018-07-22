@@ -2,14 +2,18 @@ package com.codecool.queststore.DAO;
 
 import com.codecool.queststore.ConnectionProvider;
 import com.codecool.queststore.controller.AuthenticationController;
+import com.codecool.queststore.model.Level;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 
-public class StudentDAO {
+public class StudentDAO{
 
     private Integer userId;
     private AuthenticationController authController;
@@ -22,6 +26,7 @@ public class StudentDAO {
     private static final String GET_STUDENT_NAME =
             "SELECT first_name FROM app_user WHERE id_user = ?;";
     private static final String GET_STUDENT_MONEY = "SELECT current_money FROM student WHERE id_student = ?;";
+    private static final String GET_STUDENT_TOTAL_MONEY = "SELECT total_money FROM student WHERE id_student = ?;";
     private static final String UPDATE_MONEY = "UPDATE student SET current_money = ? WHERE id_student = ?;";
 
     public Integer getStudentId() {
@@ -98,7 +103,7 @@ public class StudentDAO {
     }
     public void updateMoney(int money, int studentID){
 
-        int studentMoney =  getStudentMoney(studentID);
+        int studentMoney = getStudentMoney(studentID);
         int moneyAfterBuy = (studentMoney - money);
 
         try {
@@ -111,5 +116,50 @@ public class StudentDAO {
             e.printStackTrace();
         }
     }
+    public Integer getStudentTotalMoney(int studentID){
 
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(GET_STUDENT_TOTAL_MONEY);
+            preparedStatement.setInt(1, studentID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int totalMoney = resultSet.getInt("total_money");
+                return totalMoney;
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public String getStudentLevel(int studentID){
+
+        int totalMoney = getStudentTotalMoney(studentID);
+
+
+        List<Level> levels = sortLevelsList();
+
+        String level = Integer.toString(0);
+
+        for(int i = 0; i < levels.size() - 1; i++){
+            if (levels.get(i).getExperience() <= totalMoney && levels.get(i + 1).getExperience() > totalMoney){
+                level = levels.get(i).getName();
+            }
+        }
+        return level;
+    }
+
+    private List<Level> sortLevelsList(){
+
+        List<Level> levels = new LevelDAO().getLevelsList();
+
+        Collections.sort(levels, new Comparator<Level>() {
+            @Override
+            public int compare(Level expierence1, Level expierence2) {
+                return expierence1.getExperience().compareTo(expierence2.getExperience());
+            }
+        });
+        return levels;
+    }
 }

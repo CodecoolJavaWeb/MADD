@@ -48,6 +48,7 @@ public class StudentController implements HttpHandler {
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/codecooler.twig");
             JtwigModel model = JtwigModel.newModel();
             model.with("studentMoney", studentDAO.getStudentMoney(this.studentID));
+            model.with("studentLevel", studentDAO.getStudentLevel(this.studentID));
             model.with("userName",  studentDAO.getStudentName(this.userID));
             model.with("artifacts", studentArtifactDAO.getStudentArtifactsList());
 

@@ -39,6 +39,7 @@ public class StudentQuestController implements HttpHandler {
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/quests.twig");
             JtwigModel model = JtwigModel.newModel();
             model.with("studentMoney", studentDAO.getStudentMoney(studentID));
+            model.with("studentLevel", studentDAO.getStudentLevel(studentID));
             model.with("userName", studentDAO.getStudentName(userID));
             model.with("quests", new QuestDAO().getQuests());
 

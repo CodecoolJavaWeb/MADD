@@ -37,6 +37,7 @@ public class TransactionController implements HttpHandler {
             JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/student/transactionhistory.twig");
             JtwigModel model = JtwigModel.newModel();
             model.with("studentMoney", studentDAO.getStudentMoney(studentID));
+            model.with("studentLevel", studentDAO.getStudentLevel(studentID));
             model.with("userName",  studentDAO.getStudentName(userID));
             model.with("transactions", new TransactionDAO().getAllStudentTransaction(studentID));
             response = template.render(model);

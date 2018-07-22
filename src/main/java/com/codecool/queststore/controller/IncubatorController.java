@@ -39,6 +39,7 @@ public class IncubatorController implements HttpHandler {
             JtwigModel model = JtwigModel.newModel();
 
             model.with("studentMoney", studentDAO.getStudentMoney(studentID));
+            model.with("studentLevel", studentDAO.getStudentLevel(studentID));
             model.with("userName",  studentDAO.getStudentName(userID));
             response = template.render(model);
 
