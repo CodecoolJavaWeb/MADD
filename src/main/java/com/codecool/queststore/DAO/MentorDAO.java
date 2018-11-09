@@ -41,7 +41,10 @@ public class MentorDAO {
             "SELECT * FROM app_user " +
                     "JOIN student ON (app_user.id_user = student.id_user) " +
                     "JOIN cool_class ON (student.id_class = cool_class.id_class);";
-    private static final String GET_STUDENT_BY_ID = "SELECT * FROM app_user WHERE id_user LIKE ? JOIN student ON (app_user.id_user = student.id_user) JOIN cool_class ON (student.id_class = cool_class.id_class);";
+    private static final String GET_STUDENT_BY_ID = "SELECT * FROM app_user " +
+                    "JOIN student ON (app_user.id_user = student.id_user) " +
+                    "JOIN cool_class ON (student.id_class = cool_class.id_class) " +
+                    "WHERE app_user.id_user = ?;";
 
     private Connection connect() {
         return new ConnectionProvider().getConnection();
@@ -350,7 +353,7 @@ public class MentorDAO {
     }
 
     public Student getStudentById(Integer userId) {
-
+        Student student = null;
         try {
 
             PreparedStatement preparedStatement = connection.prepareStatement(GET_STUDENT_BY_ID);
@@ -368,11 +371,11 @@ public class MentorDAO {
                 totalMoney = resultSet.getInt("total_money");
                 studentClassName = resultSet.getString("class_name");
 
-                return new Student(userId, firstName, lastName, phone, email, role, currentMoney, totalMoney, studentClassName);
+                student = new Student(userId, firstName, lastName, phone, email, role, currentMoney, totalMoney, studentClassName);
             }
         } catch(Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return student;
     }
 }

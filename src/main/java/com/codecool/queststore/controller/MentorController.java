@@ -27,7 +27,6 @@ public class MentorController implements HttpHandler {
         String method = httpExchange.getRequestMethod();
         String response = "";
 
-
         if (method.equals("POST") && parsePath(httpExchange)[2].equals("createstudent")) {
             //read inputs into formData map.
             Map<String, String> studentData = parseInputs(httpExchange);
@@ -43,7 +42,7 @@ public class MentorController implements HttpHandler {
             httpExchange.sendResponseHeaders(200, response.length());
         }
         else if (method.equals("POST") && parsePath(httpExchange)[2].equals("editstudent")){
-
+            //TODO add editstudent case in POST request for mentor
         }
 
         if (method.equals("GET") && parsePath(httpExchange).length <=2) {
